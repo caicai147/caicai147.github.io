@@ -23,7 +23,7 @@ linux
 
 **这样是不行的**：使用超级用户身份去更改` /etc/hosts`文件，添加最新的谷歌hosts
 
-**这样才可以**：使用普通用户执行`gedit /etc/hosts`编辑，然后添加最新的谷歌hosts，然后执行`sudo /etc/init.d restarting restart`应该就可以了，再不行就去重启系统，然后就可以访问了google了，注意实时更新。
+**这样才可以**：使用普通用户执行`sudo gedit /etc/hosts`编辑，然后添加最新的谷歌hosts，然后就可以访问了google了，再不行就去重启系统，注意实时更新。
 
 windows
 --------
