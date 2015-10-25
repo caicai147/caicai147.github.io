@@ -1,14 +1,6 @@
-{% if site.duoshuo %}
-	<div id="ds-thread" class="ds-thread" data-thread-key="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}" data-title="{{ page.title }}" />
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
+{% if site.uyan %}
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2066802"></script>
+    <!-- UY END -->
 {% endif %}
