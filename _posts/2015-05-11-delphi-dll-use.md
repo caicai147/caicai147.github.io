@@ -7,7 +7,7 @@ tags: delphi dll
 
 
 * 转载：[http://blog.csdn.net/welcome000yy/article/details/7905463](http://blog.csdn.net/welcome000yy/article/details/7905463)
-* 结合这篇博客：[http://www.cnblogs.com/xumenger/p/4372289.html](http://blog.csdn.net/welcome000yy/article/details/7905463)
+* 结合这篇博客：[http://www.xumenger.com/delphi-dll-20150423-05/](http://www.xumenger.com/delphi-dll-20150423-05/)
 * 再结合：[http://blog.csdn.net/lailai186/article/details/8770487](http://blog.csdn.net/lailai186/article/details/8770487)
 
 不过这篇博客有很多讲解的不清楚，甚至有一些误解的地方，但是将这几篇篇文章结合起来，就可以互相弥补、互相补充，比如：
@@ -20,7 +20,7 @@ tags: delphi dll
 
 总之，对于任何人的任何说法（比如博客），甚至是所谓的官方的说法，一定要保持怀疑，要一直去求证、去实践、去了解更多的相关的知识和说法
 
-还有必要参考：[http://www.cnblogs.com/xumenger/p/4452950.html](http://www.cnblogs.com/xumenger/p/4452950.html)
+还有必要参考：[http://www.xumenger.com/delphi-dll-20150423-05/](http://www.xumenger.com/delphi-dll-20150423-05/)
 
  
 ##一、DLL简单介绍##
