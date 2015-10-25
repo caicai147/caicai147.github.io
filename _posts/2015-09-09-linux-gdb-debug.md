@@ -63,7 +63,8 @@ list命令
 
 在gdb中运行list命令（缩写l）可以列出代码，list的具体形式包括：
 
-- `list <linenum>` ，显示程序第linenum行周围的源程序，如：
+**list <linenum>**，显示程序第linenum行周围的源程序，如：
+
 ```
     (gdb) list 15  
     10          
@@ -77,7 +78,9 @@ list命令
     18        };  
     19  
 ```
-- `list <function>`，显示函数名为function的函数的源程序，如：
+
+**list <function>**，显示函数名为function的函数的源程序，如：
+
 ```
     (gdb) list main  
     2       {  
@@ -91,8 +94,10 @@ list命令
     10          
     11        int array1[10] =  
 ```
-- `list`，显示当前行后面的源程序。
-- `list -` ，显示当前行前面的源程序。 
+
+**list**，显示当前行后面的源程序。
+
+**list -** ，显示当前行前面的源程序。 
 
 下面演示了使用gdb中的`run`（缩写r）、`break`（缩写b）、`next`（缩写n）命令控制程序的运行，并使用`print`（缩写p）命令打印程序中的变量sum的过程：
 
@@ -120,21 +125,21 @@ run命令
 
 在gdb中，运行程序使用run命令。在程序运行前，我们可以设置如下4方面的工作环境：
 
-- 程序运行参数 
+**程序运行参数**
 
 `set args` 可指定运行时参数，如：`set args 10 20 30 40 50`；`show args` 命令可以查看设置好的运行参数。
 
-- 运行环境 
+**运行环境**
 
 `path <dir>` 可设定程序的运行路径；how paths可查看程序的运行路径；set environment varname [=value]用于设置环境变量，如set env USER=baohua；
 
 `show environment [varname]`则用于查看环境变量。
 
-- 工作目录 
+**工作目录**
 
 `cd <dir>` 相当于shell的cd命令；pwd 显示当前所在的目录。
 
-- 程序的输入输出 
+**程序的输入输出**
 
 `info terminal` 用于显示程序用到的终端的模式；gdb中也可以使用重定向控制程序输出，如`run > outfile`；
 
@@ -145,35 +150,35 @@ break命令
 
 在gdb中用break命令来设置断点，设置断点的方法包括：
 
-- `break <function>`
+**break <function>**
 
 在进入指定函数时停住，C++中可以使用class::function或function(type, type)格式来指定函数名。
 
-- `break <linenum> `
+**break <linenum>**
 
 在指定行号停住。
 
-- `break +offset / break -offset`
+**break +offset / break -offset**
 
 在当前行号的前面或后面的offset行停住，offiset为自然数。
 
-- `break filename:linenum`
+**break filename:linenum**
 
 在源文件filename的linenum行处停住。
 
-- `break filename:function`
+**break filename:function**
 
 在源文件filename的function函数的入口处停住。
 
-- `break *address` 
+**break \*address**
 
 在程序运行的内存地址处停住。
 
-- `break` 
+**break**
 
 break命令没有参数时，表示在下一条指令处停住。
 
-- `break ... if <condition>` 
+**break ... if <condition>**
 
 “...”可以是上述的`break <linenum>`、`break +offset`、`break –offset`中的参数，condition表示条件，在条件成立时停住。比如在循环体中，可以设置break if i=100，表示当i为100时停住程序。
 
@@ -197,27 +202,27 @@ break命令没有参数时，表示在下一条指令处停住。
 
 单步执行的更复杂用法包括：
 
-- `step <count>` 
+**step <count>**
 
 单步跟踪，如果有函数调用，则进入该函数（进入函数的前提是，此函数被编译有debug信息）。step后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。
 
-- `next <count>`
+**next <count>**
 
 单步跟踪，如果有函数调用，它不会进入该函数。同样地，next后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。
 
-- `set step-mode` 
+**set step-mode**
 
 set step-mode on用于打开step-mode模式，这样，在进行单步跟踪时，程序不会因为没有debug信息而不停住，这个参数的设置可便于查看机器码。set step-mod off用于关闭step-mode模式。
 
-- `finish`
+**finish**
 
 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。
 
-- `until` （缩写u） 
+**until（缩写u）**
 
 一直在循环体内执行单步，退不出来是一件令人烦恼的事情，until命令可以运行程序直到退出循环体。
 
-- `stepi`（缩写`si`）和`nexti`（缩写`ni`） 
+**stepi（缩写si）和nexti（缩写ni）**
 
 stepi和nexti用于单步跟踪一条机器指令，一条程序代码有可能由数条机器指令完成，stepi和nexti可以单步执行机器指令。 另外，运行“display/i $pc”命令后，单步跟踪会在打出程序代码的同时打出机器指令，即汇编代码。
 
@@ -375,27 +380,27 @@ examine命令
 
 可以通过多种方式看C指向的字符串：
 
-- 方法1：
+**方法1**
 
     (gdb) p c  
     $1 = 0x100000f2e "hello world"  
 
-- 方法2：
+**方法2**
 
     (gdb) x/s 0x100000f2e  
     0x100000f2e:     "hello world"  
 
-- 方法3：
+**方法3**
 
     (gdb) p (char *)0x100000f2e  
     $3 = 0x100000f2e "hello world"  
 
-- 将第一个字符改为大写：
+**将第一个字符改为大写**
 
     (gdb) p *(char *)0x100000f2e='H'  
     $4 = 72 'H'  
 
-- 再看看C：
+**再看看C**
 
     (gdb) p c  
     $5 = 0x100000f2e "Hello world"  
@@ -403,16 +408,16 @@ examine命令
 set命令
 ---------
 
-- 修改寄存器：
+**修改寄存器**
 
     (gdb) set $v0 = 0x004000000  
     (gdb) set $epc = 0xbfc00000   
 
-- 修改内存：
+**修改内存**
 
     (gdb) set {unsigned int}0x8048a51=0x0  
 
-- 譬如对于第8节的例子：
+**譬如对于第8节的例子**
 
     (gdb) set {unsigned int}0x100000f2e=0x0         
     (gdb) x/10cb 0x100000f2e  
@@ -457,7 +462,7 @@ info命令可以在调试时用来查看寄存器、断点、观察点和信号�
 
 要查看断点信息，可以使用如下命令：
 
--  `info break` 列出当前所设置的所有观察点
+- `info break` 列出当前所设置的所有观察点
 - 使用如下命令：`info watchpoints` 查看有哪些信号正在被GDB检测
 - 使用如下命令：`info signals info handle` 也可以使用`info line`命令来查看源代码在内存中的地址。
 - `info threads`可以看多线程。`info line`后面可以跟行号、函数名、文件名:行号、文件名:函数名等多种形式，例如下面的命令会打印出所指定的源码在运行时的内存地址：
