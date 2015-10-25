@@ -465,9 +465,7 @@ info命令可以在调试时用来查看寄存器、断点、观察点和信号�
 - `info break` 列出当前所设置的所有观察点
 - 使用如下命令：`info watchpoints` 查看有哪些信号正在被GDB检测
 - 使用如下命令：`info signals info handle` 也可以使用`info line`命令来查看源代码在内存中的地址。
-- `info threads`可以看多线程。`info line`后面可以跟行号、函数名、文件名:行号、文件名:函数名等多种形式，例如下面的命令会打印出所指定的源码在运行时的内存地址：
-
-    info line tst.c:func  
+- `info threads`可以看多线程。`info line`后面可以跟行号、函数名、文件名:行号、文件名:函数名等多种形式，例如下面的命令会打印出所指定的源码在运行时的内存地址：`info line tst.c:func`
 
 set scheduler-locking off|on|step
 -------------
