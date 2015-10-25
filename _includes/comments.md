@@ -1,9 +1,5 @@
 {% if site.duoshuo %}
-	{% if page.thread %}
 	<div class="ds-thread" data-thread-key="{{ page.thread }}" data-url="{{ site.url }}{{ page.url }}" data-title="{{ page.title }}" />
-	{% else %}
-	<div class="ds-thread" />
-	{% endif %}	
 	<script type="text/javascript">
 	var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
 	(function() {
