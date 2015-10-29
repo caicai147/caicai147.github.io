@@ -87,6 +87,8 @@ tags: 教程 博客 论坛
 - [菜鸟教程(原w3cschool)](http://www.runoob.com/)
 - [Python学习平台](http://www.pythoner.cn/)
 - [分分钟学会一门语言](http://learnxinyminutes.com/)。Add 2015-10-28
+- [Flask中文学习网](https://flask123.sinaapp.com/)。Add 2015-10-29
+- [Python中文学习大本营](http://www.pythondoc.com/)。Add 2015-10-29
 
 论坛&技术问答
 ------------
