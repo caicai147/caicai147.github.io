@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 解决Delphi图形化界面的TEdit、TLable等组件手动拖拽固定大小，但是编译之后显示有差别的情况
+title: 解决Delphi的TEdit、TLable等组件手动拖拽固定大小，但是编译后显示有差别的情况
 categories: delphi之应用程序框架 delphi之控件 好资源之常见问题解决
 tags: delphi tedit tlable
 ---
