@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi容器类之---TList、TStringList、TObjectList，以及一个例程的代码分析
-categories: delphi之容器类 软件质量之性能
+categories: delphi之容器类
 tags: delphi tlist tobjectlist 
 ---
 
