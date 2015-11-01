@@ -38,4 +38,4 @@ windows
 
 假如哪天发现自己突然没办法访问google了，就去[http://igge.gq/](http://igge.gq/)找新的hosts，更改自己的hosts文件！！
 
-比如在2015.10.21，Ｇｏｏｇｌｅ访问不了，于是就去[http://igge.gq/](http://igge.gq/)找新的hosts，更新本地的hosts就可以了
+比如在2015.10.21，Google访问不了，于是就去[http://igge.gq/](http://igge.gq/)找新的hosts，更新本地的hosts就可以了
