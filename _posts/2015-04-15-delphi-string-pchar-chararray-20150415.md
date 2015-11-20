@@ -12,7 +12,7 @@ tags: delphi 字符串
 其中的所有代码均在Delphi7下测试通过。
 
 Delphi 4,5,6,7中有字符串类型包括了：
-
+e
 * 短字符串（Short String）
 * 长字符串（Long String）
 * 宽字符串（Wide String）
