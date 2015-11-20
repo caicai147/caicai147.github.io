@@ -6,7 +6,7 @@ tags: delphi 字符串 内存 out FillChar
 ---
 
 * 转载自[Delphi　String可能的内存泄漏](http://www.360doc.com/content/11/0801/09/68419_137087408.shtml )
-* 使用FillChar需要注意下面的问题，同样使用ZeroMemory和FillMemory也要注意，因为它们的实现是通过FilChar，关于这三个函数可以参见[这里](.／delphi-zeromemory-20151118/)
+* 使用FillChar需要注意下面的问题，同样使用ZeroMemory和FillMemory也要注意，因为它们的实现是通过FilChar，关于这三个函数可以参见[这里](http://www.xumenger.com/delphi-zeromemory-20151118/)
 * 可以利用`out`关键字的作用来做一个封装，然后可以将这个问题避免（具体见下文）
 
 ---
