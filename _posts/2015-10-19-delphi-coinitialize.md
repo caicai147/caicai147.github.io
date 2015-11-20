@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OleInitialize、CoInitialize、CoInitializeEx和AfxOleInit()区别
+title: OleInitialize、CoInitialize、CoInitializeEx和AfxOleInit区别
 categories: delphi之应用程序框架
 tags: delphi oleinitialize coinitialize coinitializeex afxoleinit api windows com ole 多线程
 ---
