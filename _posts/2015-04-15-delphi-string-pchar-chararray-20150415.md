@@ -31,7 +31,7 @@ Delphi 4,5,6,7中有字符串类型包括了：
       Len := Ord(S[0]); { Len现在包含S的长度为5，Ord函数可以把一个字符类型转换为整数类型}
       Len := SizeOf(S); { Len现在包含的是ShortString类型的大小，为256字节，并不是字符串的长度} 
     end;
-　　
+
 以上例子通过S[0]可以获得S的字符串长度，当然也可以用Length函数来确定一个短字符串的长度。
 
 可以通过数组的下标来访问ShortString中的一个特定位置的字符，具体使用参看下面例子和注释说明：
@@ -48,7 +48,7 @@ Delphi 4,5,6,7中有字符串类型包括了：
       { 因为S只有8个字符大小，
       试图改写第10个元素，将会使内存混乱}
     end;
-　　
+
 
 ##2、长字符串（Long String）##
 
@@ -58,13 +58,13 @@ Delphi 4,5,6,7中有字符串类型包括了：
 
     var
       S: string;
-　　
+
 由于是动态分配的，一次可以随意修改字符串，而不用担心对其他的影响，也不用担心越界的问题。String类型没有0元素，试图存取String类型的0元素会产生一个编译错误。
 
 通过Length函数也可以获得长字符串的长度，也可以通过SetLength过程为长字符串设置长度。其在内存中分配情况如下：
 
 ![image](../image/2015-04-15/1.png)
- 
+
 注意当给一个String类型赋值时候，赋的字符串太长，可能会报错：“String  literals may have at most 255 elements”。这时候你就纳闷了：不是说String的字符个数没有限制的吗？
 
 对于这个问题，我们给个代码示例（程序1）
@@ -123,7 +123,7 @@ Delphi 4,5,6,7中有字符串类型包括了：
 例如：Windows MessageBox函数，此函数声明如下：
 
     function MessageBox(hWnd: HWND; lpText, lpCaption: PChar; uType: UINT): Integer; stdcall;
-　　
+
 第二个和第三个参数需要一个指向字符数组的指针，为了可以调用此函数，有以下三种方法来实现
 
 ###1、PChar()类型转换###
@@ -155,7 +155,7 @@ Delphi 4,5,6,7中有字符串类型包括了：
       ShowMessage(IntToStr(SizeOf(Text)));   { 4字节，实质是指针}
       ShowMessage(IntToStr(SizeOf(Str)));    { 也是4字节，也是指针}
     end;
-　　
+
 通过上面的程序，我们知道Text（PChar类型）只不过是一个指针而已。
 
     var
@@ -165,7 +165,7 @@ Delphi 4,5,6,7中有字符串类型包括了：
       MessageBox(0, Text, 'Test Message', 0);
       { 这里Text直接声明为了PChar类型，字符串常量可以直接用}
     end;
-　　
+
 指针Text指向了这样一个内存区域，一个包含Null的结尾的 'This is a test.' 字符串的区域。其等同于下面的代码：
 
     const
@@ -178,7 +178,7 @@ Delphi 4,5,6,7中有字符串类型包括了：
       也就是整个字符数组的首地址}
       MessageBox(0, Text, 'Test Message', 0);
     end;
-　　
+
 ###3、Char类型字符数组###
 
 最后还可以用Char数组来代替PChar，代码如下：

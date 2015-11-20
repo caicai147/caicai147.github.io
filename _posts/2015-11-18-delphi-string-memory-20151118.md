@@ -2,7 +2,7 @@
 layout: post
 title: Delphi使用FillChar时候如果有string可能导致内存泄漏
 categories: delphi之字符串 delphi之指针与内存
-tags: markdown 排版 博客
+tags: delphi 字符串 内存 out FillChar
 ---
 
 * 转载自[Delphi　String可能的内存泄漏](http://www.360doc.com/content/11/0801/09/68419_137087408.shtml )
