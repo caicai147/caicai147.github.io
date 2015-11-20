@@ -7,6 +7,7 @@ tags: markdown 排版 博客
 
 * 转载自[Delphi　String可能的内存泄漏](http://www.360doc.com/content/11/0801/09/68419_137087408.shtml )
 * 使用FillChar需要注意下面的问题，同样使用ZeroMemory和FillMemory也要注意，因为它们的实现是通过FilChar，关于这三个函数可以参见[这里]()
+* 可以利用`out`关键字的作用来做一个封装，然后可以将这个问题避免（具体见下文）
 
 ---
 
@@ -76,7 +77,14 @@ end;
 >Addr: 00E249E8, RefCount: 2, Value: string     //OK, RefCount increated
 >Addr: 00E249E8, RefCount: 2, Value: string     //WRONG! RefCount should be 1
 
-关于为什么能输出字符串的引用计数，可以参见[这篇博客](http://www.xumenger.com/delphi-string-pchar-chararray-20150415/)，可以看出存储字符串的内存的从开始往后的第
+关于为什么能输出字符串的引用计数，可以参见[这篇博客](http://www.xumenger.com/delphi-string-pchar-chararray-20150415/)，可以看出存储字符串的内存结构是这样的
+
+* 01~02 字节是代码页，如0x03A8为十进制的936，表示简体中文GBK
+* 03~04 字节表示每个字符所占的字节数（ANSI为1，Unicode为2）
+* 05~08 字节是该字符串的引用计数
+* 09~12 字节是该字符串的字符个数
+* 13~?? 字节就是字符串实际的内容了
+* ??    最后一个字节是00，字符串的结束符
 
 在执行FillChar之前，字符串S1的引用计数是２，但是执行玩FillChar之后并没有减１。这段代码验证了我的推测：`FillChar操作可能会破坏字符串的Copy-On-Write机制，使用的时候需要小心！`
 
@@ -112,3 +120,38 @@ end;
 ##解决方法##
 
 既然知道使用FillChar来初始化记录是不安全的，那么我们是不是要回到解放前，手动对记录进行初始化呢？
+
+也不用！Delphi有一个保留字`out`。它和var、const一样，是用来修饰函数参数的。它和var的功能相似，不同的是，它会对那些以指针形式传进的变量进行引用计数清理。Delphi的帮助中的解释是：
+
+>An out parameter, like a variable parameter, is passed by reference. With an out parameter, however, the  initial value of the referenced variable is discarded by the routine it is passed to. The out parameter is for output only; that is ,it tell the function or procedure where to store output, but doesn't provide any input
+
+哈哈，这个不正是FillChar想做但又没有做到的吗？于是我改造了一下InitializeRecord来初始化记录
+
+```
+procedure InitializeRecord(out ARecord: TMyRec; count: Integer);
+begin
+    FillChar(ARecord, count, 0);
+end;
+```
+
+仅仅是多了一层函数嵌套，内存泄漏的问题就解决了，多亏了这个神器的out！
+
+我们来仔细看看加了这个out之后，编译器到底做了什么？
+
+```
+mov edx,[$0040c904]
+mov eac,ebx
+call @FinalizedRecord   //<-----cleanup
+mov edx,$0000000c
+call InitializeRecord
+```
+
+关键是第三行调用了FinalizeRecord。这是System.pas中的一个汇编函数，作用就是对记录做一下清除工作。如果你想一探究竟，可以自己查一下这个函数是如何实现的。这里就不做详细解释了。
+
+##想法总结##
+
+没想到一个偶然的发现，竟可以带出这么多的问题，真是因祸得福。我总结了一下几点：
+
+* FillChar是低级的内存读写，所以在使用之前你要非常清楚要打算做什么。
+* 在记录类型中慎用string和Widestring。如果记录的结构复杂，不妨尝试封装成类，类可以提供更丰富的特性，扩展性更好。如果一定要定义带string的记录，最好注释一下，以免日后出错。（有时候的确是record更方便更高效）
+* 活用out保留字可以解决接口类型和带string的记录类型的引用计数问题
