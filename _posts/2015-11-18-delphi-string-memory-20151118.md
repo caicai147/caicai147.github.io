@@ -6,7 +6,7 @@ tags: delphi 字符串 内存 out FillChar
 ---
 
 * 转载自[Delphi　String可能的内存泄漏](http://www.360doc.com/content/11/0801/09/68419_137087408.shtml )
-* 使用FillChar需要注意下面的问题，同样使用ZeroMemory和FillMemory也要注意，因为它们的实现是通过FilChar，关于这三个函数可以参见[这里]()
+* 使用FillChar需要注意下面的问题，同样使用ZeroMemory和FillMemory也要注意，因为它们的实现是通过FilChar，关于这三个函数可以参见[这里](.\delphi-zeromemory-20151118/)
 * 可以利用`out`关键字的作用来做一个封装，然后可以将这个问题避免（具体见下文）
 
 ---
@@ -115,7 +115,7 @@ end;
 >Addr: 00E249E8, RefCount: 1, Value: string     //!!! Allocated as a new string
 >Addr: 00E249E8, RefCount: -, Value: string     //OK, RefCount UN-Changed
 
-是不是很吃惊？对赋值ARec.S的时候，结果并不是预期的那样，直接将其指向常量字符串，而是重新分配了一个新的字符串。我个人认为：｀记录在对字符串赋值上是有问题的｀
+是不是很吃惊？对赋值ARec.S的时候，结果并不是预期的那样，直接将其指向常量字符串，而是重新分配了一个新的字符串。我个人认为：｀记录在对字符串赋值上是有问题的`
 
 ##解决方法##
 
@@ -134,7 +134,7 @@ begin
 end;
 ```
 
-仅仅是多了一层函数嵌套，内存泄漏的问题就解决了，多亏了这个神器的out！
+仅仅是多了一层函数嵌套，内存泄漏的问题就解决了，多亏了这个神奇的out！
 
 我们来仔细看看加了这个out之后，编译器到底做了什么？
 
