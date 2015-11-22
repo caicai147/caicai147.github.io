@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi的指针为什么可以多次New，始于队列TQueue对指针的Push和Pop的思考
-categories: delphi之指针与内存
+categories: delphi之指针与内存 深入钻研之内存管理
 tags: delphi 指针 内存
 ---
 

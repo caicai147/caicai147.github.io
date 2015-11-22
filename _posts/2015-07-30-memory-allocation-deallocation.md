@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 内存的分配与释放，内存泄漏
-categories: delphi之指针与内存 软件质量之内存管理
+categories: delphi之指针与内存 软件质量之内存管理 深入钻研之内存管理
 tags: delphi 内存 指针 内存泄漏
 ---
 
