@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 标准C++类std::string的内存共享和Copy-On-Write技术
-categories: C/C++之字符串 C/C++之指针与内存 深入钻研之内存管理
+categories: C/C++之字符串 C/C++之指针与内存 深入学习之内存管理
 tags: c++ 字符串
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 理解Delphi对象名与对象实体的本质区别
-categories: delphi之面向对象 delphi之指针与内存 深入钻研之内存管理
+categories: delphi之面向对象 delphi之指针与内存 深入学习之内存管理
 tags: delphi oop 指针 内存
 ---
 

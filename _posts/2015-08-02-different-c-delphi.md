@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi和C的类比：指针、字符串、函数指针、内存分配等 
-categories: delphi之指针与内存 c/c++之指针与内存 delphi之字符串 c/c++之字符串 深入钻研之内存管理
+categories: delphi之指针与内存 c/c++之指针与内存 delphi之字符串 c/c++之字符串 深入学习之内存管理
 tags: c c++ delphi 内存 指针 函数 字符串
 ---
 

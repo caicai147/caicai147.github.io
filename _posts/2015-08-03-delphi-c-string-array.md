@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 比较C/C++和Delphi中的字符串和字符数组（数组和动态分配内存的情况）
-categories: c/c++之指针与内存 delphi之指针与内存 delphi之字符串 c/c++之字符串 深入钻研之内存管理
+categories: c/c++之指针与内存 delphi之指针与内存 delphi之字符串 c/c++之字符串 深入学习之内存管理
 tags: c c++ delphi 指针 内存 字符串
 ---
 
