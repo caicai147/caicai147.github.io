@@ -5,7 +5,9 @@ categories: 深入学习之内存管理 C/C++之指针与内存
 tags: c c++ 内存碎片 指针 内存
 ---
 
-转载自：[http://blog.csdn.net/flowshell/article/details/5996843](http://blog.csdn.net/flowshell/article/details/5996843)
+* 转载自：[http://blog.csdn.net/flowshell/article/details/5996843](http://blog.csdn.net/flowshell/article/details/5996843)
+* 建议参考[http://www.cnblogs.com/zhaoyl/p/3820852.html](http://www.cnblogs.com/zhaoyl/p/3820852.html)
+* 建议参考[http://blog.csdn.net/xuzhonghai/article/details/7285821](http://blog.csdn.net/xuzhonghai/article/details/7285821)
 
 malloc/free或new/delete大量使用后回造成内存碎片，那么这种碎片形成的机理是什么？ 
 
