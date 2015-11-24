@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 内存碎片之如何产生 
+title: 内存碎片之如何产生【转载】
 categories: 深入学习之内存管理 C/C++之指针与内存 
 tags: c c++ 内存碎片 指针 内存
 ---
