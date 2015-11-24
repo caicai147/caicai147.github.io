@@ -26,102 +26,123 @@ Markdown 是一种书写结构化文档的轻量标记语言，它定制了一�
 斜体  
 ----
 
-        *emphasize*
+```
+*emphasize*
+```
 
 也可以写成  
 
-        _emphasize_
-
+```
+_emphasize_
+```
 
 加粗  
 -----
 
-        **emphasize**
+```
+**emphasize**
+```
 
 也可以写成  
 
-        __emphasize__
-
+```
+__emphasize__
+```
 
 链接  
 -----
 
-        [谷歌网址](http://http://www.google.com/ "谷歌网址")
-
+```
+[谷歌网址](http://http://www.google.com/ "谷歌网址")
+```
 
 Email  
 ------
 
-        Email Written <xumenger@126.com>
-
+```
+Email Written <xumenger@126.com>
+```
 
 图片  
 ------
 
-        ![img](/image_path/image.jpg "Image Title")
-
+```
+![img](/image_path/image.jpg "Image Title")
+```
 
 标题  
 -----
 
-        标题1  
-        =====  
-        标题2  
-        -----  
+```
+标题1  
+=====  
+标题2  
+-----  
+```
 
 也可以这样写：  
 
-        # 标题 1 #  
-        ## 标题 2 ##  
-        ### 标题 3 ###  
-        #### 标题 4 ####  
-        ##### 标题 5  
-        ###### 标题 6  
+```
 
+# 标题 1 #  
+## 标题 2 ##  
+### 标题 3 ###  
+#### 标题 4 ####  
+##### 标题 5  
+###### 标题 6  
+```
 
 列表  
 -----
 
 有序列表（注意1.和One之间有一个空格）  
 
-        1. One  
-        2. Two  
-        3. Three  
+```
+1. One  
+2. Two  
+3. Three  
+```
 
 无序列表（注意*和list1之间有一个空格）  
 
-        * list1  
-        * list2  
-        * list3  
-    
+```
+* list1  
+* list2  
+* list3  
+```
+
 使用`-`符号是和使用`*`符号是相同的
 
 
 引用  
 ----
 
-        > Just a test!
-
+```
+> Just a test!
+```
 
 内联代码  
 ----
 
-        Just a `test`  
-        Just a `` `test` ``
+```
+Just a `test`  
+Just a `` `test` ``
+```
 
 代码块  
 ----
 
 缩进4个空格或者1个制表符tab  
 
-        this is a block code!
-
+```
+    this is a block code!
+```
 
 另一种写法：代码块周围各加3个 \`  
 
-        ```
-        this is a block code!
-        ```
+    ```
+    this is a block code!
+    ```
 
 
 横线  
@@ -129,40 +150,48 @@ Email
 
 3个或3个以上的破折号或星号  
 
-        ---  
-         
-        * * *  
-         
-        - - - -
+```
+---  
 
+* * *  
+
+- - - -
+```
 
 强制换行  
 -----
 
 行尾加2个或2个以上的空格
 
-        break line  
-        new line
+```
+break line  
+new line
+```
 
 因为有的时候直接在编辑markdown文档的时候使用一个回车换行，可是最后出来的效果并没有换行（如果使用两个回车连续两次换行，最后的显示出来的效果还是很好的），所以需要在第一行的最后加上两个空格，以保证第二行在最终在网页上显示的时候能够真正换行。
 
 删除线  
 ----
 
-        ~~Strikethrough~~
-
+```
+~~Strikethrough~~
+```
 
 表格  
 ----
 
-        First Header | Second Header | Third Header  
-        ------------ | ------------- | ------------  
-        Content Cell | Content Cell  | Content Cell  
-        Content Cell | Content Cell  | Content Cell
+```
+First Header | Second Header | Third Header  
+------------ | ------------- | ------------  
+Content Cell | Content Cell  | Content Cell  
+Content Cell | Content Cell  | Content Cell
+```
 
 或者  
 
-        | First Header | Second Header | Third Header |  
-        | ------------ | ------------- | ------------ |  
-        | Content Cell | Content Cell  | Content Cell |  
-        | Content Cell | Content Cell  | Content Cell |
+```
+| First Header | Second Header | Third Header |  
+| ------------ | ------------- | ------------ |  
+| Content Cell | Content Cell  | Content Cell |  
+| Content Cell | Content Cell  | Content Cell |
+```
