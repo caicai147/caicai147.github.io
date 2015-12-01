@@ -41,7 +41,7 @@ end;
 
 >**Note**:	ExtractStrings does not add empty strings to the list.
 
-也就是说使用ExtractStrings解析字符串的时候，不会将其中的空格放到链表中，比如这样的应用场景：需要解析这样的字符串'|str1|str2||str4|'，希望以'|'为分割符号进行解析，可能就会直接这样使用ExtractStrings：
+也就是说使用ExtractStrings解析字符串的时候，不会将其中的空格放到链表中，比如这样的应用场景：需要解析类似这样的字符串'|str1|str2||str4|'，希望以'|'为分割符号进行解析，可能就会直接这样使用ExtractStrings：
 
 ```
 var
