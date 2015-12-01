@@ -11,7 +11,11 @@ tags: delphi 函数 字符串
 
 ###先介绍一下ExtractStrings
 
-Delphi的官方帮助文档的解释是：
+下面的附录中有Delphi的ExtractStrings的官方说明和其代码实现
+
+###附录
+
+**Delphi的官方帮助文档的解释是：**
 
 >Fills a string list with substrings parsed from a delimited list.
 
@@ -40,3 +44,55 @@ Delphi的官方帮助文档的解释是：
 >ExtractStrings returns the number of strings added to the Strings parameter.
 
 >**Note**:	ExtractStrings does not add empty strings to the list.
+
+**ExtractStrings的代码实现如下**
+
+```
+function ExtractStrings(Separators, WhiteSpace: TSysCharSet; Content: PChar;
+  Strings: TStrings): Integer;
+var
+  Head, Tail: PChar;
+  EOS, InQuote: Boolean;
+  QuoteChar: Char;
+  Item: string;
+begin
+  Result := 0;
+  if (Content = nil) or (Content^=#0) or (Strings = nil) then Exit;
+  Tail := Content;
+  InQuote := False;
+  QuoteChar := #0;
+  Strings.BeginUpdate;
+  try
+    repeat
+      while Tail^ in WhiteSpace + [#13, #10] do Inc(Tail);
+      Head := Tail;
+      while True do
+      begin
+        while (InQuote and not (Tail^ in ['''', '"', #0])) or
+          not (Tail^ in Separators + [#0, #13, #10, '''', '"']) do Inc(Tail);
+        if Tail^ in ['''', '"'] then
+        begin
+          if (QuoteChar <> #0) and (QuoteChar = Tail^) then
+            QuoteChar := #0
+          else QuoteChar := Tail^;
+          InQuote := QuoteChar <> #0;
+          Inc(Tail);
+        end else Break;
+      end;
+      EOS := Tail^ = #0;
+      if (Head <> Tail) and (Head^ <> #0) then
+      begin
+        if Strings <> nil then
+        begin
+          SetString(Item, Head, Tail - Head);
+          Strings.Add(Item);
+        end;
+        Inc(Result);
+      end;
+      Inc(Tail);
+    until EOS;
+  finally
+    Strings.EndUpdate;
+  end;
+end;
+```
