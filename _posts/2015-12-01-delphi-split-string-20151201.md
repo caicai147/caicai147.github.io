@@ -79,13 +79,24 @@ begin
 end;
 
 var
-  s: string;
+  s, resultStr: string;
   slist: TStrings;
+  i: Integer;
 begin
   s:= '|str1|str2||str4|';
+  resultStr:= '';
   slist:= TStringList.Create;
   splitString('|', PChar(s), slist);
   //最后解析到slist中的是，
+  //第一个元素是空字符串''，第二个元素是'str1'，第三个元素是'str2'，
+  //第四个元素是''，第五个元素是'str4'，第六个元素是''
+  
+  for i:= 0 to slist.Count - 1 do
+  begin
+    resultStr:= resultStr + '-' + slist[i];
+  end;
+  ShowMessage(resultStr);
+  //输出结果是：'--str1-str2--str4-'
 end;
 ```
 
