@@ -26,7 +26,8 @@ begin
   ExtractStrings([';',',',':'],['#',' '],PChar(s),List);
   //第一个参数是分隔符; 第二个参数是开头被忽略的字符
 
-  ShowMessage(List.Text);  //about
+  ShowMessage(List.Text);  
+                           //about
                            //delphi
                            //pascal
                            //programming
