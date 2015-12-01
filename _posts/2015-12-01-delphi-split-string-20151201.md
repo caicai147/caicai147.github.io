@@ -87,7 +87,7 @@ begin
   resultStr:= '';
   slist:= TStringList.Create;
   splitString('|', PChar(s), slist);
-  //最后解析到slist中的是，
+  //最后解析到slist中的是：
   //第一个元素是空字符串''，第二个元素是'str1'，第三个元素是'str2'，
   //第四个元素是''，第五个元素是'str4'，第六个元素是''
   
