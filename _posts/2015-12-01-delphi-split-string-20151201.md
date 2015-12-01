@@ -115,7 +115,7 @@ end;
 
 >string handling routines (null-terminated)
 
->function ExtractStrings(Separators, WhiteSpace: TSysCharSet; Content: PChar; Strings: TStrings): Integer;
+>`function ExtractStrings(Separators, WhiteSpace: TSysCharSet; Content: PChar; Strings: TStrings): Integer;`
 
 >**Description**
 
