@@ -88,7 +88,7 @@ Addr: 00E249E8, RefCount: 2, Value: string     //WRONG! RefCount should be 1
 * 13~?? 字节就是字符串实际的内容了
 * ??    最后一个字节是00，字符串的结束符
 
-在执行FillChar之前，字符串S1的引用计数是２，但是执行玩FillChar之后并没有减１。这段代码验证了我的推测：`FillChar操作可能会破坏字符串的Copy-On-Write机制，使用的时候需要小心！`
+在执行FillChar之前，字符串S1的引用计数是２，但是执行完FillChar之后并没有减１。这段代码验证了我的推测：`FillChar操作可能会破坏字符串的Copy-On-Write机制，使用的时候需要小心！`
 
 ##进一步分析##
 
