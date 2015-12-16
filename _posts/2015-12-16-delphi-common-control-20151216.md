@@ -137,7 +137,6 @@ tags: delphi 控件
         * csownerdrawvariable: 有编辑框和列表框，但用户不能在编辑框中输入，每个列表项的高度可以不同
         * cssimple:只有编辑框，没有列表框
         * droppeddown 表示列表框是否已被下拉！
-        * 
 * (2)List组件
     * AutoComplete：失去焦点的时候，是否自动选择
     * Columns：有几列
