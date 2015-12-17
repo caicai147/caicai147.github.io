@@ -72,7 +72,7 @@ tags: delphi 控件
 
 * (1)button 组件：
     * CAPTION 属性 ：用于在按钮上显示文本内容
-    * Cancel*  属性：是否设置成默认的取消按钮，当设置为真的时候（true） 按ESC触发改按钮的事件！
+    * Cancel 属性：是否设置成默认的取消按钮，当设置为真的时候（true） 按ESC触发改按钮的事件！
     * Default 属性：是否设置成默认的确认按钮，当设置为真的时候 按ENTER键的时候触发事件
     * Hint 属性：设置当鼠标在按钮上短暂停留是显示的提示内容。
     * Showhint 属性： 是否显示提示内容默认为假！
@@ -81,18 +81,18 @@ tags: delphi 控件
     * Kind 属性： 他的值就是位图按钮组件上所显示的图标！
     * GLYPH 属性： 用于在位图按钮上显示加载后的位图图形！
     * Numclyphs 属性：用于指定位图按钮上所能使用的位图个数！
-    * Layout* 属性： 用于指定位图在位图组件上的位置！
+    * Layout 属性： 用于指定位图在位图组件上的位置！
 * (3)Speedbutton 组件
     * Flat 属性：是否具有OFFICE 2000的风格
     * Groupindex 属性：设置分组。
-    * DOWN* 属性： 设置改按钮是否处于按下状态
+    * DOWN 属性： 设置改按钮是否处于按下状态
     * Allowallup 属性：设置同一组的快速按钮是否具有同时弹起的状态。
 * (4)Radiobutton 组件
     * Checked 是否处于选中状态
     * Alignment 用于设置选择框和文字的排列方式！
 * (5)Checkbox 组件
     * Allowgrayed 用来设置当前组件被选种时，是否为变灰状态！
-    * State*    设置当前复选框的状态。
+    * State 设置当前复选框的状态。
 
 ##9.文本类组件
 
@@ -104,7 +104,7 @@ tags: delphi 控件
     * WORDWRAP 用于设置是否自动换行！
 * (2)EDIT组件
     * Charcase 用于设置组件中文字的大小写显示方式！
-    * TEXT   用于显示编辑框中的文字内容
+    * TEXT 用于显示编辑框中的文字内容
     * Modified 用来判断edit组件里的文字内容是否被修改过，若为假，就是没有被修改过！
     * Passwordchar 设置显示密码字符！
     * AutoSelect：当为True时，Edit框获取焦点时，会自动选择内容。
@@ -116,7 +116,7 @@ tags: delphi 控件
     * Maxlength 设置文本框中最大的文字输入量
     * Scrollbar   设置是否需要滚动条
     * Wantretruns 用于设置在框中按’enter’键是否起回车作用
-    * Wanttabs* 用于设置在框中按’tab’键是否起移位作用。
+    * Wanttabs 用于设置在框中按’tab’键是否起移位作用。
 * (4)Maskedit 组件
     * Editmask 属性 用于设置所要显示文字的格式。
 * (5)Labeledit 组件
