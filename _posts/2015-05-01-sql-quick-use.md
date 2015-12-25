@@ -13,7 +13,7 @@ tags: 数据库 sql
     WHERE condition
     AND|OR condition
 
-###ALTER TABLE (add column)###
+##ALTER TABLE (add column)##
 
     ALTER TABLE table_name
     ADD column_name datatype
