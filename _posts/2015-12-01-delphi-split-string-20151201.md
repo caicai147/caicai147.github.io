@@ -1,6 +1,6 @@
 ---
 layout: post
-title: delphi怎么分割字符串
+title: Delphi怎么分割字符串
 categories: delphi之字符串 delphi之精确使用api
 tags: delphi 函数 字符串
 ---
