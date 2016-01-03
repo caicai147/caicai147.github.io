@@ -1,6 +1,6 @@
 ---
 layout: post
-title: delphi常用属性列表【转载】
+title: Delphi常用属性列表【转载】
 categories: delphi之控件
 tags: delphi 控件
 ---
