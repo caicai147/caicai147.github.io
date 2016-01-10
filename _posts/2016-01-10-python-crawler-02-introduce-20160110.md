@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python爬虫简介【转载】
-categories: python之基础　python之网络爬虫
+categories: python之基础 python之网络爬虫
 tags: python 爬虫
 ---
 
