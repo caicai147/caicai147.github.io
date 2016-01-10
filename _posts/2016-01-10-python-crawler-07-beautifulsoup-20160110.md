@@ -114,7 +114,7 @@ Tag 是什么？通俗点讲就是 HTML 中的一个个标签，例如
  <a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
 ```
 
-上面的title a等等HTML标签加上里面包含的内容就是Tag，下面我们来感受一下怎么用Beautiful Soup来方便地获取Tags，下面的每一段代码中注释部分即为运行结果
+上面的title、a等等HTML标签加上里面包含的内容就是Tag，下面我们来感受一下怎么用Beautiful Soup来方便地获取Tags，下面的每一段代码中注释部分即为运行结果
 
 ```
 print soup.title
@@ -127,7 +127,6 @@ print soup.head
 ```
 
 ```
- 	
 print soup.a
 #<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>
 ```
@@ -230,9 +229,9 @@ print type(soup.a.string)
 运行结果如下
 
 ```
-<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>
+　<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>
  Elsie 
-<class 'bs4.element.Comment'>
+　<class 'bs4.element.Comment'>
 ```
 
 a标签中的内容实际上是注释，但是如果我们利用.string来输出它的内容，我们发现它已经将注释号去掉了，所以这可能给我我们带来不必要的麻烦
@@ -289,11 +288,11 @@ for child in soup.desendants:
 	print child
 #运行结果如下，可以发现，所有的节点都被打印出来了，先生最外层的 HTML标签，其次从 head 标签一个个剥离，以此类推。
 /*
-<html><head><title>The Dormouse's story</title></head>
-<body>
-<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>,
+　<html><head><title>The Dormouse's story</title></head>
+　<body>
+　<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
+　<p class="story">Once upon a time there were three little sisters; and their names were
+　<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>,
 ....
 */
 ```
@@ -413,7 +412,6 @@ print soup.p.next_sibling.next_sibling
 
 **8.全部兄弟节点**
 
-
 ```
 ###要点：.next_siblings  .previous_siblings 属性
 #通过 .next_siblings 和 .previous_siblings 属性可以对当前节点的兄弟节点迭代输出
@@ -431,7 +429,6 @@ for sibling in soup.a.next_siblings:
 **9.前后节点**
 
 ```
-
 ###要点：.next_element  .previous_element 属性
 #与 .next_sibling  .previous_sibling 不同，它并不是针对于兄弟节点，而是在所有节点，不分层次
 
@@ -584,12 +581,12 @@ soup.find_all("a", limit=2)
 一段简单的文档:
 
 ```
-<html>
- <head>
-  <title>
-   The Dormouse's story
-  </title>
- </head>
+　<html>
+ 　<head>
+  　<title>
+   　The Dormouse's story
+  　</title>
+ 　</head>
 ...
 ```
 
