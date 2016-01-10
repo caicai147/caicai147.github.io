@@ -48,16 +48,16 @@ from bs4 import DeabtifulSoup
 我们创建一个字符串，后面的例子我们便会用它来演示
 
 ```
-html = """
-<html><head><title>The Dormouse's story</title></head>
-<body>
-<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" class="sister" id="link1"><!-- Elsie --></a>,
-<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
-<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
-and they lived at the bottom of a well.</p>
-<p class="story">...</p>
+ html = """
+ <html><head><title>The Dormouse's story</title></head>
+ <body>
+ <p class="title" name="dromouse"><b>The Dormouse's story</b></p>
+ <p class="story">Once upon a time there were three little sisters; and their names were
+ <a href="http://example.com/elsie" class="sister" id="link1"><!-- Elsie --></a>,
+ <a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+ <a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+ and they lived at the bottom of a well.</p>
+ <p class="story">...</p>
 """
 ```
 
@@ -82,11 +82,11 @@ print soup.prettify()
 ```
 
 ```
-<html>
-	<head>
-		<title>
-			The Dormouse's story
-		</title>
+ <html>
+  	<head>
+ 		<title>
+ 			The Dormouse's story
+ 		</title>
 ```
 
 以上便是输出结果，格式化打印出了它的内容，这个函数经常用到，小伙伴们要记好咯。
@@ -107,11 +107,11 @@ Beautiful Soup将复杂的HTML文档转换成一个复杂的树形结构，每�
 Tag 是什么？通俗点讲就是 HTML 中的一个个标签，例如
 
 ```
-<title>The Dormouse's story</title>
+ <title>The Dormouse's story</title>
 ```
 
 ```
-<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
+ <a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
 ```
 
 上面的title a等等HTML标签加上里面包含的内容就是Tag，下面我们来感受一下怎么用Beautiful Soup来方便地获取Tags，下面的每一段代码中注释部分即为运行结果
