@@ -5,6 +5,8 @@ categories: python之基础 python之网络爬虫
 tags: python 爬虫 urllib urllib2
 ---
 
+转载自：[静觅](http://cuiqingcai.com/)>>[Python爬虫入门三之Urllib库的基本使用](http://cuiqingcai.com/947.html)
+
 ##Urllib库的基本使用
 
 怎么扒网页内？其实就是根据URL来获取它的网页信息，虽然我们在浏览器中看到的是一幅幅优美的画面，但是其实是由浏览器解释才呈现出来的，其实质就是一段HTML代码，加JS、CSS，如果把网页比作一个人，那么HTML便是他的骨架，JS便是他的肌肉，CSS便是他的衣服。所以最重要的部分是存在于HTML中的，下面我们就写一个例子来扒一个网页下来
@@ -90,7 +92,7 @@ response = urllib2.urlopen(request)
 print response.read()
 ```
 
-我们引入了urllib库，现在我们模拟登录CSDN，当然上述代码可能登陆不进去，因为还要做一些设置头部header的工作，或者还有一些参数 没有设置全，还没有提及到在此就不写上去了，在此只是说明登录的原理。我们需要定义一个字典，名字为values，参数我设置了username和 password，下面利用urllib的urlencode方法将字典编码，命名为data，构建request时传入两个参数，url和data，运 行程序，即可实现登陆，返回的便是登陆后呈现的页面内容。当然你可以自己搭建一个服务器来测试一下。
+我们引入了urllib库，现在我们模拟登录CSDN，当然上述代码可能登陆不进去，因为还要做一些设置头部header的工作，或者还有一些参数没有设置全，还没有提及到在此就不写上去了，在此只是说明登录的原理。我们需要定义一个字典，名字为values，参数我设置了username和 password，下面利用urllib的urlencode方法将字典编码，命名为data，构建request时传入两个参数，url和data，运行程序，即可实现登陆，返回的便是登陆后呈现的页面内容。当然你可以自己搭建一个服务器来测试一下。
 
 注意上面字典的定义方式还有一种，下面的写法是等价的
 
@@ -146,6 +148,8 @@ http://passport.csdn.net/account/login?username=xumenger@126.com&password=XXXX
 
 首先，打开我们的浏览器，调试浏览器F12，我用的是Chrome，打开网络监听，示意如下：比如知乎，点登陆之后，我们会发现登陆之后界面都变化了，出现一个新的界面，实质上这个页面包含了许许多多的内容，这些内容也不是一次性就加载完成的，实质是执行了好多次请求，一般是首先请求HTML文件，然后加载JS、CSS等等，经过多次请求之后，网页的骨架和肌肉全了，整个网页的效果也就出来了
 
+![image](../image/2016-01-10/03.png)
+
 拆分整个请求，我们只看第一个请求，可以看到，有一个Request URL，还有headers，下面便是response，图片显示的不全，小伙伴们可以亲身试一下。那么这个头中包含了许许多多的信息，有文件编码、压缩方式、请求的agent等等
 
 其中，agent就是请求的身份，如果写入请求身份，那么服务器不一定会响应，所以可以在headers中设置agent，例如下面的例子，这个例子只是说明了怎么设置headers，看一下设置格式就好
@@ -171,7 +175,8 @@ page = response.read()
 假如我们可以构建下面的headers
 
 ```
-headers = {'User-Agent':'Mozilla/4.0 (compatible; MSTE 5.5; Windows NT)', 'Referer':'http://www.zhihu.com/articles'}
+headers = {'User-Agent':'Mozilla/4.0 (compatible; MSTE 5.5; Windows NT)',
+             'Referer':'http://www.zhihu.com/articles'}
 ```
 
 同上面的方法，在传送请求时将headers传入Request参数中，这样就能应对防反盗链了
@@ -183,13 +188,13 @@ headers = {'User-Agent':'Mozilla/4.0 (compatible; MSTE 5.5; Windows NT)', 'Refer
 * application/xml ： 在 XML RPC，如 RESTful/SOAP 调用时使用
 * application/json ： 在 JSON RPC 调用时使用
 * application/x-www-form-urlencoded ： 浏览器提交 Web 表单时使用
-在使用服务器提供的 RESTful 或 SOAP 服务时， Content-Type 设置错误会导致服务器拒绝服务
+* 在使用服务器提供的 RESTful 或 SOAP 服务时， Content-Type 设置错误会导致服务器拒绝服务
 
 其他的有必要的可以审查浏览器的headers内容，在构建时写入同样的数据即可
 
 ##Proxy（代理）的设置
 
-urllib2默认会使用环境变量http_proxy来设置HTTP Proxy。假如一个网站它会检测某一段时间某个IP的访问次数，如果访问次数过多，它会禁止你的访问。所以你可以设置一些代理服务器来帮助你做工作，每隔一段时间换一个代理，网站君都不知道是谁在捣鬼了
+urllib2默认会使用环境变量http_proxy来设置HTTP Proxy。**假如一个网站它会检测某一段时间某个IP的访问次数，如果访问次数过多，它会禁止你的访问。所以你可以设置一些代理服务器来帮助你做工作，每隔一段时间换一个代理，网站君都不知道是谁在捣鬼了**
 
 下面一段代码说明了代理的设置用法
 
