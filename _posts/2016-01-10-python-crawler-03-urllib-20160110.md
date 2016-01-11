@@ -148,7 +148,7 @@ http://passport.csdn.net/account/login?username=xumenger@126.com&password=XXXX
 
 拆分整个请求，我们只看第一个请求，可以看到，有一个Request URL，还有headers，下面便是response，图片显示的不全，小伙伴们可以亲身试一下。那么这个头中包含了许许多多的信息，有文件编码、压缩方式、请求的agent等等
 
-其中，agent就是请求的身份，如果写入吸入请求身份，那么服务器不一定会响应，所以可以在headers中设置agent，例如下面的例子，这个例子只是说明了怎么设置headers，看一下设置格式就好
+其中，agent就是请求的身份，如果写入请求身份，那么服务器不一定会响应，所以可以在headers中设置agent，例如下面的例子，这个例子只是说明了怎么设置headers，看一下设置格式就好
 
 ```
 import urllib
