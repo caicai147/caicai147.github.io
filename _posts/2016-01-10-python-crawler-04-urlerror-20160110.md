@@ -5,7 +5,7 @@ categories: python之基础 python之网络爬虫
 tags: python 爬虫 urlerror httperror
 ---
 
-转载自[http://cuiqingcai.com/961.html](http://cuiqingcai.com/961.html)
+转载自[静觅](http://cuiqingcai.com/)>>[Python爬虫入门五之URLError异常处理](http://cuiqingcai.com/961.html)
 
 ##URLError
 
@@ -21,13 +21,13 @@ tags: python 爬虫 urlerror httperror
 import urllib2
 
 request = urllib2.Request('http://www.xxxx.com')
-try
+try:
 	urllib2.urlopen(request)
 except urllib2.URLError, e:
 	print e.reason
 ```
 
-我们利用了urlopen方法访问了一个不存在的网址，运行结果如下
+注意是`urllib2.URLError, e`而不是`urllib2.URLError e`。我们利用了urlopen方法访问了一个不存在的网址，运行结果如下
 
 ```
 [Errno 11004] getaddrinfo failed
@@ -69,7 +69,7 @@ HTTPError实例产生后会有一个code属性，这就是服务器发送的相�
 import urllib2
 
 req = urllib2.Request('http://blog.csdn.net/cqcre')
-try
+try:
 	urllib2.urlopen(req)
 except urllib2.HTTPError, e:
 	print e.code
@@ -91,7 +91,7 @@ Forbidden
 import urllib2
 
 req = urllib2.Request('http://blog.csdn.net/cqcre')
-try
+try:
 	urllib2.urlopen(req)
 except urllib2.HTTPError, e:
 	print e.code
@@ -109,7 +109,7 @@ else:
 import urllib2
 
 req = urllib2.Request('http://blog.csdn.net/cqcre')
-try
+try:
 	urllib2.urlopen(req)
 except urllib2.URLError, e:
 	if hasattr(e, "code"):
