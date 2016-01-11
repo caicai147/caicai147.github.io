@@ -5,6 +5,8 @@ categories: python之基础 python之网络爬虫
 tags: python 爬虫 beautifulsoup
 ---
 
+转载自[静觅](http://cuiqingcai.com/)>>[Python爬虫入门八之Beautiful Soup](http://cuiqingcai.com/1319.html)
+
 上一节我们介绍了正则表达式，它的内容其实还是蛮多的，如果一个正则匹配稍有差池，那可能程序就处在永久的循环中了，而且有的小伙伴也对正则表达式的写法用的不熟练，没关系，我们还有一个更强大的工具，叫做Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是方便，这一节就让我们一起来感受一下Beautiful Soup的强大吧。
 
 ##Beautiful Soup简介
@@ -19,7 +21,7 @@ tags: python 爬虫 beautifulsoup
 
 ##Beautiful Soup安装
 
-Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Beautiful Soup 4，不过它已经被移植到BS4了，也就是说导入时我们需要 import bs4 。所以这里我们用的版本是 Beautiful Soup 4.3.2 (简称BS4)，另外据说 BS4 对 Python3 的支持不够好，不过我用的是 Python2.7.7，如果有小伙伴用的是 Python3 版本，可以考虑下载 BS3 版本。
+Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Beautiful Soup 4，不过它已经被移植到BS4了，也就是说导入时我们需要 `import bs4` 。所以这里我们用的版本是 Beautiful Soup 4.3.2 (简称BS4)，另外据说 BS4 对 Python3 的支持不够好，不过我用的是 Python2.7.7，如果有小伙伴用的是 Python3 版本，可以考虑下载 BS3 版本。
 
 如果你用的是新版的Debain或Ubuntu,那么可以通过系统的软件包管理来安装，不过它不是最新版本，目前是4.2.1版`sudo apt-get install Python-bs4`
 
@@ -27,7 +29,9 @@ Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Bea
 
 下载完成后解压，执行下面的命令即可完成安装`sudo python setup.py install`
 
-然后需要安装lxml：`sudo apt-get install Python-lxml`
+然后需要安装lxml：`sudo apt-get install Python-lxml`。如下图所示，证明安装成功了
+
+![image](../image/2016-01-10/04.png)
 
 Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方的解析器，如果我们不安装它，则 Python 会使用 Python默认的解析器，lxml 解析器更加强大，速度更快，推荐安装
 
@@ -42,7 +46,7 @@ Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方�
 首先必须先导入bs4库
 
 ```
-from bs4 import DeabtifulSoup
+from bs4 import BeautifulSoup
 ```
 
 我们创建一个字符串，后面的例子我们便会用它来演示
@@ -83,10 +87,38 @@ print soup.prettify()
 
 ```
  <html>
-  	<head>
- 		<title>
- 			The Dormouse's story
- 		</title>
+  <head>
+   <title>
+    The Dormouse's story
+   </title>
+  </head>
+  <body>
+   <p class="title" name="dromouse">
+    <b>
+     The Dormouse's story
+    </b>
+   </p>
+   <p class="story">
+    Once upon a time there were three little sisters; and their names were
+    <a class="sister" href="http://example.com/elsie" id="link1">
+     <!-- Elsie -->
+    </a>
+    ,
+    <a class="sister" href="http://example.com/lacie" id="link2">
+     Lacie
+    </a>
+    and
+    <a class="sister" href="http://example.com/tillie" id="link3">
+     Tillie
+    </a>
+    ;
+ and they lived at the bottom of a well.
+   </p>
+   <p class="story">
+    ...
+   </p>
+  </body>
+ </html>
 ```
 
 以上便是输出结果，格式化打印出了它的内容，这个函数经常用到，小伙伴们要记好咯。
@@ -108,9 +140,7 @@ Tag 是什么？通俗点讲就是 HTML 中的一个个标签，例如
 
 ```
  <title>The Dormouse's story</title>
-```
-
-```
+ 
  <a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
 ```
 
@@ -119,26 +149,20 @@ Tag 是什么？通俗点讲就是 HTML 中的一个个标签，例如
 ```
 print soup.title
 #<title>The Dormouse's story</title>
-```
 
-```
 print soup.head
 #<head><title>The Dormouse's story</title></head>
-```
 
-```
 print soup.a
 #<a class="sister" href="http://example.com/elsie" id="link1"><!-- Elsie --></a>
-```
 
-```
 print soup.p
 #<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
 ```
 
-我们可以利用soup加标签名轻松地获取这些标签的内容，是不是感觉比正则表达式方便多了？不过有一点是，它查找的是在所有内容中的第一个符合要求的标签，如果要查询所有的标签，我们在后面进行介绍
+我们可以利用soup加标签名轻松地获取这些标签的内容，是不是感觉比正则表达式方便多了？`不过有一点是，它查找的是在所有内容中的第一个符合要求的标签，如果要查询所有的标签，我们在后面进行介绍`
 
-我们可以验证一下这些对象得到类型
+我们可以验证一下这些对象的类型
 
 ```
 print type(soup.a)
@@ -152,7 +176,7 @@ print type(soup.a)
 print soup.name
 print soup.head.name
 #[doucument]
-# head
+#head
 #soup对象本身比较特殊，它的那么即为[document]，对于其他内部标签，输出的值便为标签本身的名称
 
 
@@ -201,7 +225,7 @@ print type(soup.p.string)
 
 **3.BeautifulSoup**
 
-BeautifulSoup对象表示的是一个文档的全部内容，大部分的时候，可以把它当做Tag对象，是一个特殊的Tag，我们可以分别获取它的类型、名称，以及属性来感受一下
+BeautifulSoup对象表示的是一个文档的全部内容，大部分的时候，可以把它当做Tag对象，`是一个特殊的Tag`，我们可以分别获取它的类型、名称，以及属性来感受一下
 
 ```
 print type(soup.name)
@@ -216,7 +240,7 @@ print soup.attrs
 
 **4.Comment**
 
-Comment对象是一个特殊类型的NavigableString对象，其实输出的内容仍然不包括注释符号，但是如果不好好处理它，可能会对我们的文本处理造成意想不到的麻烦
+`Comment对象是一个特殊类型的NavigableString对象`，其实输出的内容仍然不包括注释符号，但是如果不好好处理它，可能会对我们的文本处理造成意想不到的麻烦
 
 我们找一个带注释的标签
 
