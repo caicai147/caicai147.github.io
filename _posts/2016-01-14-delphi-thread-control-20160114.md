@@ -1,11 +1,13 @@
 ---
 layout: post
-title: Delphi多线程&控件开发
+title: 测试Delphi多线程访问VCL
 categories: delphi之多线程 delphi之控件
 tags: delphi 多线程 控件 vcl
 ---
 
 首先关于Delphi多线程操作控件可以先看一下这篇文章：《[Delphi：与VCL同步（Synchronize()、用消息来同步）](http://www.xumenger.com/delphi-vcl-synchronize/)》
+
+VCL（Visual Component Library），可视化组件库，包括Graphics、classes、Controls等与类和组件相关的单元
 
 因为VCL不是线程安全的，所以对VCL的访问只能在主线程中。这将意味着：所有需要与用户打交道的代码都只能在主线程的环境中执行。这是其结构上明显的不足，并且这种需求看起来只局限在表面上，但它实际上有一些优点
 
