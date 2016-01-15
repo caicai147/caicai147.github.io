@@ -1,13 +1,12 @@
 ---
 layout: post
 title: Delphi：与VCL同步（Synchronize()、用消息来同步）
-categories: delphi之多线程
+categories: delphi之多线程 delphi之控件
 tags: delphi vcl synchronize 多线程
 ---
 
 
-看本文时，可以同时参考:[Delphi中线程类 TThread实现多线程编程（事件、临界区、Synchronize、WaitFor……）](http://www.cnblogs.com/xumenger/p/4449925.html)
- 
+看本文时，可以同时参考:《[Delphi中线程类 TThread实现多线程编程（事件、临界区、Synchronize、WaitFor……）](http://www.cnblogs.com/xumenger/p/4449925.html)》
 
 先说一下RTL和VCL
 ----
