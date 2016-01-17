@@ -5,7 +5,7 @@ categories: delphi之多线程 delphi之控件
 tags: delphi 多线程 控件 vcl
 ---
 
-首先关于Delphi多线程操作控件可以先看一下这篇文章：《[Delphi：与VCL同步（Synchronize()、用消息来同步）](http://www.xumenger.com/delphi-vcl-synchronize/)》
+首先关于Delphi多线程操作控件可以先看一下这篇文章：[《Delphi：与VCL同步（Synchronize()、用消息来同步）》](http://www.xumenger.com/delphi-vcl-synchronize/)
 
 VCL（Visual Component Library），可视化组件库，包括Graphics、classes、Controls等与类和组件相关的单元
 
