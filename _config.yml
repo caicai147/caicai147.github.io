@@ -1,4 +1,4 @@
-markdown: redcarpet
+markdown: rdiscount
 permalink: /:title/
 url: http://xumenger.github.io
 #highlighter: pygments
