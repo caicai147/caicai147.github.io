@@ -54,7 +54,7 @@ class VOW(object):
         self.test = "I say: " + self.text   # add prefix
         return self                         # note: return an object
     def __exit__(self, exc_type, exc_value, traceback):
-        self.text = sefl.text + "!"         # add suffix
+        self.text = sefl.text + "!!!!"      # add suffix
         
 
 with VOW("I'm fine") as myvow:
@@ -67,12 +67,12 @@ print(myvow.text)
 
 ```
 I say: I'm fine
-I say: I'm fine!
+I say: I'm fine!!!!
 ```
 
 我们可以看到，在进入上下文和离开上下文时，对象的text属性发生了改变(最初的text属性是"I'm fine")。
 
-`__enter__()`返回一个对象。上下文管理器会使用这一对象作为as所指的变量，也就是myvow。在`__enter__()`中，我们为myvow.text增加了前缀 ("I say: ")。在`__exit__()`中，我们为myvow.text增加了后缀("!")。
+`__enter__()`返回一个对象。上下文管理器会使用这一对象作为as所指的变量，也就是myvow。在`__enter__()`中，我们为myvow.text增加了前缀 ("I say: ")。在`__exit__()`中，我们为myvow.text增加了后缀("!!!!")。
 
 注意:`__exit__()`中有四个参数。当程序块中出现异常(exception)，`__exit__()`的参数中exc_type, exc_value, traceback用于描述异常。我们可以根据这三个参数进行相应的处理。如果正常运行结束，这三个参数都是None。在我们的程序中，我们并没有用到这一特性。
 
