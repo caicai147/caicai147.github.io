@@ -13,7 +13,7 @@ tags: 证券 IT 金融
 
 ##目录
 
-* [证券信息化1](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/01-finance.md)
+* [证券公司信息化1](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/01-finance.md)
 * [证券公司信息化2](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/02-finance.md)
 * [证券公司信息化2续](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/03-finance.md)
 * [证券公司信息化3](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/04-finance.md)
@@ -22,8 +22,8 @@ tags: 证券 IT 金融
 * [证券公司信息化6](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/07-finance.md)
 * [证券公司信息化7](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/08-finance.md)
 * [证券公司信息化8](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/09-finance.md)
-* [](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/10-finance.md)
-* [](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/11-finance.md)
+* [证券公司信息化9](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/10-finance.md)
+* [证券公司信息化11](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/11-finance.md)
 * [](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/12-finance.md)
 * [](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/13-finance.md)
 * [](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/14-finance.md)
