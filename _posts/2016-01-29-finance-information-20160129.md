@@ -23,5 +23,5 @@ tags: 证券 IT 金融
 * [证券公司信息化7：资产管理、自营、TA、](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/08-finance.md)
 * [证券公司信息化8：银行间债券市场、中央债券登记公司、债券、风险管理](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/09-finance.md)
 * [证券公司信息化9：宏观经济研究、产业行业研究、二级市场策略分析](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/10-finance.md)
-* [证券公司信息化10：行情、行情软件、咨询](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/11-finance.md)
+* [证券公司信息化10：行情、行情软件、资讯](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/11-finance.md)
 
