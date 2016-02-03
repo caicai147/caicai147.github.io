@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 正确理解C/C++中的传值调用/传址调用/引用调用
-categories: C/C++之函数 C/C++之指针与内存 
+categories: c/c++之函数 c/c++之指针与内存 
 tags: c c++ 函数 指针 内存
 ---
 
