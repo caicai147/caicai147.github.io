@@ -31,6 +31,7 @@ type
   TForm1 = class(TForm)
     btn1: TButton;
     btn2: TButton;
+    btn3: TButton;
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
