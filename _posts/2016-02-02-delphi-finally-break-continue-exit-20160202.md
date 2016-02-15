@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi异常处理的代码逻辑注意点：finally和Continue、finally和Break、finally和Exit
+title: Delphi异常处理的代码逻辑注意点：finally和Continue、Break、Exit
 categories: delphi之异常处理 软件质量之稳定性
 tags: delphi 异常处理
 ---
