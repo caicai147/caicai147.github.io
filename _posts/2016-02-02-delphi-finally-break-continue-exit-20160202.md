@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi异常处理的代码逻辑注意点：finally和Continue、finally和Break
+title: Delphi异常处理的代码逻辑注意点：finally和Continue、finally和Break、finally和Exit
 categories: delphi之异常处理 软件质量之稳定性
 tags: delphi 异常处理
 ---
@@ -33,6 +33,7 @@ type
     btn2: TButton;
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
+    procedure btn3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,6 +96,24 @@ begin
         //但是在i为5时彻底会跳出循环，那么后面的6、7、8、9、10便不会弹出，因为在i为5时即结束了循环（Break的特性）
       showMessage('finally里面的ShowMessage： ' + IntToStr(i));
     end;
+  end;
+end;
+
+//测试Exit和finally在一起时候的代码逻辑
+procedure TForm1.btn3Click(Sender: TObject);
+begin
+  try
+    //Exit之前的代码逻辑是执行的，所以这里面的弹出框是会出现的
+    ShowMessage('Before Exit');
+    Exit;
+    
+    //Exit之后的逻辑不会执行，所以这里的弹出框是不会出现的
+    ShowMessage('After Exit');
+  finally
+  
+    //finally里面的代码是一定会执行的，虽然它在Exit之后，这个和上面测试Break和Continue一样
+    //所以这个弹出框是一定会出现的
+    ShowMessage('finally');
   end;
 end;
 
