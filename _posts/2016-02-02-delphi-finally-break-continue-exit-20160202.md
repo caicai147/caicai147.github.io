@@ -16,7 +16,7 @@ tags: delphi 异常处理
 
 不多说，直接看代码，在代码里面有详细的注释说明
 
->在循环中如果有出现Continue/Break和finally共用的情况，需要参考下面的代码，需要特别小心此时的代码运行逻辑
+>在循环中如果有出现Continue/Break/Exit和finally共用的情况，需要参考下面的代码，需要特别小心此时的代码运行逻辑
 
 ```
 unit Unit1;
