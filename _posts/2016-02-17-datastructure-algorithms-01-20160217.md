@@ -102,6 +102,10 @@ void list_destroy(List* list){
 }
 
 /*list_ins_next*/
+/*在list指定的链表中element后面插入一个新元素。
+    如果element为NULL，则新元素插入到链表头部
+    新元素包含一个指向data的指针，因此只要该元素还在链表中，data所引用的内存空间应该保持合法
+    管理data所引用的存储空间是调用者的责任*/
 int list_ins_next(List *list, ListElmt *element, const void *data){
     ListElmt *new_element;
     
@@ -129,6 +133,11 @@ int list_ins_next(List *list, ListElmt *element, const void *data){
 }
 
 /*list_rem_next*/
+/*移除由list指定的链表中element后面的元素
+    如果element为NULL，则移除头元素
+    调用返回后，data指向已移除元素中存储的数据
+    由调用者负责管理data所引用的存储空间
+    */
 int list_rem_next(List *list, ListElmt *element, void **data){
     ListElmt *old_element;
     
