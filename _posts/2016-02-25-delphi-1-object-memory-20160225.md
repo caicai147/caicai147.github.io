@@ -103,7 +103,7 @@ begin
     end;
   end;
   ShowMessage(IntToStr(t.xxx)); //这里的弹出框也顺利弹出
-  //但是在ShowMessage之后才报内存错误：“Access violation at address 0B897D30 in module 'Test.exe'. Read of address 10950B48”
+  //但在ShowMessage后才报内存错误：“Access violation at address 0B897D30 in module 'Test.exe'. Read of address 10950B48”
   //虽然报错的代码处不符合自己的预测，但是确实报错了，且必然报错，这就说明，访问了非法内存
   //具体的原因，目前我也没办法解释，相信等自己研究操作系统原理、编译原理足够深入之后，就能很容易解释这个现象了
 end;
