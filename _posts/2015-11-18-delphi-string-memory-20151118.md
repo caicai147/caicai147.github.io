@@ -65,7 +65,7 @@ begin
     S1:= Copy('string', 1, 6);  //force allocate memory for the string
     WriteLn(StringStatus(S1));
     ARec.S:= S1;
-    WriteLn(StringStatus(ARec.s));
+    WriteLn(StringStatus(ARec.S));
     FillChar(ARec, SizeOf(ARec), #0);
     WriteLn(StringStatus(S1));
 end;
@@ -119,7 +119,7 @@ Addr: 00E249E8, RefCount: 1, Value: string     //!!! Allocated as a new string
 Addr: 00E249E8, RefCount: -1, Value: string     //OK, RefCount UN-Changed
 ```
 
-是不是很吃惊？对赋值ARec.S的时候，结果并不是预期的那样，直接将其指向常量字符串，而是重新分配了一个新的字符串。我个人认为：`记录在对字符串赋值上是有问题的`
+是不是很吃惊？对赋值ARec.S的时候，结果并不是预期的那样直接将其指向常量字符串，而是重新分配了一个新的字符串。我个人认为：`记录在对字符串赋值上是有问题的`
 
 ##解决方法##
 
