@@ -1,8 +1,25 @@
 ---
 layout: post
 title: Delphi对象释放后，为什么对象的数据成员依然可以用？
-categories: delphi之面向对象 delphi之指针与内存 
-tags: delphi 面向对象 指针 内存
+categories: delphi之面向对象 delphi之指针与内存  delphi之多线程 delphi之控件 
+tags: delphi 面向对象 指针 内存 vcl 多线程 线程安全 控件
+---
+
+##补充
+
+* add in 2016-03-10，这里需要说明一点，不过具体的就不在文章中进行修改了，在这里说明一下，等到看下面的文章的时候需要注意里面会有描述错误的
+  * 文中有说到我排查的那个软件项目报错：Access violation at address 0B897D30 in module 'xxxxxx.dll'. Read of address 10950B48
+  * 文中说是因为在对象被释放后依然去访问对象的成员变量导致可能出现这种偶发性错误
+  * 但是经过后期的排查，发现问题的真正原因是因为多线程操作VCL控件造成的
+	* 在这个软件项目中会有更新监控界面的逻辑，是通过子线程来更新监控界面的
+	* 在Delphi开发中一直有强调，VCL不是线程安全的，只能在主线程中操作它，不能有其他线程来操作
+	* 如果多线程访问VCL，不一定会报错，但是总会出现一些偶发性错误，如果代码中有这样的缺陷，如果没有意识到这个开发规范，等到出现偶发性报错时就真的很难查了
+	* 可以参考[Delphi：与VCL同步（Synchronize()、用消息来同步）](http://www.xumenger.com/delphi-vcl-synchronize/)和[测试Delphi多线程访问VCL](http://www.xumenger.com/delphi-thread-control-20160114/)
+	* 现在已经将代码的逻辑修改：都是通过使用队列，将更新界面的信息放到公共的队列，然后通过Timer来从队列中取出数据更新监控界面
+	* Timer是在主线程中的，这样就保证不会有子线程访问VCL，保证这个问题可以解决
+	* **这个使用Timer的场景和技巧确实是值得我学习的**
+	* 不过这个以错误顺序释放对象的问题也是一个可能导致错误的地方，这个还是需要修复的
+
 ---
 
 可以和我整理的这篇博客互相补充学习[《
