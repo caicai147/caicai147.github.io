@@ -5,6 +5,53 @@ categories: delphi之字符串 delphi之精确使用api
 tags: delphi 函数 字符串
 ---
 
+##补充
+
+**Add in 2016-03-10**
+
+下面说到ExtractStrings这个函数的缺陷（当出现连续两个分割符，即分割符之间没有没有字符串，就不会按照预期得到分割的效果），同时提供了一个使用TStringList的解决方案，但是使用这个TStringList的解决方案也是有缺陷的，下面来通过代码展示一下
+
+```
+procedure splitString(Separators: char; Content: PChar; Strings: TStrings) ;
+begin
+  Strings.Delimiter:= Separators;
+  Strings.DelimitedText:= Content;
+end;
+
+var
+  s, resultStr: string;
+  slist: TStrings;
+  i: Integer;
+begin
+  s:= '|str1|str2 str3||str4|';
+  slist:= TStringList.Create;
+  splitString('|', PChar(s), slist);
+  //预期最后解析到slist中的是：
+  //第一个元素是空字符串''，第二个元素是'str1'，第三个元素是'str2 str3'，
+  //第四个元素是''，第五个元素是'str4'，第六个元素是''
+  
+  resultStr:= '';
+  for i:= 0 to slist.Count - 1 do
+  begin
+    resultStr:= resultStr + '-' + slist[i];
+  end;
+  
+  //按照上面的描述，预期得到的结果是：--str1-str str3--str4-
+  ShowMessage(resultStr);
+  //但是实际输出结果是：--str1-str2-str3--str4-
+end;
+```
+
+可以看出来这种分割字符串的方式，在遇到字符串中有空格的情况也会默认将空格作为分割符，虽然你指定的分割符不是空格。如果在一个报文格式定义中使用'|'作为分割符，但是实际报文字符串中又可能存在空格，那么使用TStringList可能就会得到和报文格式规范有出入的结果了。
+
+现在ExtractStrings函数分割字符串、使用TStringList分割字符串都有问题，需要寻找一个合适的方法来解决，目前暂时想到的是使用TStringList的方式，在分割之前先将字符串中的空格替换成一个特殊的字符（不是空格、不和分割符重复、不和字符串中的其他任何字符重复），然后通过分割符分割，分割完之后再对每个子字符串进行将这个特殊字符替换为空格的处理！
+
+不过这就有点搞复杂了，是不是还有什么更好的方法，等到以后在实际开发中遇到问题的时候再去找到好的方案吧！
+
+---
+
+##正文开始
+
 * 说到Delphi中的分割字符串的函数，大多数人都会想到ExtractStrings，确实它的功能很强大
 * 但是有一些场景ExtractStrings却是心有余而力不足
 * 这时候就需要考虑其他的解决方案，比如想想自己实现一个简单的函数
@@ -24,7 +71,7 @@ begin
   s := 'about: #delphi; #pascal, programming';
   List := TStringList.Create;
   ExtractStrings([';',',',':'],['#',' '],PChar(s),List);
-  //第一个参数是分隔符; 第二个参数是开头被忽略的字符
+  //第一个参数是分割符; 第二个参数是开头被忽略的字符
 
   ShowMessage(List.Text);  
                            //about
@@ -66,7 +113,7 @@ begin
   //同上，只解析非空的子串放到slist2中，对于几个空字符串是没有解析放到slist3中的
   
   ExtractStrings(['|'],  [],  PChar(s4), slist4);
-  //只有在这种分隔符前后没有空字符串的情况下，才能解析出 “分隔符个数 + 1” 个的子串
+  //只有在这种分割符前后没有空字符串的情况下，才能解析出 “分割符个数 + 1” 个的子串
 end;
 ```
 
