@@ -2,7 +2,7 @@
 layout: post
 title: Delphi数组
 categories: delphi之基础语法 delphi之指针与内存 delphi之容器类
-tags: delphi 数组　指针
+tags: delphi 数组 指针
 ---
 
 参考：[http://www.cnblogs.com/huangjacky/archive/2009/12/21/1628833.html](http://www.cnblogs.com/huangjacky/archive/2009/12/21/1628833.html)
