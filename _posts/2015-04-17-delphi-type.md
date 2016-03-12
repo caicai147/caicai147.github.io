@@ -2,7 +2,7 @@
 layout: post
 title: Delphi强制类型转化和类型约定
 categories: delphi之基础语法 delphi之指针与内存 深入学习之编译原理
-tags: delphi 编译原理　类型转换
+tags: delphi 编译原理 类型转换
 ---
 
 
