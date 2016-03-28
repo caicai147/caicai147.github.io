@@ -36,9 +36,9 @@ begin
     resultStr:= resultStr + '-' + slist[i];
   end;
   
-  //按照上面的描述，预期得到的结果是：--str1-str str3--str4-
+  //按照上面的描述，预期得到的结果是：'--str1-str str3--str4-'
   ShowMessage(resultStr);
-  //但是实际输出结果是：--str1-str2-str3--str4-
+  //但是实际输出结果是：'--str1-str2-str3--str4-'
 end;
 ```
 
@@ -79,7 +79,7 @@ begin
     resultStr:= resultStr + '-' + slist[i];
   end;
   
-  //'|  str1  |str2 str3||str4|' 字符串的 str1 子串前后各有两个空格，分割的结果应该类似 |||str1|||str2 str3||str4|
+  //'|  str1  |str2 str3||str4|' 字符串的 str1 子串前后各有两个空格，分割的结果应该类似 '|||str1|||str2 str3||str4|'
   //按照 “Add in 2016-03-10” 的描述，预期得到的结果是：'----str1---str2-str3--str4-'
   ShowMessage(resultStr);
   //但是实际输出结果还是：'--str1-str2-str3--str4-'
