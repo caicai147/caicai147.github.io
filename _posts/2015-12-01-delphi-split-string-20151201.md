@@ -48,6 +48,42 @@ end;
 
 不过这就有点搞复杂了，是不是还有什么更好的方法，等到以后在实际开发中遇到问题的时候再去找到好的方案吧！
 
+**Add in 2016-03-28**
+
+继续说明一下，使用TStringList在处理空格时还有一种特殊情况，直接见下面的代码说明
+
+```
+procedure splitString(Separators: char; Content: PChar; Strings: TStrings) ;
+begin
+  Strings.Delimiter:= Separators;
+  Strings.DelimitedText:= Content;
+end;
+
+var
+  s, resultStr: string;
+  slist: TStrings;
+  i: Integer;
+begin
+  s:= '|  str1  |str2 str3||str4|';
+  slist:= TStringList.Create;
+  splitString('|', PChar(s), slist);    //使用 '|'作为分隔符
+  //预期最后解析到slist中的是：
+  //第一个元素是空字符串''，第二个元素是'str1'，第三个元素是'str2 str3'，
+  //第四个元素是''，第五个元素是'str4'，第六个元素是''
+  
+  resultStr:= '';
+  for i:= 0 to slist.Count - 1 do
+  begin
+    resultStr:= resultStr + '-' + slist[i];
+  end;
+  
+  //'|  str1  |str2 str3||str4|' 字符串的 str1 子串前后各有两个空格，分割的结果应该类似 |||str1|||str2 str3||str4|
+  //按照 “Add in 2016-03-10” 的描述，预期得到的结果是：'----str1---str2-str3--str4-'
+  ShowMessage(resultStr);
+  //但是实际输出结果还是：'--str1-str2-str3--str4-'
+end;
+```
+
 ---
 
 ##正文开始
