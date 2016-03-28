@@ -39,6 +39,8 @@ begin
   //按照上面的描述，预期得到的结果是：'--str1-str str3--str4-'
   ShowMessage(resultStr);
   //但是实际输出结果是：'--str1-str2-str3--str4-'
+  
+  slist.Free;
 end;
 ```
 
@@ -52,7 +54,7 @@ end;
 
 **Add in 2016-03-28**
 
-继续说明一下，使用TStringList在处理空格时还有一种特殊情况，直接见下面的代码说明
+继续说明一下，使用TStringList在处理空格时还有两种特殊情况，直接见下面的代码说明：
 
 ```
 procedure splitString(Separators: char; Content: PChar; Strings: TStrings) ;
@@ -66,12 +68,13 @@ var
   slist: TStrings;
   i: Integer;
 begin
-  s:= '|  str1  |str2 str3||str4|';
   slist:= TStringList.Create;
+
+//下面的这种空格在字符串中的分布情况，分割后的结果需要小心  
+  s:= '|  str1  |str2 str3||str4|';
   splitString('|', PChar(s), slist);    //使用 '|'作为分隔符
-  //预期最后解析到slist中的是：
-  //第一个元素是空字符串''，第二个元素是'str1'，第三个元素是'str2 str3'，
-  //第四个元素是''，第五个元素是'str4'，第六个元素是''
+  //预期最后解析到slist中的是：第一个元素是空字符串''，第二个元素是'str1'，第三个元素是'str2 str3'，
+    //第四个元素是''，第五个元素是'str4'，第六个元素是''
   
   resultStr:= '';
   for i:= 0 to slist.Count - 1 do
@@ -83,6 +86,30 @@ begin
   //按照 “Add in 2016-03-10” 的描述，预期得到的结果是：'----str1---str2-str3--str4-'
   ShowMessage(resultStr);
   //但是实际输出结果还是：'--str1-str2-str3--str4-'
+  
+  
+//还有下面的两种字符串的分割情况需要注意，需要对比两种字符串和两种字符串分割后的差别 
+  s:= '|||str1|str2 str3||str4|';
+  splitString('|', PChar(s), slist);
+
+  resultStr:= '';
+  for i:= 0 to slist.Count - 1 do
+  begin
+    resultStr:= resultStr + '-' + slist[i];
+  end;
+  ShowMessage(resultStr);     //实际输出结果是：'----str1-str2-str3--str4-'
+  
+  s:= '| |str1|str2 str3||str4|';       //注意第一个 '|' 和第二个 '|' 之间有一个空格
+  splitString('|', PChar(s), slist);
+
+  resultStr:= '';
+  for i:= 0 to slist.Count - 1 do
+  begin
+    resultStr:= resultStr + '-' + slist[i];
+  end;
+  ShowMessage(resultStr);     //实际输出结果是：'---str1-str2-str3--str4-'
+  
+  slist.Free;
 end;
 ```
 
