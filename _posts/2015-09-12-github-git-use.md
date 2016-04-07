@@ -36,7 +36,7 @@ tags: github git 版本控制
 - 你和你的小伙伴每个人都在`dev`分支上干活，每个人都有自己的分支，时不时往`dev`分支上合并就可以了
 
 所以，团队合作的分支看起来就像这个样子：
-![img](../image/2015-09-12/github-1.png)
+![img](../media/image/2015-09-12/github-1.png)
 
 Git分支十分强大，在团队开发中应该充分应用。
 
@@ -177,7 +177,7 @@ Git分支十分强大，在团队开发中应该充分应用。
 - 一定要从自己的账号下clone仓库，这样你才能推送修改。如果从bootstrap的作者的仓库地址git@github.com:twbs/bootstrap.git克隆，因为没有权限，你将不能推送修改。
 
 Bootstrap的官方仓库twbs/bootstrap、你在GitHub上克隆的仓库my/bootstrap，以及你自己克隆到本地电脑的仓库，他们的关系就像下图显示的那样：
-![img](../image/2015-09-12/github-2.png)
+![img](../media/image/2015-09-12/github-2.png)
 
 如果你想修复bootstrap的一个bug，或者新增一个功能，立刻就可以开始干活，干完后，往自己的仓库推送。
 
@@ -266,7 +266,7 @@ Bootstrap的官方仓库twbs/bootstrap、你在GitHub上克隆的仓库my/bootst
 - `git unstage test.py` 当你敲入此命令，实际上Git执行的是：`git reset HEAD test.py`
 - `git config --global alias.last 'log -1'` 配置一个git last，让其显示最后一次提交信息
 - `git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"` 甚至还有人这样的配置，那么，这时候`git lg`的效果是这样的
-![img](../image/2015-09-12/github-3.png)
+![img](../media/image/2015-09-12/github-3.png)
 
 **配置文件**
 

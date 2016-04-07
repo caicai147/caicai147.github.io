@@ -63,7 +63,7 @@ e
 
 通过Length函数也可以获得长字符串的长度，也可以通过SetLength过程为长字符串设置长度。其在内存中分配情况如下：
 
-![image](../image/2015-04-15/1.png)
+![image](../media/image/2015-04-15/1.png)
 
 注意当给一个String类型赋值时候，赋的字符串太长，可能会报错：“String  literals may have at most 255 elements”。这时候你就纳闷了：不是说String的字符个数没有限制的吗？
 
@@ -201,6 +201,6 @@ e
 
 显示结果如下：
 
-![image](../image/2015-04-15/2.png)  ![image](../image/2015-04-15/3.png)
+![image](../media/image/2015-04-15/2.png)  ![image](../media/image/2015-04-15/3.png)
 
 关于字符串就先浅浅的谈到这个，以后再深入了解。

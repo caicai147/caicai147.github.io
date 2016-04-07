@@ -261,9 +261,9 @@ Git是分布式版本控制系统，同一个Git仓库，可以分布到不同�
 
 1. 创建SSH Key。在`用户目录`下，看看有没有`.ssh`目录，如果有，再看看这个目录下有没有`id_rsa`和`id_rsa.pub`这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key，输入命令`ssh-keygen -t rsa -C "youremail@example.com"`,你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到`.ssh`目录，里面有`id_rsa`和`id_rsa.pub`两个文件，这两个就是SSH Key的秘钥对，`id_rsa`是私钥，不能泄露出去，`id_rsa.pub`是公钥，可以放心地告诉任何人。
 2. 登陆GitHub，打开“Account settings”，“SSH Keys”页面.然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴`id_rsa.pub`文件的内容：
-![img](../image/2015-09-09/github-1.png)
+![img](../media/image/2015-09-09/github-1.png)
 3. 点“Add Key”，你就应该看到已经添加的Key：
-![img](../image/2015-09-09/github-2.png)
+![img](../media/image/2015-09-09/github-2.png)
 
 注意现在的Github的页面的布局可能和图片中显示有细小的差别，不过相信你能找到对应的操作！
 
@@ -278,9 +278,9 @@ Git是分布式版本控制系统，同一个Git仓库，可以分布到不同�
 现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。具体可以见[教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000)。
 
 1. 首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库：
-![img](../image/2015-09-09/github-3.png)
+![img](../media/image/2015-09-09/github-3.png)
 2. 在Repository name填入`learngit`，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库：
-![img](../image/2015-09-09/github-4.png)
+![img](../media/image/2015-09-09/github-4.png)
 
 目前，在GitHub上的这个learngit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。
 

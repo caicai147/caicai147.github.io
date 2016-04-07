@@ -20,7 +20,7 @@ print response.read()
 
 是的，你没有看错，真正的程序就两行，把它保存成demo.py，进入该文件的目录，执行命令`python demo.py`查看运行效果
 
-![imge](../image/2016-01-10/01.png)
+![imge](../media/image/2016-01-10/01.png)
 
 下面我们来简单分析一下这两行代码，第一行
 
@@ -148,7 +148,7 @@ http://passport.csdn.net/account/login?username=xumenger@126.com&password=XXXX
 
 首先，打开我们的浏览器，调试浏览器F12，我用的是Chrome，打开网络监听，示意如下：比如知乎，点登陆之后，我们会发现登陆之后界面都变化了，出现一个新的界面，实质上这个页面包含了许许多多的内容，这些内容也不是一次性就加载完成的，实质是执行了好多次请求，一般是首先请求HTML文件，然后加载JS、CSS等等，经过多次请求之后，网页的骨架和肌肉全了，整个网页的效果也就出来了
 
-![image](../image/2016-01-10/03.png)
+![image](../media/image/2016-01-10/03.png)
 
 拆分整个请求，我们只看第一个请求，可以看到，有一个Request URL，还有headers，下面便是response，图片显示的不全，小伙伴们可以亲身试一下。那么这个头中包含了许许多多的信息，有文件编码、压缩方式、请求的agent等等
 

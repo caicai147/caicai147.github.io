@@ -95,7 +95,7 @@ tags: delphi oop 指针 内存
     end.
 
 点击按钮，程序运行的效果图如下：
-![img](../image/2015-08-18/showmessage-1.png)
+![img](../media/image/2015-08-18/showmessage-1.png)
 
 代码讲解
 -----
@@ -159,7 +159,7 @@ tags: delphi oop 指针 内存
     end.
 
 点击按钮，程序运行的效果如下
-![img](../image/2015-08-18/showmessage-2.png)
+![img](../media/image/2015-08-18/showmessage-2.png)
 
 代码讲解
 -----

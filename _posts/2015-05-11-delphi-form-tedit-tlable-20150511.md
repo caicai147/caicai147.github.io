@@ -14,13 +14,13 @@ tags: delphi tedit tlable
 
 **1.我们在Delphi的可视化界面上需要一个TEdit和TLabel组件，于是我们拖拽了两个组件放在上面，并且设置拖拽设置了长和宽（为了显示清楚，我设置了颜色）**
 
-![image](../image/2015-05-11/1.png) 
+![image](../media/image/2015-05-11/1.png) 
 
 这个时候通过拖拽设计界面上的组件设置
 
 **2.但是按 F9 运行的时候显示的却是这样的效果**
 
-![image](../image/2015-05-11/2.png) 
+![image](../media/image/2015-05-11/2.png) 
 
 明显图中显示的 TEdit、TLabel组件（两个黄色区域）根本就不是设置的时候的样子
 
@@ -54,13 +54,13 @@ tags: delphi tedit tlable
 
 **1.我们在Delphi的可视化界面上需要一个TEdit和TLabel组件，于是我们拖拽了两个组件放在上面，并且设置拖拽设置了长和宽（为了显示清楚，我设置了颜色）**
 
-![image](../image/2015-05-11/3.png)  
+![image](../media/image/2015-05-11/3.png)  
 
 这个时候通过拖拽设计界面上的组件确实
 
 **2.但是按 F9 运行的时候显示的却是这样的效果**
 
-![image](../image/2015-05-11/4.png) 
+![image](../media/image/2015-05-11/4.png) 
 
 明显图中显示的 TEdit、TLabel组件（两个黄色区域）根本就不是设置的时候的样子
 
@@ -68,7 +68,7 @@ tags: delphi tedit tlable
 
 **3.1.**将鼠标点击到窗体上，再在Object Inspector的Events中双击窗体的OnCreate方法
 
-![image](../image/2015-05-11/5.png) 
+![image](../media/image/2015-05-11/5.png) 
 
 **3.2.**然后跳回到代码编辑部分，开始编辑TForm的创建代码，并在这里面显式的设置那两个组件的大小
 
@@ -95,4 +95,4 @@ tags: delphi tedit tlable
 
 **4.然后在运行就可以显示想要的效果**
 
-![image](../image/2015-05-11/6.png) 
+![image](../media/image/2015-05-11/6.png) 

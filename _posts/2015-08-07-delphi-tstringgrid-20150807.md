@@ -20,7 +20,7 @@ tags: delphi tstringgrid
 
 **运行效果图 ：**
 
-![image](../image/2015-08-07/tstringgrid-1.gif)
+![image](../media/image/2015-08-07/tstringgrid-1.gif)
 
 **代码如下：**
 
@@ -76,7 +76,7 @@ tags: delphi tstringgrid
 
 我尝试在我的电脑上编写了一样的程序，运行效果一样，我就纳闷了，为什么显示是有5行5列呢？于是我去看了一下代码中 TStringGrid的Object Inspector，看到了下面的图中的配置（以ColCount为例，ColCount为总列数，RowCount为总行数）
 
-![image](../image/2015-08-07/tstringgrid-2.png)
+![image](../media/image/2015-08-07/tstringgrid-2.png)
 
 发现原来如果直接将TStringGrid组件拖拽到界面上，我的Delphi默认会设置有5行5列，如果想在程序刚启动的时候就显示不是5行5列，而是你自己个性化的配置，可以在Object Inspector里面去配置为你想要的行列数。或者显式在窗体的创建方法中用代码声明。
 
@@ -95,7 +95,7 @@ tags: delphi tstringgrid
 
 **运行效果图：**
 
-![image](../image/2015-08-07/tstringgrid-3.gif)
+![image](../media/image/2015-08-07/tstringgrid-3.gif)
 
 **代码如下：**
 

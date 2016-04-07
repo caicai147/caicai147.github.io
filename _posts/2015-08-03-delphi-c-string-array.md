@@ -157,4 +157,4 @@ Delphi中有字符串类型string等等
     end;
 
 结果如下（显然和C/C++中所讲的一样）
-![img](../image/2015-08-03/delphi-memory-address.png)
+![img](../media/image/2015-08-03/delphi-memory-address.png)

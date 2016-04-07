@@ -31,7 +31,7 @@ Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Bea
 
 然后需要安装lxml：`sudo apt-get install Python-lxml`。如下图所示，证明安装成功了
 
-![image](../image/2016-01-10/04.png)
+![image](../media/image/2016-01-10/04.png)
 
 Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方的解析器，如果我们不安装它，则 Python 会使用 Python默认的解析器，lxml 解析器更加强大，速度更快，推荐安装
 

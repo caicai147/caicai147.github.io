@@ -100,7 +100,7 @@ Synchronize() 把由Method 参数传递过来的方法保存在 TThread的 FMeth
 
 下图形象地说明了 Synchronize() 的内部机制和原理
 
-![img](../image/2015-05-15/synchronize.png "Image Title")
+![img](../media/image/2015-05-15/synchronize.png "Image Title")
 
 ###4.用消息来同步###
 

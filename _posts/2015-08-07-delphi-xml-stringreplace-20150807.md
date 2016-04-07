@@ -16,11 +16,11 @@ tags: delphi xml stringreplace
 
 首先是打开应用程序
 
-![image](../image/2015-08-07/xml-1.png)
+![image](../media/image/2015-08-07/xml-1.png)
 
 然后将上面所示的字符串复制到文本编辑框中，然后点击解析按钮，会出现下面的效果
 
-![image](../image/2015-08-07/xml-2.png)
+![image](../media/image/2015-08-07/xml-2.png)
 
 如上图所示，可以 “XML中的字段标签：XML中对应标签的值” 的格式显示解析的效果。
 
@@ -28,11 +28,11 @@ tags: delphi xml stringreplace
 
 比如没有输入直接点击解析按钮，效果如下：
 
-![image](../image/2015-08-07/xml-3.png)
+![image](../media/image/2015-08-07/xml-3.png)
 
 有比如输入一个非法的字符串，效果如下
 
-![image](../image/2015-08-07/xml-4.png)
+![image](../media/image/2015-08-07/xml-4.png)
 
 
 ##然后看一下代码##
@@ -133,7 +133,7 @@ tags: delphi xml stringreplace
 
 在 TForm1.btn1Click(Sender: TObject) 方法中，我们可以看到首先将XML字符串中的 'UTF-8' 替换为 'gbk'，因为如果编码方式是UTF-8：<?xml version="1.0" encoding="UTF-8"?>，那么如果XML中存在中文，那么解析的时候会报错（如果全部为英文，那么就不会报错），如下图
 
-![image](../image/2015-08-07/xml-5.png)
+![image](../media/image/2015-08-07/xml-5.png)
 
 如果将UTF-8替换为gbk，，那么在解析XML的时候就不会报这样的错误。
 

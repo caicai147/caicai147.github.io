@@ -153,7 +153,7 @@ tags: delphi dll sharemem
 
 因为我在可执行项目中引入ShareMem单元时候没有注意到应该在项目文件而不是在单元文件中引入，所以在编译执行之后，可以正确运行，但是当关闭程序的时候却报错，如下图
 
-![image](../image/2015-08-12/sharemem.png)
+![image](../media/image/2015-08-12/sharemem.png)
 
 报错：不合法的指针。
 
