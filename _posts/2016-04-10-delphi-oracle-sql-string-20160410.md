@@ -21,6 +21,23 @@ tags: delphi 字符串 ascii 字符编码 oracle sql
   * '12345'>'1234'为True，这个需要注意
   * '1'>''，在Delphi中任意为空字符串都大于''
 
+**可以自己在Delphi中编程试一下**
+
+```
+procedure TForm1.btn1Click(Sender: TObject);
+begin
+//这里面的四种比较都是True，所以都会弹出框
+  if '123'>'12' then
+    ShowMessage(' ''123''>''12'' ');
+  if 'abcd'>'abc' then
+    ShowMessage(' ''abcd''>''abc'' ');
+  if '1'>'' then
+    ShowMessage(' ''1''>'''' ');
+  if '102'>'10' then
+    ShowMessage(' ''102''>''10'' ');
+end;
+```
+
 ##Oracle SQL中的字符串比较
 
 * 亲自在Oracle中验证过！
