@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>CSS高级语法展示</title>
+<style>
+h1, h2, h3{
+  /*你可以对选择器进行分组，这样，被分组的选择器就可以分享相同的声明。*/
+  /*用逗号将需要分组的选择器分开。该例子中，我们对h1、h2、h3元素进行了分组*/
+  color: green;
+}
+body{
+  /*根据上面这条规则，站点的 body 元素将使用 Verdana 字体（假如访问者的系统中存在该字体的话）*/
+  font-family: Verdana, sans-serif；
+  color: blue;
+}
+p, td, ul, ol, li, dl, dt, dd, a{
+  /*比如Netscape 4不支持继承，那么只能使用组选择器的方式达到同样的效果，逐个列出body的所有子元素*/
+  /*这么做虽然会浪费一些用户的带宽，但是如果需要对 Netscape 4 用户进行支持，就不得不这么做*/
+  font-family: Verdana, sans-serif;
+  color: blue;
+}
+p{
+  /*如果你不希望 "Verdana, sans-serif" 字体被所有的子元素继承，又该怎么做呢？*/
+  /*比方说，你希望段落的字体是 Times。没问题。创建一个针对 p 的特殊规则，这样它就会摆脱父元素的规则：*/
+  font-family: Times, "Times New Roman", serif;
+  color: red;
+}
+</style>
+</head>
+
+<body>
+<h1>标题一是绿色的</h1>
+<a href="http://www.xumenger.com/css-01-20160409/">返回主目录(使用父元素的规则：蓝色)</a>
+<p>段落拜托了父元素的规则，是红色的</p>
+</body>
+</html>
