@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi中字符串比较大小 VS Oracle SQL中字符串比较大小
+title: Delphi中字符串比较大小 VS Oracle-SQL中字符串比较大小
 categories: delphi之字符串 数据库之oracle
 tags: delphi 字符串 ascii 字符编码 oracle
 ---
