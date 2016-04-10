@@ -8,19 +8,139 @@
   /*注释：只有在规定了 !DOCTYPE 时，IE7 和 IE8 才支持属性选择器。在 IE6 及更低的版本中，不支持属性选择。*/
   color: red;
 }
-[title="W]
+[title=xumenger] {
+  /*为title="xumenger"的所有元素设置样式*/
+  border:5px solid blue;
+}
+[title~=joker]{
+  /*下面的例子为包含指定值的 title 属性的所有元素设置样式。适用于由空格分隔的属性值：*/
+  color: red;
+}
+[lang|=en] {
+  /*下面的例子为带有包含指定值的 lang 属性的所有元素设置样式。适用于由连字符分隔的属性值：*/
+  color: blue;
+}
+input[type="text"]
+{
+  width:150px;
+  display:block;
+  margin-bottom:10px;
+  background-color:yellow;
+  font-family: Verdana, Arial;
+}
+input[type="button"]
+{
+  width:120px;
+  margin-left:35px;
+  display:block;
+  font-family: Verdana, Arial;
+}
+
 </style>
 </head>
 
+<body>
 <h1>可以应用样式[title]</h1>
-<h2 titlw="Hello world"> Hello World</h2>
-<a title="W3School" href="http://w3school.com.cn">W3School</a>
+<h2 title="Hello world"> Hello World</h2>
+<a title="MyWebSite" href="http://www.xumenger.com">xumenger</a>
 
 <hr />
 
-<h1>无法应用样式：</h1>
+<h1>无法应用样式[title]：</h1>
 <h2>Hello world</h2>
 <a href="http://w3school.com.cn">W3School</a>
-<body>
+
+<hr />
+
+<h1>可以应用样式[title=xumenger]</h2>
+<img title="xumenger" src="../media/image/joker.jpeg" width="100" height="100"/><br />
+<a title="xumenger" href="http://www.xumenger.com">xumenger</a>
+
+<hr />
+
+<h1>不可以应用样式[title=xumenger]</h2>
+<h1>可以应用样式[title=xumenger]</h2>
+<img title="xumeng" src="../media/image/joker.jpeg" width="100" height="100"/><br />
+<a title="xumeng" href="http://www.xumenger.com">xumenger</a>
+
+<hr />
+
+<h1>可以应用样式[title~=joker]</h2>
+<h2 title="joker xumenger"joker xumenger</h2>
+<a title="xumenger" href="http://www.xumenger.com">xumenger</a>
+
+<hr />
+
+<h1>不可以应用样式[title~=joker]</h2>
+<h2 title="joke xumenger"joker xumenger</h2>
+<a title="joke xumeng" href="http://www.xumenger.com">xumenger</a>
+
+<hr />
+
+<h1>可以应用样式[lang|=en]</h2>
+<p lang="en">Hello</p>
+<p lang="en-us">Hi</p>
+
+<hr />
+
+<h1>不可以应用样式[lang|=en]</h2>
+<p lang="us">Hi</p>
+<p lang="zh">Hao</p>
+
+<hr />
+
+<h1>设置表单的样式</h1>
+
+<form name="input" action="" method="get">
+<input type="text" name="Name" value="Bill" size="20">
+<input type="text" name="Name" value="Gates" size="20">
+<input type="button" value="Example Button">
+
+</form>
+
+<h1>CSS选择器参考手册</h1>
+
+<table class="dataintable">
+<tr>
+<th style="width:30%;">选择器</th>
+<th>描述</th>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute.asp" title="CSS [attribute] 选择器">[<i>attribute</i>]</a></td>
+<td>用于选取带有指定属性的元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute_value.asp" title="CSS [attribute=value] 选择器">[<i>attribute</i>=<i>value</i>]</a></td>
+<td>用于选取带有指定属性和值的元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute_value_contain.asp" title="CSS [attribute~=value] 选择器">[<i>attribute</i>~=<i>value</i>]</a></td>
+<td>用于选取属性值中包含指定词汇的元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute_value_start.asp" title="CSS [attribute|=value] 选择器">[<i>attribute</i>|=<i>value</i>]</a></td>
+<td>用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attr_begin.asp" title="CSS [attribute^=value] 选择器">[<i>attribute</i>^=<i>value</i>]</a></td>
+<td>匹配属性值以指定值开头的每个元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attr_end.asp" title="CSS [attribute$=value] 选择器">[<i>attribute</i>$=<i>value</i>]</a></td>
+<td>匹配属性值以指定值结尾的每个元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attr_contain.asp" title="CSS [attribute*=value] 选择器">[<i>attribute</i>*=<i>value</i>]</a></td>
+<td>匹配属性值中包含指定值的每个元素。</td>
+</tr>
+</table>
+
 </body>
 </html>
