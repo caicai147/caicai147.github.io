@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>CSS派生选择器</title>
+<style>
+<!--派生选择器：通过宜居元素在其位置的上下文关系来定义样式，你可以使标记更加简单-->
+<!--派生选择器允许你根据文档的上下文关系来确定某个标签的样式。通过合理地使用派生选择器，我们可以使HTML代码变得整洁-->
+li strong{
+  /*比如，你希望列表中的strong元素变为斜体字，而不是通常的粗体字，可以这样定义*/
+  font-style: italic;
+  font-weight: normal;
+}
+h2 a{
+  color: red;
+}
+h2{
+  color: blue;
+}
+a{
+  color: green;
+}
+</style>
+</head>
+
+<body>
+<p><strong>我是粗体，不是斜体字，因为我不在列表当中，所以这个规则对我不起作用</strong></p>
+
+<ol>
+<li><strong>我是斜体字，这是因为strong元素唯一li元素内。</strong></li>
+<li>我是正常字体</li>
+</ol>
+
+<h2>w我是蓝色</h2>
+<h2><a href=http://www.xumenger.com/css-01-20160409/">返回主目录(我是红色)</a></h2>
+
+<a href="http://www.xumenger.com/css-01-20160409/">我是绿色</a>
+
+如果您需要更深入地学习关于派生选择器的知识，请阅读 W3School 的高级教程中的以下内容：
+<ol>
+<li><a href="http://www.w3school.com.cn/css/css_selector_descendant.asp">CSS 后代选择器</a></li>
+<li><a href="http://www.w3school.com.cn/css/css_selector_child.asp">CSS 子元素选择器</a></li>
+<li><a href="http://www.w3school.com.cn/css/css_selector_adjacent_sibling.asp">CSS 相邻兄弟选择器</a></li>
+</ol>
+</body>
+</html>
