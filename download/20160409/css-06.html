@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>CSS属性选择器</title>
+<style type="text/css">
+[title] {
+  /*对带有指定属性的 HTML 元素设置样式。*/
+  /*可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。*/
+  /*注释：只有在规定了 !DOCTYPE 时，IE7 和 IE8 才支持属性选择器。在 IE6 及更低的版本中，不支持属性选择。*/
+  color: red;
+}
+[title="W]
+</style>
+</head>
+
+<h1>可以应用样式[title]</h1>
+<h2 titlw="Hello world"> Hello World</h2>
+<a title="W3School" href="http://w3school.com.cn">W3School</a>
+
+<hr />
+
+<h1>无法应用样式：</h1>
+<h2>Hello world</h2>
+<a href="http://w3school.com.cn">W3School</a>
+<body>
+</body>
+</html>
