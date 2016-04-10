@@ -47,7 +47,7 @@ end;
 ##Oracle SQL中的字符串比较
 
 * 亲自在Oracle中验证过！
-* 一般在SQL中的where条件中会用到字符串的比较
+* 一般在SQL中的where条件中会用到字符串的比较，比如select * from user where name > 'john'
 * 首先特别注意''，和Delphi有一个很大的不同
   * 任何字符串都不能和''进行比较，因为比较结果既不为True也不为False
   * 如果在select的where判断中有和''的比较会导致选不出任何一条记录
