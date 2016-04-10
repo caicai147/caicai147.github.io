@@ -2,13 +2,22 @@
 <head>
 <title>id选择器</title>
 <style>
-<!--id选择器可以为标有特定id的HTML元素指定特定的样式-->
-<!--id选择器以‘#’来定义-->
 
-#yellow { color: yellow; }
+#yellow { 
+  /*注意：在HTML中使用<!-- -->的注释会导致样式失效，所以改成使用CSS的注释来添加说明*/
+  /*id选择器可以为标有特定id的HTML元素指定特定的样式*/
+  /*id选择器以‘#’来定义*/
+  color: yellow; 
+}
+#green {
+  color: green;
+}
 
-<!--在现代布局中，id选择器常常用于建立派生选择器-->
+#sidebar p {
+  color: blue;
+}
 #sidebar a {
+  /*在现代布局中，id选择器常常用于建立派生选择器*/
   color: red;
 }
 </style>
@@ -16,8 +25,10 @@
 
 <body>
 <p id="yellow">这个段落是黄色的</p>
+<p id="green">这个段落是绿色的</p>
 
 <div id="sidebar">
+<p>这个段落是蓝色的</p>
 <a href="http://www.xumenger.com/css-01-20160409/">返回主目录(红色)</a>
 </div>
 </body>
