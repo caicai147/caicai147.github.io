@@ -8,7 +8,7 @@ tags: delphi 字符串 ascii 字符编码 oracle
 ##Delphi中的字符串比较
 
 * Delphi中字符串比较大小的规则：对应位置的字符按照字符编码值逐个对比，直到遇到可以确定大小关系的就结束比较
-* 参考[Delphi的Ord函数和ASCII码对照表](http://www.xumenger.com/delphi-ord-20160222/)
+* 参考[《Delphi的Ord函数和ASCII码对照表》](http://www.xumenger.com/delphi-ord-20160222/)
 * '1'对应字符编码49；'A'对应字符编码65；'a'对应字符编码97
 * 比如'abcd' 和 'abd'比较
   * 首先第一位'a'和'a'比较，一样，继续下面的比较
