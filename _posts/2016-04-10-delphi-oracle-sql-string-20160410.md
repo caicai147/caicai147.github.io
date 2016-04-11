@@ -25,7 +25,7 @@ tags: delphi 字符串 ascii 字符编码 oracle sql
   * '101'<'102'为True
   * 'abcd'>'abc'为True，这个需要注意
   * '12345'>'1234'为True，这个需要注意
-  * '1'>''，在Delphi中任意为空字符串都大于''
+  * '1'>''，在Delphi中任意非空字符串都大于空字符串''
 
 **可以自己在Delphi中编程试一下**
 
