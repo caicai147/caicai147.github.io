@@ -56,6 +56,7 @@ end;
   * select ascii('1') from dual;       字符编码值 49
   * select ascii('A') from dual;       字符编码值 65
   * select ascii('a') from dual;       字符编码值 97
+  * select ascii(' ') from dual;       字符编码值 32
 * 列举出常见的比较
   * 'abcd'>'abc'为True，和Delphi中一样
   * '12345'>'1234'为True，和Delphi中一样
