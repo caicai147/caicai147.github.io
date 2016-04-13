@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 使用Delphi的GetTickCount函数的注意事项（有简单讲到Timer控件）
+title: 使用Delphi的GetTickCount函数的注意事项（简单涉及到Timer）
 categories: delphi之控件 delphi之函数  delphi之时间日期
 tags: delphi 日期 时间 timer
 ---
