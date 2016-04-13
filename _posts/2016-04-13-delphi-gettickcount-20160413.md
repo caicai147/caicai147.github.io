@@ -23,7 +23,7 @@ tags: delphi 日期 时间 timer
 * GetTickCount函数是用于获取从开机到现在的时间（单位是毫秒）
 * 了解更多可以参见以下的博客
 	* [Delphi时间与相关类型(1)-TDateTime与Double](http://www.xumenger.com/delphi-datetime-01-20160304/)
-	* [Delphi时间与相关类型(2)-TDate、TTime、TTimeStamp](http://www.xumenger.com/delphi-datetime-02-20160304/)】
+	* [Delphi时间与相关类型(2)-TDate、TTime、TTimeStamp](http://www.xumenger.com/delphi-datetime-02-20160304/)
 * 但是每次执行GetTickCount并不能精确到1ms，有可能是15ms
 
 假如实现如下的SleepEx函数用于防止程序的假死，如果以SleepEx(1)方式调用该函数让当前线程休眠，那么不可能休眠1ms，因为GetTickCount的特点，将会休眠15ms。
