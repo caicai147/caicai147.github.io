@@ -87,7 +87,6 @@ type
 var
   Form1: TForm1;
   Count: array[0..35] of Integer;
-  mointorInfo: string;
 
 implementation
 
@@ -106,12 +105,6 @@ begin
 
 //情况计数数组的所有元素都是0
   ZeroCountArray;
-
-//准备格式化字符串
-  for i := 0 to 35 do
-  begin
-    mointorInfo := mointorInfo +  ' ' + IntToStr(i) + ' ：%' + IntToStr(i) + ':d'#13#10;
-  end;
 end;
 
 procedure TForm1.btn1Click(Sender: TObject);
@@ -138,11 +131,12 @@ begin
   time := GetTickCount;       //获取Sleep之前的“时间”
   Sleep(ud1.position);        //按照在界面的配置进行Sleep
   i := GetTickCount - time;   //获取Sleep之后的“时间”
-  Inc(Count[i]); 
-  showStr := Format(mointorInfo, [Count[0], Count[1], Count[2], Count[3], Count[4], Count[5], Count[6], Count[7], Count[8], Count[9], Count[10], Count[11],
-                                  Count[12],Count[13],Count[14],Count[15],Count[16],Count[17],Count[18],Count[19],Count[20],Count[21],Count[22], Count[23],
-                                  Count[24],Count[25],Count[26],Count[27],Count[28],Count[29],Count[30],Count[31],Count[32],Count[33],Count[34], Count[35]]);
-
+  Inc(Count[i]);
+  showStr := '';
+  for i := 0 to 35 do
+  begin
+    showStr := showStr + Format('%d: %d'#13#10, [i, Count[i]])
+  end;
   mmo1.Text := showStr; 
   tmr1.Enabled := True;
 end;
