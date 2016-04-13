@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 测试Delphi多线程访问VCL
+title: 测试Delphi多线程访问VCL（还包括Delphi弹出框的使用说明）
 categories: delphi之多线程 delphi之控件
-tags: delphi 多线程 控件 vcl
+tags: delphi 多线程 控件 vcl 弹出框
 ---
 
 首先关于Delphi多线程操作控件可以先看一下这篇文章：[《Delphi：与VCL同步（Synchronize()、用消息来同步）》](http://www.xumenger.com/delphi-vcl-synchronize/)
