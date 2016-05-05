@@ -5,7 +5,7 @@ categories: 数据库之oracle  深入学习之数据库原理
 tags: oracle plsql sql 数据库 死锁 数据库原理
 ---
 
-类似的关于Oracle死锁的问题可以参见这篇博客[Oracle数据表死锁的解决方法](http://www.xumenger.com/oracle-deadlock-20160218/)
+类似的关于Oracle死锁的问题可以参见这篇博客[《Oracle数据表死锁的解决方法》](http://www.xumenger.com/oracle-deadlock-20160218/)
 
 ##背景
 
@@ -30,7 +30,7 @@ tags: oracle plsql sql 数据库 死锁 数据库原理
 * 再去File-->New-->SQL Windows，在这个编辑框(Window 2)中输入SQL：`select * from tuser a where a.uno = 1000;`，(只是读，不写)，执行
 * 可以发现Window 2正确输出查询结果，并没有卡住，和上面的测试1的效果不同
 * 因为在Window 1中对这条记录进行加锁了，但是在Window 2中只是去读，并不要获取写锁，所以就不会等待，不会出现卡住的情况
-* 上面的**背景**中描述的场景，PLSQL对该条记录加写锁，而使用系统进行登录时并不只是去读取信息，而是也要写，也要去获取写锁，而此时写锁已经被PLSQL中的写操作的SQL占用，所以就会出现长时间等待死锁而卡死的情况
+* 上面的**《背景》**中描述的场景，PLSQL对该条记录加写锁，而使用系统进行登录时并不只是去读取信息，而是也要写，也要去获取写锁，而此时写锁已经被PLSQL中的写操作的SQL占用，所以就会出现长时间等待死锁而卡死的情况
 
 ##分析
 
