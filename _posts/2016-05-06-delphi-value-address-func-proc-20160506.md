@@ -50,7 +50,7 @@ var
 begin
   i := 0;
   TestValue(i);     //传值调用中的弹出框弹出 1
-  ShowMessage(IntToStr(i)); //这里弹出框弹出 0，说明i 传入TestAddress后并没有变化
+  ShowMessage(IntToStr(i)); //这里弹出框弹出 0，说明i 传入TestValue后并没有变化
   
 end;
 
