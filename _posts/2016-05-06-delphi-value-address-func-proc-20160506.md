@@ -54,6 +54,7 @@ begin
   
 end;
 
+//测试传址调用
 procedure TForm1.btn2Click(Sender: TObject);
 var
   i: Integer;
@@ -68,6 +69,7 @@ function TestValue(testi: Integer): Integer;
 begin
   Inc(testi);
   ShowMessage(IntToStr(testi));
+  
 end;
 
 function TestAddress(testi: PInteger): Integer;
