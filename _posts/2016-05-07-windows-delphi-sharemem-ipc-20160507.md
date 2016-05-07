@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 实例展示Delphi共享内存的使用【例程】
-categories: delphi之指针与内存 delphi之消息机制 windows之消息机制
+categories: delphi之指针与内存 delphi之消息机制 windows之消息机制 delphi之多进程
 tags: delphi 共享内存 指针 内存 消息 消息机制
 ---
 
@@ -9,7 +9,7 @@ tags: delphi 共享内存 指针 内存 消息 消息机制
 
 * 大概的实现是这样的
   * AppA创建共享内存，往共享内存中写入字符串，然后发消息通知AppB
-  * AppB定位到内存映射文件，收到AppA发送来的消息后获取共享内存中的字符串展示在memo控件上
+  * AppB定位到内存映射文件，收到AppA的消息后获取共享内存中的字符串展示在memo控件上
   * 所以这个程序中就展示了进程间通信的两种方法：消息机制、共享内存
 * 这篇文章只是展示了Delphi上共享内存使用的方式，还需要了解一下以下的语言和平台
   * Windows VC++
