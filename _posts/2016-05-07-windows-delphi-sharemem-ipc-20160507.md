@@ -17,7 +17,7 @@ tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量
 * 这篇文章只是展示了Delphi上共享内存使用的方式，还需要了解一下以下的语言和平台
   * Windows VC++
   * Linux C/C++
-* 本篇文章对应的程序代码可以点击[这里](../download/20160507/Windows-Delphi-共享内存-IPC.zip)下载
+* 本篇文章对应的程序代码可以点击[这里](../download/20160507/Windows-Delphi-ShareMem.zip)下载
 * 本文对应例程使用的Delphi的版本是6
 
 ##AppA的源码
