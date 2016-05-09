@@ -167,6 +167,8 @@ end.
 
 ##AppB的源码
 
+设置AppB的主窗体的Caption为“测试读共享内存”，使AppA的FindWindow可以通过其找到其Handle。
+
 ```
 unit FormB;
 
