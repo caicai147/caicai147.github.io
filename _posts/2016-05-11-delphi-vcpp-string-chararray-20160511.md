@@ -39,7 +39,7 @@ int len  = strlen("汉字");       //测试的结构是4
 * gb2312：如果系统采用的是gb2312，则strlen("汉字")=4，即一个汉字占用2个字节。windows中文版采用的该种编码方式。
 * 我的系统是gb2312编码的
 
-####前情提要2：常用的字符串拷贝函数
+##前情提要2：常用的字符串拷贝函数
 
 * Delphi常用的字符串拷贝函数：[《Delphi的字符串拷贝函数》](http://www.xumenger.com/delphi-string-copy-20151119/)
 * C/C++常用的字符串拷贝函数：[《C/C++的字符串拷贝函数》](http://www.xumenger.com/c-cpp-string-copy-20160511/)
