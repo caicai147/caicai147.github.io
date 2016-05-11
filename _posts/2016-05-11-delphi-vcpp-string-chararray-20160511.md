@@ -265,4 +265,4 @@ end;
   * 如果是可写的，则不使用关键字const，定义为 `int CallCpp(cosnt char * resp);`  
   * 这就是告诉开发者，其中会有对字符数组的写操作
 * 不只是针对Delphi调用C++导出的方法，Delphi自己定义方法时也是这样的
-	* 续[]()
+	* 续[《理解Delphi编程中方法参数定义的关键字const》](http://www.xumenger.com/delphi-z-string-const-20160511/)
