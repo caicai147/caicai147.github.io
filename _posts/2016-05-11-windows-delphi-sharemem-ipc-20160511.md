@@ -32,8 +32,8 @@ tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量 多进程
   * 往共享内存中写完字符串之后，同时给AppB和AppB1法消息
   * 使用FindWindow，通过'测试读共享内存'找到AppB的窗体
   * 使用FindWindow，通过'测试读共享内存1'找到AppB1的窗体
-* 测试发现这样的修改之后，不管AppB还是AppB1哪个是最后被聚焦的，都能收到消息并展示共享内存中的信息
-* 可以点击[这里]((../download/20160511/Windows-Delphi-ShareMem-2.zip))下载
+* 如此修改之后，不管AppB还是AppB1哪个是最后被聚焦的，都能收到消息并展示共享内存中的信息
+* 可以点击[这里](../download/20160511/Windows-Delphi-ShareMem-2.zip)下载
 
 ##情况二源码展示
 
