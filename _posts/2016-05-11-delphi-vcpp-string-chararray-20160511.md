@@ -2,11 +2,12 @@
 layout: post
 title: Delphi和C/C++配合编程时的字符串传值规范
 categories: c/c++之函数 c/c++之指针与内存  delphi之字符串 delphi之指针与内存 c/c++之字符串 delphi之dll c/c++之dll  软件质量之内存管理
-tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理
+tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 字符编码
 ---
 
 ##前期提要0：前情回顾
 
+* Delphi版本是6；Visual C++版本是6
 * [《Delphi和VC++使用DLL配合开发【例程】》](http://www.xumenger.com/delphi-cpp-dll-20160412/)有讲到VC++导出DLL，Delphi加载并调用
 * 关于Delphi的字符串、字符数组相关的可以参考以下文章：
   * [《Delphi字符串与字符数组之间的转换（初始化的重要性）》](http://www.xumenger.com/delphi-string-pchar-chararray-20150422-02/)
