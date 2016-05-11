@@ -62,7 +62,7 @@ begin
   hTestDLL := LoadLibrary(PChar(path));
   CallCpp := GetProcAddress(hTestDLL, 'CallCpp');
 end;
-  
+```
 
 ##情况一：Delphi和C++之间通过类似这样的传递方式是不行的
 
@@ -106,6 +106,7 @@ void CallCpp(char *resp)
   strncpy(resp, src, strlen(src));
     //应该使用C++端的字符串的长度
 }
+```
 
 ##情况二：在C++端获取Delphi字符数组的长度
 
@@ -124,6 +125,7 @@ begin
     //运行到这里，调用C++端的函数，此时resp数组中存储的值是'测试测试测试测试'，
     //对应#178,#226,#202,#212,#178,#226,#202,#212,#178,#226,#202,#212,#178,#226,#202,#212,#0,#0...
 end;
+```
 
 ####C++
 
@@ -135,6 +137,7 @@ void CallCpp(char *resp)
   strncpy(resp, src, strlen(src));
     //运行到这里，sizeof(resp)的值是4(因为resp在这里是一个字符指针，而不是字符数组)，strlen的值是16
 }
+```
 
 ##情况三：小心在测试的时候别因为Delphi端定义的字符数组长度小于C++给其拷贝的长度导致越界
 
@@ -153,7 +156,7 @@ begin
   ShowMessage(resp);
     //这里弹出框中，弹出的数字是'测试测试测'
 end;
-
+```
 ####C++
 
 ```
@@ -164,7 +167,7 @@ void CallCpp(char *resp)
   strncpy(resp, src, strlen(src));
     //运行到这里，sizeof(resp)的值是4(其实就是一个指针类型的长度)，strlen的值是8
 }
-
+```
 
 ##情况四：如果Delphi端传string给C++，在C++端不能对其进行写操作，否则会抛出 非法地址访问异常
   
@@ -186,6 +189,7 @@ begin
     //CallCpp抛出异常，接着下面的代码就不再执行
   ShowMessage(resp);
 end;
+```
 
 ####C++
 
@@ -197,6 +201,7 @@ void CallCpp(char *resp)
     //因为strncpy相对其进行写操作，所以会出现内存访问错误
     //根本原因还有待研究
 }
+```
  
 ##如果Delphi端传string给C++，在C++端可以进行读操作，没有问题，可以正常传值
     
@@ -217,9 +222,11 @@ begin
     //CallCpp中对char * 入参是只读的，所以这里也是正常调用
     //对C++端的程序进行断点调试，运行的效果和上面使用string传入的效果相同
 end;
+```
     
 ####C++
 
+```
 void CallCpp(char *resp)
 {
   char dest[100];
@@ -228,6 +235,7 @@ void CallCpp(char *resp)
   int n = strlen(dest);  //入参为'测试测试',则dest的长度是8
   int m = sizeof(dest)  //注意，因为在C++中对dest定义的是字符数组，而不是字符指针变量，所以这里sizeof获取的值是100，而不是8
 }
+```
 	  
 ####简单总结
 
