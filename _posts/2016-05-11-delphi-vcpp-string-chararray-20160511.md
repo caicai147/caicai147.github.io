@@ -85,6 +85,7 @@ void CallCpp(char *resp)
   strncpy(resp, src, strlen(resp));
     //无法获取Delphi端Char数组的长度，strlen(resp)获取的值是0
 }
+```
   
 ##应该这样做
     
@@ -96,6 +97,7 @@ var
 begin
   CallCpp(resp);
 end;
+```
     
 ####C++
 
