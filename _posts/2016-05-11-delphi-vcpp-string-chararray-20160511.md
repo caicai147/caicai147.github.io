@@ -13,7 +13,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 
   * [《Delphi字符串与字符数组之间的转换（初始化的重要性）》](http://www.xumenger.com/delphi-string-pchar-chararray-20150422-02/)
   * [《Delphi的字符串、PChar和字符数组之间的转换》](http://www.xumenger.com/delphi-string-pchar-chararray-20150422-01/)
   * [《Delphi中的各种字符串、String、PChar、Char数组》](http://www.xumenger.com/delphi-string-pchar-chararray-20150415/)
-  * [正确理解Delphi中的传值调用/传址调用](http://www.xumenger.com/delphi-value-address-func-proc-20160506/)
+  * [《正确理解Delphi中的传值调用/传址调用》](http://www.xumenger.com/delphi-value-address-func-proc-20160506/)
   * [《正确理解C/C++中的传值调用/传址调用/引用调用》](http://www.xumenger.com/c-cpp-function-value/)
 * 下文讲到了Delphi调用VC++导出的方法时，假如
 * 对于Delphi本身也是这样的情况
