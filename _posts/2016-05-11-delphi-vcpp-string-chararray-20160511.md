@@ -15,8 +15,9 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 
   * [《Delphi中的各种字符串、String、PChar、Char数组》](http://www.xumenger.com/delphi-string-pchar-chararray-20150415/)
   * [《正确理解Delphi中的传值调用/传址调用》](http://www.xumenger.com/delphi-value-address-func-proc-20160506/)
   * [《正确理解C/C++中的传值调用/传址调用/引用调用》](http://www.xumenger.com/c-cpp-function-value/)
-* 下文讲到了Delphi调用VC++导出的方法时，假如
+* 下文讲到了Delphi调用VC++导出的方法时，假如在Delphi和C++之间传递字符串应该注意什么？
 * 对于Delphi本身也是这样的情况
+* 下文展示的是单纯的在入参中传递字符串(字符数组)，其实还可以使用结构体(包含一个char数组)的方式传递字符串
 
 ##前情提要1：每个汉字占用多少字节
 
@@ -30,7 +31,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 
 ####我的环境使用VC++测试
 
 ```
-int len  = strlen("汉字");       //测试的结构是4
+int len  = strlen("汉字");       //长度是4
 ```
 
 ####本质原因
