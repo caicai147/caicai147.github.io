@@ -52,6 +52,11 @@ begin
   test := '测试测试';       //这种写操作并不会抛出异常
 
   ShowMessage(test);        //弹出框的信息是'测试测试'
+  
+  //为什么test的值在该方法内部可以变化
+  //同时看到在执行完该方法后，入参的值并没有变
+  //这就是Delphi的传值调用
+  //参见[正确理解Delphi中的传值调用/传址调用](http://www.xumenger.com/delphi-value-address-func-proc-20160506/)
 end;
 
 procedure WriteconstString(const test: PChar);
