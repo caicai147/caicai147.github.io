@@ -60,6 +60,7 @@ Delphi定义函数指针、声明函数指针对象
 ```
 type
   TCallCpp = function(resp: PChar): Integer; stdcall;
+  hTestDLL: THandle;
 var
   CallCpp: TCallCpp;
 begin
