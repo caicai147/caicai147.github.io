@@ -65,7 +65,7 @@ var
   hTestDLL: THandle;
   CallCpp: TCallCpp;
 begin
-  hTestDLL := LoadLibrary(PChar(path));
+  hTestDLL := LoadLibrary('./test.dll');
   CallCpp := GetProcAddress(hTestDLL, 'CallCpp');
 end;
 ```
