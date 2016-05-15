@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi和C/C++配合编程时的传递结构体规范
+title: Delphi和C/C++配合编程时传递结构体的规范
 categories: c/c++之函数 c/c++之指针与内存 delphi之字符串 delphi之指针与内存 c/c++之字符串 delphi之dll c/c++之dll 软件质量之内存管理
 tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数组越界
 ---
