@@ -9,7 +9,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数�
 
 * 有必要先阅读以下文章
   * [《总结一下最近开发遇到的问题，以及最近需要学习的知识点》](http://www.xumenger.com/learn-plan-20151123/)中关于stdcall关键字的作用说明
-  * [《Delphi和C/C++配合编程时的字符串传值规范》](http://www.xumenger.com/delphi-vcpp-string-chararray-20160511/)中关于字符串的使用规范
+  * [《Delphi和C/C++配合编程时传递字符串的规范》](http://www.xumenger.com/delphi-vcpp-string-chararray-20160511/)中关于字符串的使用规范
   * [《从指针和内存角度区别Delphi的record、record类型的指针、类》](http://www.xumenger.com/delphi-pointer-memory-record/)复习Delphi的结构体
 * 今天简单整理一下最近在Delphi和C++配合编程时使用结构体遇到的问题
   * 不过暂时先止于此，对于更为深层次的研究暂时还没有遇到问题，也就暂时不做整理
@@ -49,7 +49,7 @@ typedef void (__stdcall *TOnReceive)(const char * msg);
 typedef struct InitReq
 {
 	char	IP[16];				//IP
-	int		port;				  //端口
+	int	port;				  //端口
 	char	passwd[30];		//密码
 	char  *username;    //用户名
 	TOnReceive OnReceive;   //定义函数指针变量
@@ -68,6 +68,7 @@ __declspec(dllexport) int  __stdcall CallInit(TInitReq *pInitReq);
 int  __stdcall CallInit(TInitReq *pInitReq)
 {
   //获取Delphi端传入的结构体（以及结构体的各个字段）进行使用
+  //其中处理字符串、字符数组的规范可以参见【http://www.xumenger.com/delphi-vcpp-string-chararray-20160511/】
 }
 ```
 
