@@ -52,7 +52,7 @@ int len  = strlen("汉字");       //长度是4
 C++端导出函数：
 
 ```
-  __declspec(dllexport) int  __stdcall CallCpp(char * resp);
+__declspec(dllexport) int  __stdcall CallCpp(char * resp);
 ```
 
 Delphi定义函数指针、声明函数指针对象
