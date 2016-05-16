@@ -32,14 +32,14 @@ GetLastError在Windows编程的时候也是比较常用，这里做一个说明�
 
 ##TThread方法举例
 
-下面列举一些TThread的方法进行说明，以加深理解！
-
 ####TThread的Create方法实现
 
 注意其中的WinAPI的BeginThread方法：
 
-* 配合TThread.Create调用BeginThread传入@ThreadProc
-* 理解ThreadProc通过调用Execute实现（Execute由开发者自己实现）
+* TThread.Create调用WinAPI方法BeginThread传入@ThreadProc
+* ThreadProc是TThread的一个方法
+* ThreadProc方法是调用Execute方法的
+* Execute方法是由线程的开发者来实现的，也就是我们常说的线程方法
 
 ```
 constructor TThread.Create(CreateSuspended: Boolean);
