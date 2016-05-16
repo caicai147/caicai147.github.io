@@ -11,7 +11,7 @@ tags: delphi WinAPI Windows 多线程 线程
 
 其实Delphi的TThread实现就是对WinAPI的相关线程方法的封装，主要包括：
 
-* 调用WinAPI相关线程API方法
+* 调用WinAPI相关线程API方法以实现功能
 * 将WinAPI的面向过程编程模式包装成面向对象的模式
 * 添加一些新的逻辑、判断、功能
 * 添加异常处理机制
