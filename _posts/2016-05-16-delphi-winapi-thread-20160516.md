@@ -21,12 +21,18 @@ tags: delphi WinAPI Windows 多线程 线程
 GetLastError在Windows编程的时候也是比较常用，这里做一个说明：
 
 * GetLastError是WinAPI
-* GetLastError是获取最近一次的错误号
-* GetLastError的错误号极其解释可以参见[《GetLastError错误码大全》](http://blog.csdn.net/machiner1/article/details/5174056)
+* GetLastError是获取最近一次的错误码
+* GetLastError的错误码及其解释可以参见[《GetLastError错误码大全》](http://blog.csdn.net/machiner1/article/details/5174056)
 * GetLastError式的错误是不会导致抛出异常的，这是错误码并不是异常，无法通过try..except捕获
+* 对于这种错误码就使用GetLastError获取，然后对其进行逻辑判断和正常处理即可
+  * 具体怎么处理就看开发者的设计了：可以忽略，可以抛出异常，可以……
+  * TThread的Suspend方法中就有关于GetLastError的应用
+  * 请直接参见TThread的Suspend的方法
 * 可以使用WinAPI方法SetLastError来设置错误码
 
 ##TThread方法举例
+
+下面列举一些TThread的方法进行说明，以加深理解！
 
 ####TThread的Create方法实现
 
