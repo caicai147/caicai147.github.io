@@ -202,45 +202,45 @@ var
 begin
 
   suspendcount := SuspendThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(1)1  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(1)1  -1
 
   suspendcount := SuspendThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(2)2  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(2)2  -1
 
   suspendcount := SuspendThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(3)3  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(3)3  -1
 
   suspendcount := ResumeThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(4)4  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(4)4  -1
 
   suspendcount := ResumeThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(5)3  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(5)3  -1
 
   suspendcount := ResumeThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(6)2  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(6)2  -1
 
   suspendcount := ResumeThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(7)1  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(7)1  -1
                                                    //此时线程已经被唤醒了
                                                    //线程第一次被唤醒时SuspendCount的值为1
                                                    //当ResumeThread的返回值为1时，线程被唤醒
   suspendcount := ResumeThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(8)0  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(8)0  -1
                                                    //suspendCount为1时，再次调用ResumeThread
                                                    //SuspendCount遍嗯程０
   suspendcount := ResumeThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(9)0  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(9)0  -1
                                                    //SuspendThread会持续增加suspendCount
                                                    //但是ResumeThread将Suspend的值减小到0后便不再减小
   suspendcount := SuspendThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(10)0  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(10)0  -1
                                                    //线程已经被挂起
                                                    //线程第一次被挂起时，SuspendCount为0
   suspendcount := SuspendThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(11)1  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(11)1  -1
                                                    //线程已经被挂起，挂起次数加一
   suspendcount := SuspendThread(t1.Handle);
-  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));//(12)2  -1
+  ShowMessage('挂起次数:' + IntToStr(suspendcount) + '; 是否挂起:' + BoolToStr(t1.Suspended));  //(12)2  -1
                                                    //线程已经被挂起，挂起次数再加一
 end;
 
