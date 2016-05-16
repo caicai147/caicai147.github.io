@@ -8,6 +8,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数�
 ##前情提要
 
 * 有必要先阅读以下文章
+  * [《Delphi和VC++使用DLL配合开发【例程】》](http://www.xumenger.com/delphi-cpp-dll-20160412/)
   * [《总结一下最近开发遇到的问题，以及最近需要学习的知识点》](http://www.xumenger.com/learn-plan-20151123/)中关于stdcall关键字的作用说明
   * [《Delphi和C/C++配合编程时传递字符串的规范》](http://www.xumenger.com/delphi-vcpp-string-chararray-20160511/)中关于字符串的使用规范
   * [《从指针和内存角度区别Delphi的record、record类型的指针、类》](http://www.xumenger.com/delphi-pointer-memory-record/)复习Delphi的结构体
@@ -31,6 +32,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数�
 * 假如哪一步部分出现问题，就会导致Delphi端传到C/C++端的结构体无法在内存上对应起来而出错
   * 比如这个例子，Delphi端定义`IP: array[0..16] of Char;`，C/C++端定义`char	IP[16];`
   * 一个17位，一个16位，就会导致C/C++获取Delphi端传过来的结构体字段解析出错！！
+  * 具体的现象可以自己试一下，不再在这里进行说明了
 * 还有各种不规范的使用场景，这里就暂不一一介绍
 * 就按照下面示例中的规范来进行开发就不会存在问题
 
