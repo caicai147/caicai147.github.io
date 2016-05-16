@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi的TThread类和Win32的线程方法
+title: Delphi的TThread类和WinAPI的线程方法
 categories: delphi之线程 delphi之系统调用 深入学习之多线程 delphi之异常处理
 tags: delphi WinAPI Windows 多线程 线程 异常处理
 ---
