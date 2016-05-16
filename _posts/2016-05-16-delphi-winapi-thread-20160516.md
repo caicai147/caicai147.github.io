@@ -5,9 +5,28 @@ categories: delphi之线程 delphi之系统调用 深入学习之多线程
 tags: delphi WinAPI Windows 多线程 线程
 ---
 
-##Delphi和WinAPI的关系
+##前请提要
 
-其实Delphi的TThread实现就是对WinAPI的相关线程方法的封装，比如
+####Delphi TThread和WinAPI的关系
+
+其实Delphi的TThread实现就是对WinAPI的相关线程方法的封装，主要包括：
+
+* 调用WinAPI相关线程API方法
+* 将WinAPI的面向过程编程模式包装成面向对象的模式
+* 添加一些新的逻辑、判断、功能
+* 添加异常处理机制
+
+####GetLastError方法
+
+GetLastError在Windows编程的时候也是比较常用，这里做一个说明：
+
+* GetLastError是WinAPI
+* GetLastError是获取最近一次的错误号
+* GetLastError的错误号极其解释可以参见[《GetLastError错误码大全》](http://blog.csdn.net/machiner1/article/details/5174056)
+* GetLastError式的错误是不会导致抛出异常的，这是错误码并不是异常，无法通过try..except捕获
+* 可以使用WinAPI方法SetLastError来设置错误码
+
+##TThread方法举例
 
 ####TThread的Create方法实现
 
