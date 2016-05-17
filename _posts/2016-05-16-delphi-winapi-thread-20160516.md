@@ -301,10 +301,8 @@ procedure tt.Execute;
 begin
   While not Terminated do
   begin
-
     Sleep(100);
   end;
-
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
