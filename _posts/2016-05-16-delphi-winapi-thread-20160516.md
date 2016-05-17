@@ -35,12 +35,13 @@ GetLastError在Windows编程的时候也是比较常用，这里做一个说明�
 
 ####TThread的Create方法实现
 
-注意其中的WinAPI的BeginThread方法：
-
 * TThread.Create调用WinAPI方法BeginThread传入@ThreadProc
+* BeginThread内部调用的是CreateThread方法
+  * BeginThread并不是WinAPI，而是再调用WinAPI方法CreateThread
+  * `function CreateThread; external kernel32 name 'CreateThread';`
 * ThreadProc是TThread的一个方法
-* ThreadProc方法是调用Execute方法的
-* Execute方法是由线程的开发者来实现的，也就是我们常说的线程方法
+  * ThreadProc方法是调用Execute方法的
+  * Execute方法是由线程的开发者来实现的，也就是我们常说的线程方法
 
 ```
 constructor TThread.Create(CreateSuspended: Boolean);
@@ -69,7 +70,7 @@ end;
 
 ####TThread的ThreadProc方法实现
 
-* ThreadProc方法会在TThread.Create调用WinAPI的BeginThread方法中会传入这个方法的地址
+* ThreadProc方法会在TThread.Create调用BeginThread方法中会传入这个方法的地址
 * Execute其实就是在ThreadProc中被调用的，我们开发线程的时候就是实现Execute方法
 
 ```
@@ -147,7 +148,7 @@ end;
   * 假如线程的运行状态是正在运行，第一次调用SuspendThread，返回暂停计数为0，线程被挂起
   * ResumeThread将唤醒线程，将暂停计数减少1，如果减少后计数是0 了，就不会在减了
   * ResumeThread第一次唤醒线程使其运行时，暂停计数是1，再次唤醒暂停计数变为0，然后暂停计数就不会再变了
-* 参见[《关于TThread类的Suspend()方法和Resume()方法》](http://blog.csdn.net/beroy/article/details/1551832)
+* 另外可以参考[《关于TThread类的Suspend()方法和Resume()方法》](http://blog.csdn.net/beroy/article/details/1551832)
 
 ```
 unit Unit1;
