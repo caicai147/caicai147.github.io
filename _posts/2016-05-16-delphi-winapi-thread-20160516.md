@@ -193,8 +193,7 @@ implementation
  BoolToStr(True)值为 -1   BoolToStr(False)值为 0
 
  因为调用的WinAPI，所以可以看到虽然线程已经开始运行了，但是Suspended还是True
-    因为Suspended的值是在调用Delphi的TThread的Resume和Suspend方法时
-    调用ResumeThread和SuspendThread，同时修改Suspended的值
+    因为Suspended的值是在调用Delphi的TThread的Resume和Suspend方法时，同时修改Suspended的值
     但是现在直接调用WinAPI，所以Suspended的值不会变化
     所以注意：如果使用ResumeThread或者SuspendThread，那么就不要使用TThread的Suspended属性     }
 procedure TForm1.btn1Click(Sender: TObject);
