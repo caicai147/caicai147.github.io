@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi之通过代码示例学习XML解析、StringReplace的用法
-categories: delphi之字符串 delphi之精确使用api
+categories: delphi之字符串 delphi之精确使用api delphi之常见网络包解析
 tags: delphi xml stringreplace
 ---
 
