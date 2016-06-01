@@ -150,7 +150,7 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况三：小心在测试的时候别因为Delphi端定义的字符数组长度小于C++给其拷贝的长度导致越界
+##情况三：小心别因为Delphi端定义的字符数组长度小于C++给其拷贝的长度导致越界
 
 ####Delphi
 
@@ -182,7 +182,7 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况四：如果Delphi端传string给C++，在C++端不能对其进行写操作，否则会抛出 非法地址访问异常
+##情况四：若Delphi端传string给C++，在C++端不能对其进行写操作，否则会报非法地址访问异常
   
 ####参考：
 
@@ -197,6 +197,7 @@ var
   resp: string;
 begin
   resp := '测试测试';
+  //注意是将string强转成PChar传给C++端的
   CallCpp(PChar(resp));  
     //因为CallCpp中有对resp的写操作， 所以运行到这里会出现 内存地址非法访问错误
     //CallCpp抛出异常，接着下面的代码就不再执行
@@ -216,7 +217,7 @@ void CallCpp(char *resp)
 }
 ```
  
-##如果Delphi端传string给C++，在C++端可以进行读操作，没有问题，可以正常传值
+##若Delphi端传string给C++，在C++端可以进行读操作，没有问题，可以正常传值
     
 ####Delphi
 
@@ -225,6 +226,7 @@ var
   resp: string;
 begin
   resp := '测试测试';
+  //注意是将string强转成PChar传给C++端的
   CallCpp(PChar(resp));
     //因为C++端对其进行的是读操作，所以没有问题，正常执行，
     //对于Delphi端，所有参数为PChar的方法，可以直接不对string进行转型而使用
