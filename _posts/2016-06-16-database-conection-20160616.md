@@ -20,18 +20,18 @@ tags: delphi oracle SQLServer 数据库 数据库连接
 
 ```
 --查看当前的数据库连接限制值设置
->select value from master.dbo.sysconfigures where [config]=103
+> select value from master.dbo.sysconfigures where [config]=103
 
 ============================================================================================================
 
 --设置show advanced options 值为1 才能允许下面对数据库连接数进行设置
->exec sp_configure 'show advanced options', 1
+> exec sp_configure 'show advanced options', 1
 
 --执行RECONFIGURE语句使之生效
->RECONFIGURE
+> RECONFIGURE
 
 --设置连接数限制
->exec sp_configure 'user connections', 100
+> exec sp_configure 'user connections', 100
 
 --重启服务使之生效：重启服务：打开SQL Server Management Studio-->右键数据库实例-->重新启动
 ```
@@ -40,18 +40,18 @@ tags: delphi oracle SQLServer 数据库 数据库连接
 
 ```
 --查看已经使用的连接数个数
->select count(*) from sys.dm_exec_connections
+> select count(*) from sys.dm_exec_connections
 
 --查看当前所有连接的详细信息
->select * from sys.dm_exec_connections
+> select * from sys.dm_exec_connections
 
 ============================================================================================================
 
 --查看当前有多少会话，一个连接可以有多个会话
->select count(*) from sys.dm_exec_sessions
+> select count(*) from sys.dm_exec_sessions
 
 --查看当前所有会话的详细信息
->select * from sys.dm_exec_sessions
+> select * from sys.dm_exec_sessions
 ```
 
 ##Oracle相关命令
@@ -59,7 +59,7 @@ tags: delphi oracle SQLServer 数据库 数据库连接
 检查process设置情况
 
 ```
->show parameter processes
+> show parameter processes
 
 --输出如下信息
 NAME                                   TYPE        VALUE
@@ -75,7 +75,7 @@ processes                            integer     150
 检查当前已经占有的process情况
 
 ```
->select count(*) from v$process;
+> select count(*) from v$process;
 
 --输出如下信息
   COUNT(*)
@@ -86,7 +86,7 @@ processes                            integer     150
 检查session的设置情况
 
 ```
->show parameter session
+> show parameter session
 
 --输出如下信息
 NAME                                  TYPE        VALUE
@@ -106,7 +106,7 @@ shared_server_sessions               integer
 检查当前session的占用情况
 
 ```
->select count(*) from v$session;
+> select count(*) from v$session;
 
 --输出信息
   COUNT(*)
@@ -118,16 +118,16 @@ shared_server_sessions               integer
 
 ```
 --修改process的最大限制值
->alter system set processes=300 scope=spfile;
+> alter system set processes=300 scope=spfile;
 
 --修改session的最大限制值
->alter system set sessions=335 scope=spfile;
+> alter system set sessions=335 scope=spfile;
 --oracle文档要求，SESSIONS和TRANSACTIONS的初始化参数应该源于PROCESSES参数
 --根据默认设置SESSIONS = PROCESSES * 1.1 + 5
 
 --重启数据库后参数修改完成
->shutdown   --如果长时间没反应可能是连接请求没又关闭，也可以使用  abort参数直接关闭
->startup    --可以用 force参数   关闭当前运行数据库后正常启动。
+> shutdown   --如果长时间没反应可能是连接请求没又关闭，也可以使用  abort参数直接关闭
+> startup    --可以用 force参数   关闭当前运行数据库后正常启动。
 ```
 
 ##依然存在的疑问
