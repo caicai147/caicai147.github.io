@@ -1,10 +1,9 @@
 ---
 layout: post
-title: 数据库连接数设置和查看命令
-categories:  数据库之oracle 数据库之sqlserver
-tags: delphi oracle SQLServer 数据库 数据库连接  
+title: 数据库连接和会话
+categories:  数据库之oracle 数据库之sqlserver 数据库之sql
+tags: delphi oracle SQLServer 数据库 数据库连接 sql 数据库会话
 ---
-
 
 ##扩展资料
 
