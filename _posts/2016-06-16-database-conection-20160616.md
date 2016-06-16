@@ -22,6 +22,7 @@ tags: delphi oracle SQLServer 数据库 数据库连接
 --查看当前的数据库连接限制值设置
 select value from master.dbo.sysconfigures where [config]=103
 
+------------------------------------------------------------------------------------------------------------
 
 --设置show advanced options 值为1 才能允许下面对数据库连接数进行设置
 exec sp_configure 'show advanced options', 1
@@ -44,6 +45,7 @@ select count(*) from sys.dm_exec_connections
 --查看当前所有连接的详细信息
 select * from sys.dm_exec_connections
 
+------------------------------------------------------------------------------------------------------------
 
 --查看当前有多少会话，一个连接可以有多个会话
 select count(*) from sys.dm_exec_sessions
@@ -60,14 +62,14 @@ select * from sys.dm_exec_sessions
 show parameter processes
 
 --输出如下信息
-NAME                         TYPE        VALUE
+NAME                                   TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 aq_tm_processes                      integer     0
 db_writer_processes                  integer     6
 gcs_server_processes                 integer     0
 job_queue_processes                  integer     0
 log_archive_max_processes            integer     2
-processes                    integer     150
+processes                            integer     150
 ```
 
 检查当前已经占有的process情况
@@ -87,7 +89,7 @@ select count(*) from v$process;
 show parameter session
 
 --输出如下信息
-NAME                         TYPE        VALUE
+NAME                                  TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 java_max_sessionspace_size           integer     0
 java_soft_sessionspace_limit         integer     0
@@ -96,7 +98,7 @@ license_sessions_warning             integer     0
 logmnr_max_persistent_sessions       integer     1
 session_cached_cursors               integer     20
 session_max_open_files               integer     10
-sessions                     integer     160
+sessions                             integer     160
 
 shared_server_sessions               integer
 ```
