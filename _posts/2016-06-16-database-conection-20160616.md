@@ -25,10 +25,13 @@ select value from master.dbo.sysconfigures where [config]=103
 
 --设置show advanced options 值为1 才能允许下面对数据库连接数进行设置
 exec sp_configure 'show advanced options', 1
+
 --执行RECONFIGURE语句使之生效
 RECONFIGURE
+
 --设置连接数限制
 exec sp_configure 'user connections', 100
+
 --重启服务使之生效：重启服务：打开SQL Server Management Studio-->右键数据库实例-->重新启动
 ```
 
@@ -82,6 +85,7 @@ select count(*) from v$process;
 
 ```
 show parameter session
+
 --输出如下信息
 NAME                         TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
