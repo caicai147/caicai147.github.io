@@ -11,6 +11,7 @@ tags: delphi oracle SQLServer 数据库 数据库连接 sql 数据库会话
 * [《SQL Server 和 Oracle 以及 MySQL 有哪些区别？》](https://www.zhihu.com/question/19866767)
 * [《SQL Server 查询性能优化 相关文章》](http://www.cnblogs.com/xcsn/p/4929724.html)
 * [《W3School SQL 教程》](http://www.w3school.com.cn/sql/index.asp)
+* [《测试SQL Server的连接数》](http://www.xumenger.com/sqlserver-conn-20160606/)
 * [《ORA-12516: TNS: 监听程序找不到符合协议堆栈要求的可用处理程错误解决方案》](http://www.cnblogs.com/dba_xiaoqi/archive/2010/11/01/1866472.html)
 
 ##SQL Server相关命令
