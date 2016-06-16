@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 数据库连接和会话
+title: 数据库连接和会话的设置方法
 categories:  数据库之oracle 数据库之sqlserver 数据库之sql
 tags: delphi oracle SQLServer 数据库 数据库连接 sql 数据库会话
 ---
