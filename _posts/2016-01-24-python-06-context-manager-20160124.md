@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python之上下文管理器【转载】
+title: Python之上下文管理器
 categories: python之基础 
 tags: python 上下文管理器
 ---
