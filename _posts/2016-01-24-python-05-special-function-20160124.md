@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python之特殊方法与多范式【转载】
+title: Python之特殊方法与多范式
 categories: python之基础
 tags: python 
 ---
