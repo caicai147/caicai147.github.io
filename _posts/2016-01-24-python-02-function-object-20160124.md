@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python之函数对象【转载】
+title: Python之函数对象
 categories: python之基础 python之函数
 tags: python 函数 函数对象
 ---
