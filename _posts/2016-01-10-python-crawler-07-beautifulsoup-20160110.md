@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python爬虫之Beautiful Soup【转载】
+title: Python爬虫之Beautiful Soup
 categories: python之基础 python之网络爬虫
 tags: python 爬虫 beautifulsoup
 ---
