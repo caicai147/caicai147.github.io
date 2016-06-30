@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python爬虫之URLError【转载】
+title: Python爬虫之URLError
 categories: python之基础 python之网络爬虫
 tags: python 爬虫 urlerror httperror
 ---
