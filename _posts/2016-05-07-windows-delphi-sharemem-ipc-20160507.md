@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 实例展示Delphi共享内存的使用【例程】
+title: 实例展示Delphi共享内存的使用
 categories: delphi之指针与内存 delphi之消息机制 windows之消息机制 delphi之多进程
 tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量
 ---
