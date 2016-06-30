@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python爬虫之urllib【转载】
+title: Python爬虫之urllib
 categories: python之基础 python之网络爬虫
 tags: python 爬虫 urllib urllib2
 ---
