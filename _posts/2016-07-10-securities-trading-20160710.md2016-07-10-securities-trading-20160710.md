@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 证券交易流程、规则、重要业务
+title: 证券交易流程、业务规则
 categories: 金融证券知识
 tags: 证券 证券市场
 ---
