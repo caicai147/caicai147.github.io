@@ -126,4 +126,4 @@ select * from fn_trace_gettable('E:\DbLog\deadlockdetect.trc',1)
 
 截图如下，可以将鼠标放在图形上，就会展示对应的SQL语句
 
-![img](../media/image/2016-07-11/02.png)
+![img](../media/image/2016-07-11/02.jpg)
