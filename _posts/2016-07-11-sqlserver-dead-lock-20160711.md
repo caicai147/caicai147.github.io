@@ -122,6 +122,6 @@ select * from fn_trace_gettable('E:\DbLog\deadlockdetect.trc',1)
 
 依次 进入Profiler（以管理员身份打开）-> 文件 -> 打开跟踪文件 ->选择E:\DbLog\deadlockdetect.trc，就可以看到以图形形式展现的死锁信息了。 
 
-截图如下，可以将鼠标放在图形上，就会展示对应的SQL语句
+截图如下，可以看到死锁的的关键字：DeadLock graph，先选中死锁的那条记录，然后到下面的图形界面将鼠标放在图形上，就会展示对应的SQL语句
 
 ![img](../media/image/2016-07-11/02.jpg)
