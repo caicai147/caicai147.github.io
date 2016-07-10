@@ -529,7 +529,7 @@ update table testLock..test set name = 'jjj' where id = 10;
 commit;
 ```
 
- T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update。当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权
+ T1执行完select，共享锁仍然不会释放，仍然会被hold（持有），T2也因此必须等待而不能update。当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权
 
 **tablockx**
 
