@@ -572,7 +572,7 @@ select * from testLock..test(xlock tablock)
 
 set lock_timeout 4000 用来设置锁等待时间，单位是毫秒
 
-可以用select @@LOCK_TIMEOUT查看当前session的锁超时设置。-1 意味着
+可以用 select @@LOCK_TIMEOUT 查看当前session的锁超时设置。-1 意味着
 永远等待。
 
 ```
