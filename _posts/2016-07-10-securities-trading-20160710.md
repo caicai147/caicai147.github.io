@@ -7,7 +7,8 @@ tags: 证券 证券市场
 
 ##证券交易概述
 
-相关的基础概念、术语，可以参考[《金融证券基础知识、概念整理归纳》](http://www.xumenger.com/financial-knowledge-20160709/)
+* 相关的基础概念、术语，可以参考[《金融证券基础知识、概念整理归纳》](http://www.xumenger.com/financial-knowledge-20160709/)
+* 推荐对比学习[《证券公司信息化》](http://www.xumenger.com/finance-information-20160129/)
 
 **证券交易的方式**
 
