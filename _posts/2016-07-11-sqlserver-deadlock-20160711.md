@@ -94,7 +94,7 @@ go
 **2.暂停和停止服务器端跟踪**
 
 ```  
---先执行这个SQL，否则直接执行下面暂停的SQL会报错： 无法停止或修改默认跟踪。请使用SP_CONFIGURE 将其关闭
+--先执行这个SQL，否则如果直接执行下面暂停的SQL会报错： 无法停止或修改默认跟踪。请使用SP_CONFIGURE 将其关闭
  EXEC sp_configure 'show advanced options', 1;
  GO
  RECONFIGURE;
