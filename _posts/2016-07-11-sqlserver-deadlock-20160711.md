@@ -94,11 +94,24 @@ go
 **2.暂停和停止服务器端跟踪**
 
 ```  
+--先执行这个SQL，否则直接执行下面暂停的SQL会报错： 无法停止或修改默认跟踪。请使用SP_CONFIGURE 将其关闭
+ EXEC sp_configure 'show advanced options', 1;
+ GO
+ RECONFIGURE;
+ GO
+ EXEC sp_configure 'default trace enabled', 0;
+ GO
+ RECONFIGURE;
+ GO
+ 
+ 
 --如果要暂停上面的服务器端跟踪，可运行下面的语句：
+--注意：要想停止服务器跟踪，必须先执行这条暂停的SQL命令，不能直接执行下面的停止的SQL命令
 exec sp_trace_setstatus 1, 0;
 --第一个参数表示TraceID,即步骤1中的输出参数。第二个参数表示将状态改为0，即暂停
 
 
+--先执行暂停的SQL，才能接着执行停止跟踪的SQL，如果直接执行停止的SQL会报错的！
 --如果要停止上面的服务器端跟踪，可运行下面的语句：
 exec sp_trace_setstatus 1, 2;
 --第一个参数表示TraceID,即步骤1中的输出参数。第二个参数表示将状态改为2，即停止
