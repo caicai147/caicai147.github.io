@@ -164,7 +164,7 @@ var
   AdoQry: TADOQuery;
   sSql: string;
 begin
-  sSql := 'update practice set uname = :name where uname = :name';
+  sSql := 'update practice set uname = :name where uname = :name';  //两个变量同名，都是:name，会导致报错
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
