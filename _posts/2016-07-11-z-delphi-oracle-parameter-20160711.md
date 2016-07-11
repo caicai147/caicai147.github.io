@@ -133,7 +133,7 @@ var
   AdoQry: TADOQuery;
   sSql: string;
 begin
-  sSql := 'update practice set uname = :name where uno = :no';
+  sSql := 'update practice set uname = :name where uname = :name1';
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
@@ -142,8 +142,38 @@ begin
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
-      AdoQry.Parameters.ParamByName('no').Value:= 'no2';
+      AdoQry.Parameters.ParamByName('name1').Value:= 'name1';
       AdoQry.Parameters.ParamByName('name').Value:= 'lssls';
+      //AdoQry.Open;    //绑定变量法更新时使用Open会报错
+      AdoQry.ExecSQL;   //应该使用ExecSQL
+    except
+      ShowMessage('绑定变量法更新报错');
+    end;
+  finally
+    AdoQry.Free;
+    AdoConn.Free;
+  end;
+end;
+```
+
+【特别小心】如果使用绑定变量法的两个变量同名的话，会导致报错：“不正常的定义参数对象，提供了不一致或不完整的信息”，比如下面例程所展示的
+
+```
+var
+  AdoConn: TADOConnection;
+  AdoQry: TADOQuery;
+  sSql: string;
+begin
+  sSql := 'update practice set uname = :name where uname = :name';
+  AdoConn := TADOConnection.Create(nil);
+  AdoQry := TADOQuery.Create(nil);
+  try
+    try
+      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.Open;
+      AdoQry.Connection := AdoConn;
+      AdoQry.SQL.Text := sSql;
+      AdoQry.Parameters.ParamByName('name').Value:= 'name1'; 
       //AdoQry.Open;    //绑定变量法更新时使用Open会报错
       AdoQry.ExecSQL;   //应该使用ExecSQL
     except
