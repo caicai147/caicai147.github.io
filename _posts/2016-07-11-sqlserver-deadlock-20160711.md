@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 整理一种简单的SQL Server 死锁问题跟踪与定位的方法
+title: SQL Server服务器端跟踪定位导致死锁的SQL
 categories: 数据库之sqlserver 深入学习之数据库原理 好资源之开发神器
 tags: SQLServer 锁 sql 死锁 数据库 数据库连接 Profiler
 ---
