@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: Delphi使用绑定变量法操作Oracle
 categories: 数据库之oracle delphi之数据库
 tags: sql oracle 数据库 delphi 绑定变量
 ---
@@ -18,7 +18,7 @@ tags: sql oracle 数据库 delphi 绑定变量
 
 ##基础数据准备
 
-创建用于测试的数据表，并插入2条测试数据
+在Oracle中创建用于测试的数据表，并插入2条测试数据
 
 ```
 create table practice(uno varchar(8), uname varchar(20));
@@ -142,6 +142,66 @@ begin
       AdoQry.ExecSQL;   //应该使用ExecSQL
     except
       ShowMessage('绑定变量法更新报错');
+    end;
+  finally
+    AdoQry.Free;
+    AdoConn.Free;
+  end;
+end;
+```
+
+##Delphi执行普通SQL插入
+
+```
+var
+  AdoConn: TADOConnection;
+  AdoQry: TADOQuery;
+  sSql, name: string;
+begin 
+  sSql := 'insert into practice(uno, uname) values(''no4'', ''name4'')';
+  AdoConn := TADOConnection.Create(nil);
+  AdoQry := TADOQuery.Create(nil);
+  try
+    try
+      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.Open;
+      AdoQry.Connection := AdoConn;
+      AdoQry.SQL.Text := sSql; 
+      AdoQry.ExecSQL;
+      //AdoQry.Open;    //普通SQL插入新数据时使用Open会报错
+    except
+      ShowMessage('普通SQL插入报错');
+    end;
+  finally
+    AdoQry.Free;
+    AdoConn.Free;
+  end;
+end;
+```
+
+##Delphi存储过程插入
+
+```
+var
+  AdoConn: TADOConnection;
+  AdoQry: TADOQuery;
+  sSql, name: string;
+begin 
+  sSql := 'insert into practice(uno, uname) values(:no, :name)';
+  AdoConn := TADOConnection.Create(nil);
+  AdoQry := TADOQuery.Create(nil);
+  try
+    try
+      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.Open;
+      AdoQry.Connection := AdoConn;
+      AdoQry.SQL.Text := sSql;
+      AdoQry.Parameters.ParamByName('no').Value:= 'no3';
+      AdoQry.Parameters.ParamByName('name').Value:= 'name3';
+      AdoQry.ExecSQL;   
+      //AdoQry.Open;    //绑定变量法插入新数据时使用Open会报错
+    except
+      ShowMessage('绑定变量法插入报错');
     end;
   finally
     AdoQry.Free;
