@@ -56,7 +56,7 @@ begin
       name := AdoQry.FieldByName('uname').AsString;
       ShowMessage(name);
     except
-      ShowMessage('普通SQL更新报错');
+      ShowMessage('普通SQL查询报错');
     end;
   finally
     AdoQry.Free;
@@ -88,7 +88,7 @@ begin
       name := AdoQry.FieldByName('uname').AsString;
       ShowMessage(name);
     except
-      ShowMessage('绑定变量法更新报错');
+      ShowMessage('绑定变量法查询报错');
     end;
   finally
     AdoQry.Free;
@@ -133,7 +133,7 @@ var
   AdoQry: TADOQuery;
   sSql: string;
 begin
-  sSql := 'update practice set uname = :name where uname = :name1';
+  sSql := 'update practice set uname = :name where uname = :namecondition';
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
@@ -142,7 +142,7 @@ begin
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
-      AdoQry.Parameters.ParamByName('name1').Value:= 'name1';
+      AdoQry.Parameters.ParamByName('namecondition').Value:= 'name1';
       AdoQry.Parameters.ParamByName('name').Value:= 'lssls';
       //AdoQry.Open;    //绑定变量法更新时使用Open会报错
       AdoQry.ExecSQL;   //应该使用ExecSQL
