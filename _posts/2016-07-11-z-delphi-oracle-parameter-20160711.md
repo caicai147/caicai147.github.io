@@ -40,14 +40,15 @@ insert into practice values('no2', 'name2');
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql, name: string;
+  sSql, name, ConStr: string;
 begin
   sSql := 'select uname from practice where uno = ''no1'' ';
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
@@ -71,14 +72,15 @@ end;
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql, name: string;
+  sSql, name, ConStr: string;
 begin
   sSql := 'select uname from practice where uno = :no';
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
@@ -103,14 +105,15 @@ end;
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql: string;
+  sSql, ConStr: string;
 begin
   sSql := 'update practice set uname = ''testnm'' WHERE uno = ''no1'' ';
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
@@ -131,14 +134,15 @@ end;
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql: string;
+  sSql, ConStr: string;
 begin
   sSql := 'update practice set uname = :name where uname = :namecondition';
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
@@ -162,14 +166,15 @@ end;
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql: string;
+  sSql, ConStr: string;
 begin
   sSql := 'update practice set uname = :name where uname = :name';  //两个变量同名，都是:name，会导致报错
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
@@ -192,14 +197,15 @@ end;
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql, name: string;
+  sSql, name, ConStr: string;
 begin 
   sSql := 'insert into practice(uno, uname) values(''no4'', ''name4'')';
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql; 
@@ -221,14 +227,15 @@ end;
 var
   AdoConn: TADOConnection;
   AdoQry: TADOQuery;
-  sSql, name: string;
+  sSql, name, ConStr: string;
 begin 
   sSql := 'insert into practice(uno, uname) values(:no, :name)';
+  ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
   try
     try
-      AdoConn.ConnectionString := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
+      AdoConn.ConnectionString := ConStr;
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
