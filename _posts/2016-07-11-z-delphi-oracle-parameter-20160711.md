@@ -138,7 +138,7 @@ var
 begin
   sSql := 'update practice '
         + set uname = case when :name_condition1 = ''condition'' then :name_result1 else :name_result2 end '
-        + 'where uno = :no_condition1;';
+        + 'where uno = :no_condition1';
         
   //如果是下面这样的，SQL中有; 那么就会导致执行报错：ORA-00911: 无效字符
   //sSql := 'update practice '
