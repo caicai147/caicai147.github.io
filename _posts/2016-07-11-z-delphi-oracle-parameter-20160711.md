@@ -136,7 +136,13 @@ var
   AdoQry: TADOQuery;
   sSql, ConStr: string;
 begin
-  sSql := 'update practice set uname = case when :name = ''condition'' then :name1 else :name2 end where uname = :name3';
+  sSql := 'update practice set uname = case when :name_condition1 = ''condition'' then :name_result1 else :name_result2 end '
+        + 'where uno = :no_condition1;';
+        
+  //如果是下面这样的，SQL中有; 那么就会导致执行报错：ORA-00911: 无效字符
+  //sSql := 'update practice set uname = case when :name_condition1 = ''condition'' then :name_result1 else :name_result2 end '
+  //      + 'where uno = :no_condition1;';
+
   ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
@@ -146,12 +152,12 @@ begin
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
-      AdoQry.Parameters.ParamByName('name').Value:= 'condition';
-      AdoQry.Parameters.ParamByName('name1').Value:= 'result1';
-      AdoQry.Parameters.ParamByName('name2').Value:= 'result2';
-      AdoQry.Parameters.ParamByName('name3').Value:= 'filter';
-      //实现对practice表中uname='filter'的记录进行有条件的更新
-      
+      AdoQry.Parameters.ParamByName('name_condition1').Value:= 'condition';
+      AdoQry.Parameters.ParamByName('name_result1').Value:= 'result1';
+      AdoQry.Parameters.ParamByName('name_result2').Value:= 'result2';
+      AdoQry.Parameters.ParamByName('no_condition1').Value:= 'filter';
+      //实现对practice表中uno='filter'的记录进行有条件的更新
+
       //AdoQry.Open;    //绑定变量法更新时使用Open会报错
       AdoQry.ExecSQL;   //应该使用ExecSQL
     except
