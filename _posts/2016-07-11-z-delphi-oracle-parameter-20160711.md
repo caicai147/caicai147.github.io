@@ -128,7 +128,7 @@ begin
 end;
 ```
 
-##Delphi存储过程更新
+##Delphi绑定变量更新
 
 ```
 var
@@ -233,7 +233,7 @@ begin
 end;
 ```
 
-##Delphi存储过程插入
+##Delphi绑定变量插入
 
 ```
 var
