@@ -136,7 +136,7 @@ var
   AdoQry: TADOQuery;
   sSql, ConStr: string;
 begin
-  sSql := 'update practice set uname = :name where uname = :namecondition';
+  sSql := 'update practice set uname = case when :name = ''condition'' then :name1 else :name2 end where uname = :name3';
   ConStr := 'Provider=OraOLEDB.Oracle.1;Persist Security Info=False;User ID=trade;Password=trade;Data Source=MINE' ;
   AdoConn := TADOConnection.Create(nil);
   AdoQry := TADOQuery.Create(nil);
@@ -146,8 +146,12 @@ begin
       AdoConn.Open;
       AdoQry.Connection := AdoConn;
       AdoQry.SQL.Text := sSql;
-      AdoQry.Parameters.ParamByName('namecondition').Value:= 'name1';
-      AdoQry.Parameters.ParamByName('name').Value:= 'lssls';
+      AdoQry.Parameters.ParamByName('name').Value:= 'condition';
+      AdoQry.Parameters.ParamByName('name1').Value:= 'result1';
+      AdoQry.Parameters.ParamByName('name2').Value:= 'result2';
+      AdoQry.Parameters.ParamByName('name3').Value:= 'filter';
+      //实现对practice表中uname='filter'的记录进行有条件的更新
+      
       //AdoQry.Open;    //绑定变量法更新时使用Open会报错
       AdoQry.ExecSQL;   //应该使用ExecSQL
     except
