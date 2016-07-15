@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 记一种排查Access Violation的方法
-categories: 深入学习之操作系统原理 好资源之开发神器 深入学习之编译原理
+categories: 深入学习之操作系统 好资源之开发神器 深入学习之编译原理
 tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows dll 非法地址 堆 栈 内存
 ---
 
