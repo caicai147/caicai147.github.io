@@ -37,7 +37,7 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
 
 ##分析dump文件的常用命令
 
-* **!analyze**扩展显示当前异常或bug check的信息。一般使用**!analyze -v**
+* **!analyze** 扩展显示当前异常或bug check的信息。一般使用 **!analyze -v**
 * 线程相关的命令
   * 出错的线程调用栈信息输出使用 **kL** 或者 **kbL** 或者 **kbn** 命令
   * **~** 命令输出所有线程的信息
@@ -49,7 +49,8 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
 * **LM** 输出进程运行所加载的所有dll
 * **lmf** 输出更详细的dll信息，包括这个dll的堆栈开始和结束地址
   * 使用lmf输出的模块地址，是程序启动时就需要加载的栈地址
-  * 堆地址是程序运行时申请的内存，lmf输出的模块地址中不包含堆地址，因为堆地址不属于某个具体模块
+  * 堆地址是程序运行时申请的内存
+  * lmf输出的模块地址中不包含堆地址，因为堆地址不属于某个具体模块
   * 本文用到的命令主要是lmf命令
 
 ##一步步展示如何使用dump和Map文件定位错误行
