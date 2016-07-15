@@ -129,7 +129,7 @@ select * from fn_trace_gettable('E:\DbLog\deadlockdetect.trc',1)
 
 ![img](../media/image/2016-07-11/01.png)
  
-结果中的TextData 列即以XML的形式返回死锁的详细信息。将TextData 的信息复制输出到文本文件中，然后通过搜索SQL的关键词，比如select、update、where、from、set等来找到信息中的SQL，就可以找到导致死锁的SQL语句。同时在该信息中还有死锁相关的进程ID等信息！
+结果中的TextData 列即以XML的形式返回死锁的详细信息。将TextData 的信息复制输出到文本文件中，然后通过搜索SQL的关键词，比如select、update、where、from、set等来找到信息中的SQL，就可以找到导致死锁的两条SQL语句。同时在该信息中还有死锁相关的进程ID等信息！
 
 2).在SQL Server Profiler中打开。
 
