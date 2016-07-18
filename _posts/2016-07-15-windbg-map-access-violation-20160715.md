@@ -19,6 +19,20 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
 * [《利用WinDbg找出程序崩溃的代码行号》](http://www.cctry.com/forum.php?mod=viewthread&tid=41078&fromuid=1817)
 * [《How to analyze a dump file from a Delphi DLL file?》](http://stackoverflow.com/questions/1237988/how-to-analyze-a-dump-file-from-a-delphi-dll-file)
 
+**第一时间和第一现场**
+
+* 就像侦探查案一样，出现问题后能第一时间达到第一现场极才能获取最重要的信息
+* 第一时间
+  * 比如本文中介绍的非法地址访问错误，最好是能够在刚报错时就获取进程的dump文件
+  * 因为第一时间获取的dump文件在分析时还可以保留比较详细的出问题时候的堆栈情况
+  * 如果过了比较长一段时间后在dump，那么可能一些重要的信息就丢失了
+* 第一现场
+  * 比如本文介绍的非法地址访问错误，可能会有这样的情况：
+  * 出现一次报错后，会持续引发后续的其他报错
+  * 后续的报错可能就是第一次报错引起的结果，和为什么出现报错已经相差甚远
+  * 如果一味的针对后续的报错进行排查，可能是完全南辕北辙的过程
+  * 所以出现类似的问题时，最好是结合dump 等信息并且针对第一个报错进行分析
+
 ##提前做好基础设置和基础信息了解
 
 * 首先参考[《WinDbg配置Symbol(符号)》](http://www.xumenger.com/windbg-symbol-20160521/)在安装好WinDbg后进行基础的初步的设置
