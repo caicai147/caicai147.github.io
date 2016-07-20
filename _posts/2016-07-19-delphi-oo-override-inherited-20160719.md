@@ -1,11 +1,11 @@
 ---
 layout: post
 title: override和inherited关键字在Delphi面向对象多态机制中的作用
-categories: delphi之面向对象
-tags: delphi 面向对象 override inherited 继承 多态 构造 析构
+categories: delphi之面向对象 delphi之指针与内存 深入学习之面向对象 软件质量之内存管理 深入学习之内存管理
+tags: delphi 面向对象 override inherited 继承 多态 构造 析构 内存 内存泄露
 ---
 
-##正确的语法
+##正确的语法：内存正确申请和释放
 
 先将Delphi面向对象编程时候正确使用继承、多态的编程实例代码展示出来，具体一点就是正确地使用override、inherited关键字的示例程序
 
@@ -201,7 +201,7 @@ TTestClass3 Destroy
 
 这样也可能会造成内存泄露
 
-##错误的用法情况三：可能会有非访问未申请的内存
+##错误的用法情况三：可能会非法访问未申请的内存
 
 其他地方的编码规范和正确的示例一致，只有下面展示的这个地方有变化：三个类的Create方法都没有使用inherited关键字。可以点击[【这里】](../download/20160719/4.zip)下载demo程序
 
