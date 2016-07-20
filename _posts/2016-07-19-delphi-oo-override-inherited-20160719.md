@@ -2,7 +2,7 @@
 layout: post
 title: override和inherited关键字在Delphi面向对象多态机制中的作用
 categories: delphi之面向对象
-tags: delphi 面向对象 override inherited
+tags: delphi 面向对象 override inherited 继承 多态 构造 析构
 ---
 
 ##正确的语法
