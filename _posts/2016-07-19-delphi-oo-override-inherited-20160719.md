@@ -7,7 +7,9 @@ tags: delphi 面向对象 override inherited
 
 ##正确的语法
 
-先将Delphi面向对象编程时候正确使用继承、多态的编程实例代码展示出来，或者点击[【这里】](../download/20160719/1.zip)下载demo程序
+先将Delphi面向对象编程时候正确使用继承、多态的编程实例代码展示出来，具体一点就是正确地使用override、inherited关键字的示例程序
+
+或者点击[【这里】](../download/20160719/1.zip)下载demo程序
 
 ```
 unit MainFrm;
@@ -122,11 +124,11 @@ TTestClass1 Destroy
 其他地方的编码规范和正确的示例一致，只有下面展示的这个地方有变化：TTestClass继承TTestClass2的时候Destroy方法没有使用override关键字。可以点击[【这里】](../download/20160719/2.zip)下载demo程序
 
 ```
-  TTestClass3 = class(TTestClass2)
-  public
-    constructor Create;
-    destructor Destroy;  
-  end;
+TTestClass3 = class(TTestClass2)
+public
+  constructor Create;
+  destructor Destroy;  
+end;
 ```
 
 执行的时候弹出框的顺序如下，可以看到TTestClass3自己的Destroy没有执行，但其所继承的父类TTestClass2、TTestClass1，因为Destroy正确的使用了override关键字，所以对应的Destroy方法都被调用到了
