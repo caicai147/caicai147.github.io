@@ -9,7 +9,7 @@ tags: delphi 面向对象 override inherited
 
 先将Delphi面向对象编程时候正确使用继承、多态的编程实例代码展示出来，具体一点就是正确地使用override、inherited关键字的示例程序
 
-或者点击[【这里】](../download/20160719/1.zip)下载demo程序
+可以点击[【这里】](../download/20160719/1.zip)下载demo程序源码
 
 ```
 unit MainFrm;
@@ -107,7 +107,7 @@ end;
 end.
 ```
 
-该程序运行之后弹出框的顺序如下
+该程序运行之后弹出框的顺序如下，Create和Destroy一一对应！
 
 ```
 TTestClass1 Create
@@ -144,9 +144,29 @@ TTestClass1 Destroy
 
 经过测试，哪个类的Destroy方法没有使用override，哪个类的Destroy就不会被调用
 
-所以可能导致内存泄露
+所以可能导致内存泄露。之前开发中有犯过这样的错误，封装的一个打包类，在Destroy中没有使用override，因为创建和释放的次数多所以导致大量的内存泄露
 
-之前开发中有犯过这样的错误，封装的一个打包类，在Destroy中没有使用override，因为创建和释放的次数多所以导致大量的内存泄露
+还可能有这样的情况，但是实验之后，下面这种方式直接就编译不过，在TTestClass3的Destroy方法定义处报错：Cannot override a static method
+
+```
+TTestClass1 = class
+public
+  constructor Create;
+  destructor Destroy; override;
+end;
+
+TTestClass2 = class(TTestClass1)
+public
+  constructor Create;
+  destructor Destroy;
+end;
+
+TTestClass3 = class(TTestClass2)
+public
+  constructor Create;
+  destructor Destroy; override; 
+end;
+```
 
 ##错误的用法情况二
 
