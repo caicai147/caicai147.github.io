@@ -146,7 +146,7 @@ TTestClass1 Destroy
 
 所以可能导致内存泄露。之前开发中有犯过这样的错误，封装的一个打包类，在Destroy中没有使用override，因为创建和释放的次数多所以导致大量的内存泄露
 
-还可能有这样的情况，但是实验之后，下面这种方式直接就编译不过，在TTestClass3的Destroy方法定义处报错：Cannot override a static method
+还可能有下面展示的这种编程可能，但是实验之后，下面这种方式直接就编译不过，在TTestClass3的Destroy方法定义处报错：Cannot override a static method
 
 ```
 TTestClass1 = class
