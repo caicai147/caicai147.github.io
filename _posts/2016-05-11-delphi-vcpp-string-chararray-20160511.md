@@ -258,7 +258,7 @@ void CallCpp(char *resp)
   strncpy(dest, resp, strlen(dest));
     //dest数组内的内容是'测试测试'
   int n = strlen(dest); //入参为'测试测试',则dest的长度是8
-  int m = sizeof(dest)  //注意，因为在C++中对dest定义的是字符数组，而非字符指针变量，所以这里sizeof获取的值是100，而不是4
+  int m = sizeof(dest)  //注意，因为在C++中对dest定义的是字符数组，而非字符指针变量，所以这里sizeof获取的值是100，而非4
 }
 ```
 	  
