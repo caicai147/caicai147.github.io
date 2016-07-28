@@ -266,7 +266,7 @@ void CallCpp(char *resp)
 	  
 ####简单总结
 
-* 对于方法CallCpp(resp: PChar)，如果CallCpp中没有写操作，只有读操作，可以向下面的几种传值方式
+* 对于方法CallCpp(resp: PChar)，如果CallCpp中没有写操作，只有读操作，可以向像面的几种传值方式
 
 ```
 var
