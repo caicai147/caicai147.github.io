@@ -5,7 +5,7 @@ categories: c/c++之函数 c/c++之指针与内存 delphi之字符串 delphi之�
 tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 字符编码 数组越界
 ---
 
-##前期提要0：前情回顾
+##说明
 
 * Delphi版本是6；Visual C++版本是6
 * [《Delphi和VC++使用DLL配合开发【例程】》](http://www.xumenger.com/delphi-cpp-dll-20160412/)有讲到VC++导出DLL，Delphi加载并调用
@@ -19,7 +19,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 
 * 对于Delphi本身也是这样的情况
 * 下文展示的是单纯的在入参中传递字符串(字符数组)，其实还可以使用结构体(包含一个char数组)的方式传递字符串
 
-##前情提要1：每个汉字占用多少字节
+##首先要知道每个汉字占用多少字节
 
 ####我的环境使用Delphi测试
 
@@ -42,12 +42,12 @@ int len  = strlen("汉字");       //长度是4
 * gb2312：如果系统采用的是gb2312，则strlen("汉字")=4，即一个汉字占用2个字节。windows中文版采用的该种编码方式。
 * 我的系统是gb2312编码的
 
-##前情提要2：常用的字符串拷贝函数
+##常用的字符串拷贝函数
 
 * Delphi常用的字符串拷贝函数：[《Delphi的字符串拷贝函数》](http://www.xumenger.com/delphi-string-copy-20151119/)
 * C/C++常用的字符串拷贝函数：[《C/C++的字符串拷贝函数》](http://www.xumenger.com/c-cpp-string-copy-20160511/)
 
-##前期提要3：情况说明
+##本文对应的Demo程序说明
   
 C++端导出的dll名称为：test.dll
 
@@ -72,7 +72,9 @@ begin
 end;
 ```
 
-##情况一：Delphi和C++之间通过类似这样的传递方式是不行的
+##情况一
+
+>Delphi和C++之间通过类似这样的传递方式是不行的
 
 ####Delphi
 
@@ -118,7 +120,9 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况二：在C++端获取Delphi字符数组的长度
+##情况二
+
+>在C++端获取Delphi字符数组的长度
 
 * 其中讲到Delphi端的SizeOf和Length的使用
     
@@ -150,7 +154,9 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况三：小心别因为Delphi端定义的字符数组长度小于C++给其拷贝的长度导致越界
+##情况三
+
+>小心别因为Delphi端定义的字符数组长度小于C++给其拷贝的长度导致越界
 
 ####Delphi
 
@@ -182,7 +188,9 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况四：若Delphi端传string给C++，在C++端不能对其进行写操作，否则会报非法地址访问异常
+##情况四
+
+>若Delphi端传string给C++，在C++端不能对其进行写操作，否则会报非法地址访问异常
   
 ####参考：
 
@@ -217,7 +225,9 @@ void CallCpp(char *resp)
 }
 ```
  
-##若Delphi端传string给C++，在C++端可以进行读操作，没有问题，可以正常传值
+##情况五
+
+>若Delphi端传string给C++，在C++端可以进行读操作，没有问题，可以正常传值
     
 ####Delphi
 
