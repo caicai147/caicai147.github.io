@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python虚拟环境搭建
+title: 搭建Python虚拟环境
 categories: 好资源之开发工具 好资源之环境搭建
 tags: linux python 虚拟环境 virtualenv pip
 ---
