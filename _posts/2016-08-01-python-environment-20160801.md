@@ -31,6 +31,8 @@ tags: linux python 虚拟环境 virtualenv pip
 
 >注意：如果在包含汉字的目录下创建虚拟环境，会报错
 
+本文对应的例子是在目录**~/Desktop/MyWork/Python/TestVenv/MyVEnv**下创建一个虚拟环境，其名为 MyVEnv
+
 现在，目录下有一个名为 MyVEnv的子目录，里面保存了一个全新的虚拟环境，其中有一个私有的 Python解释器
 
 在使用这个虚拟环境之前，需要先将其**激活**，在 Ubuntu环境下，执行以下命令即可激活这个虚拟环境：
