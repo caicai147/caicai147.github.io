@@ -13,7 +13,7 @@ tags: delphi DBF 文件 二进制
 
 ##用不同的工具查看该DBF文件
 
-使用DBFView查看的效果
+使用DBFViewer查看的效果
 
 ![img](../media/image/2016-08-02/01.png)
 
@@ -29,9 +29,9 @@ tags: delphi DBF 文件 二进制
 
 参考[《深入理解DBF文件格式》](http://www.xumenger.com/dbf-20160703/)来分析一下文件的二进制内容
 
-选择其中的第二条记录，分别使用DBFView、Visual FoxPro、Ultra Edit查看和分析
+选择其中的第二条记录，分别使用DBFViewer、Visual FoxPro、Ultra Edit查看和分析
 
-使用DBFView看到的效果是这样的
+使用DBFViewer看到的效果是这样的
 
 ![img](../media/image/2016-08-02/03.png)
 
@@ -47,4 +47,4 @@ tags: delphi DBF 文件 二进制
 
 ![img](../media/image/2016-08-02/05.png)
 
-很明显，通过分析二进制内容，使用Visual FoxPro所展示的效果和实际的二进制内容是一致的，DBFView工具所展示的效果是有问题的
+很明显，通过分析二进制内容，使用Visual FoxPro所展示的效果和实际的二进制内容是一致的，DBFViewer工具所展示的效果是有问题的
