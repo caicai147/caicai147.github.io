@@ -13,11 +13,11 @@ tags: delphi DBF 文件 二进制
 
 ##用不同的工具查看该DBF文件
 
-使用DBFViewer查看的效果
+**使用DBFViewer查看的效果**
 
 ![img](../media/image/2016-08-02/01.png)
 
-使用Visual FoxPro查看的效果
+**使用Visual FoxPro查看的效果**
 
 ![img](../media/image/2016-08-02/02.png)
 
@@ -31,15 +31,15 @@ tags: delphi DBF 文件 二进制
 
 选择其中的第二条记录，分别使用DBFViewer、Visual FoxPro、Ultra Edit查看和分析
 
-使用DBFViewer看到的效果是这样的
+**使用DBFViewer看到的效果是这样的**
 
 ![img](../media/image/2016-08-02/03.png)
 
-使用Visual FoxPro看到的效果是这样的
+**使用Visual FoxPro看到的效果是这样的**
 
 ![img](../media/image/2016-08-02/04.png)
 
-再去使用Ultra Edit分析第二行记录的二进制格式
+**再去使用Ultra Edit分析第二行记录的二进制格式**
 
 需要先参考[《深入理解DBF文件格式》](http://www.xumenger.com/dbf-20160703/)了解该文件在文件头中对各个字段的精确定义，这里就不做解释了
 
