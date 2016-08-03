@@ -66,11 +66,11 @@ Git分支十分强大，在团队开发中应该充分应用。
 - 太棒了，bug搞定了，现在可以回到`dev`分支干活了
 - `git checkout dev` 切换回dev分支
 - `git status` 可以看出工作区是干净的，那么刚才的工作现场存在哪里呢？
-- `git stash list` 看到工作现场还在，Git吧stash内容存在某个地方了，但是需要恢复一下
-- 方法一`git stash apply`，但是回复后，stash内容并不删除，你需要使用`git stash drop`来删除
+- `git stash list` 看到工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下
+- 方法一`git stash apply`，但是恢复后，stash内容并不删除，你需要使用`git stash drop`来删除
 - 方法二`git stash pop`，恢复的同时也把stas内容删除了
 - `git stash list` 再用git stash list查看，就看不到任何stash内容了
-- 你可以多次`stash`，恢复的时候，先用`giit stash list` 查看，然后恢复指定的stash，使用如下的命令
+- 你可以多次`stash`，恢复的时候，先用`git stash list` 查看，然后恢复指定的stash，使用如下的命令
 - `git stash apply stash@{0}`
 
 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除。
