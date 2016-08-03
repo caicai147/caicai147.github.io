@@ -60,7 +60,7 @@ Git分支十分强大，在团队开发中应该充分应用。
 - `git add readme.txt` 
 - `git commit -m "fic bug 101"` 修改之后提交
 - `git checkout master` 从issue-101切换回master
-- `git merge --no-ff -m "merged bug fix 101" issue-101` 合并分支选择不适用Fast forward模式，然后添加必要的描述信息
+- `git merge --no-ff -m "merged bug fix 101" issue-101` 合并分支选择不使用Fast forward模式，然后添加必要的描述信息
 - `git branch -d issue-101` 删除issue-101这个临时bug修复分支
 - 太棒了，bug搞定了，现在可以回到`dev`分支干活了
 - `git checkout dev` 切换回dev分支
