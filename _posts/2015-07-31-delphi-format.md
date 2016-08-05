@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi的 Format格式化函数
+title: Delphi的Format格式化函数
 categories: delphi之精确使用api
 tags: delphi format api
 ---
