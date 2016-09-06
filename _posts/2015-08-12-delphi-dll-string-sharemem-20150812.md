@@ -8,7 +8,7 @@ tags: delphi dll sharemem
 
 当使用了长字符串类型的参数、变量时，如string，要引用ShareMem。
 
-**虽然Delphi中的string功能很强大，但若是您编写的Dll文件要供其它编程语言调用时，最好使用PChar类型。如果您要坚持使用string类型的参数时、变量甚至是记录信息时，就要引用ShareMem单元，而且这个单元必须是第一个引用的，即在uses语句后的第一个单元。**
+>虽然Delphi中的string功能很强大，但若是您编写的Dll文件要供其它编程语言调用时，最好使用PChar类型。如果您要坚持使用string类型的参数时、变量甚至是记录信息时，就要引用ShareMem单元，而且这个单元必须是第一个引用的，即在uses语句后的第一个单元。
 
 下面通过一个项目示例来讲解怎么使用ShareMem。
 
