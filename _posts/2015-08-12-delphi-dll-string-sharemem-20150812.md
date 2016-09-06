@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi在创建和使用DLL的时候如果使用到string，请引入ShareMem单元
+title: Delphi的DLL中导出函数若有string参数，请引入ShareMem单元
 categories: delphi之dll
 tags: delphi dll sharemem
 ---
