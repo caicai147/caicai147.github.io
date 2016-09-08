@@ -5,7 +5,7 @@ categories: 深入学习之操作系统 好资源之开发神器 深入学习之
 tags: 操作系统 进程 dump WinDbg core GDB map 编译原理 linux windows c c++ 非法地址 堆 栈 内存 SIGSEGV 段错误 信号
 ---
 
-之前初步了解过Windows 下强大的调试工具WinDbg，也简单的整理了一个初级的文章[《使用WinDbg、Map文件、Dump文件定位Access Violation的代码行》](http://www.xumenger.com/windbg-map-access-violation-20160715/)，在Linux 下面也有对应的功能强大的调试工具：GDB，它可以用来断点调试C/C++ 的程序，也可以用于分析Linux 下的C/C++ 程序运行崩溃产生的Core 文件
+之前初步了解过Windows 下强大的调试工具WinDbg，也简单的整理了一个初级的文章[《使用WinDbg、Map文件、Dump文件定位Access Violation的代码行》](http://www.xumenger.com/windbg-map-access-violation-20160715/)，在Linux 下面也有对应的功能强大的调试工具：GDB，它可以用来断点调试C/C++ 的程序，也可以用于分析Linux 下的C/C++ 程序运行崩溃产生的Core 文件……
 
 另外对于GDB 工具，在[《Linux gdb调试器用法全面解析》](http://blog.csdn.net/21cnbao/article/details/7385161)这篇文章中详细的介绍了怎么使用GDB 去调试C/C++ 代码
 
