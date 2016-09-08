@@ -66,7 +66,7 @@ int main()
 
 **编译执行，报段错误**
 
-注意g++ 编译的时候，需要使用参数-g，否则GDB 无法找到symbol信息，从而无法定位问题
+注意g++ 编译的时候，需要使用参数-g，否则GDB 无法找到symbol 信息，从而无法定位问题
 
 ![image](../media/image/2016-09-08/01.png)
 
@@ -76,7 +76,7 @@ int main()
 
 很明显，在GDB 断点调试的过程中，已经将错误的代码行输出了：在testCrash.cpp 的第4行，在testCrash()方法里面，而且也将错误的代码`*p = 3;`打印出来了
 
-还发现进程是由于收到了SIGSEGV　信号而结束的。通过进一步的查阅文档(man 7 signal)，SIGSEGV　默认handler　的动作是打印”段错误"的出错信息，并产生Core　文件
+还发现进程是由于收到了SIGSEGV 信号而结束的。通过进一步的查阅文档(man 7 signal)，SIGSEGV 默认handler 的动作是打印”段错误"的出错信息，并产生Core　文件
 
 ##分析Core 文件
 
@@ -91,3 +91,80 @@ int main()
 ![image](../media/image/2016-09-08/04.png)
 
 同样也是一步到位的定位到错误所在的代码行！
+
+接着考虑下去，在Windows 系统下的运行程序时，可能会出现“运行时错误”，这个时侯如果恰好你的机器上又装有Windows 的编译器的话，它会弹出来一个对话框，问你是否进行调试，如果你选择是，编译器将被打开，并进入调试状态，开始调试
+
+Linux下可以做到吗？可以让它在SIGSEGV 的handler中调用gdb
+
+##段错误时启动调试
+
+**testCrash.cpp**
+
+```
+void testCrash()
+{
+    int* p = 1;	//p指针指向常量1 所在的内存地址
+    *p = 3;     //将p指针指向的地址的值改为3，
+    //因为本来p指向一个常量，是不允许被修改的
+    //强行访问系统保护的内存地址就会出现段错误
+}
+```
+
+**main.cpp**
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <string.h>
+
+void testCrash();
+
+void dump(int signo)
+{
+    char buf[1024];
+    char cmd[1024];
+    FILE *fh;
+
+    snprintf(buf, sizeof(buf), "/proc/%d/cmdline", getpid());
+    if(!(fh = fopen(buf, "r")))
+    {
+        exit(0);
+    }
+    if(!fgets(buf, sizeof(buf), fh))
+    {
+        exit(0);
+    }
+    fclose(fh);
+    if(buf[strlen(buf) - 1] == '\n')
+    {
+        buf[strlen(buf) - 1] = '\0';
+    }
+    snprintf(cmd, sizeof(cmd), "gdb %s %d", buf, getpid());
+    system(cmd);
+
+    exit(0);
+}
+
+int main()
+{
+    signal(SIGSEGV, &dump);
+    testCrash();
+    return 0;
+}
+```
+
+**编译程序**
+
+注意g++ 编译的时候，需要使用参数-g，否则GDB 无法找到symbol 信息，从而无法定位问题
+
+![image](../media/image/2016-09-08/05.png)
+
+**运行程序**
+
+首先必须要切换到root 用户运行，否则因为权限问题导致无法调试，另外就是进入调试模式后执行`bt`以显示程序的调用栈信息！
+
+![image](../media/image/2016-09-08/06.png)
+
+
