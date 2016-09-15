@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 初步了解如何用GDB 分析Core 文件
+title: 初步了解如何用GDB分析Core文件
 categories: 深入学习之操作系统 好资源之开发神器 深入学习之编译原理
 tags: 操作系统 进程 dump WinDbg core GDB map 编译原理 linux windows c c++ 非法地址 堆 栈 内存 SIGSEGV 段错误 信号
 ---
