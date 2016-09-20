@@ -297,7 +297,7 @@ end.
 
 运行效果如下：
 
-![image](../media/image/2016-09-20/02.jpg)
+![image](../media/image/2016-09-20/02.png)
 
 * “启动”按钮设置IdTCPServer 的Active 属性为True 来启动服务器，“停止”按钮设置Active 属性为False 来关闭服务器。
 * IdTcpServerConnect 方法作为IdTcpServer 的OnConnect 事件响应过程，向客户端发送欢迎信息。OnConnect 事件在一个客户连接请求被接受时发生，为该连接创建的线程AThread 被作为参数传递给IdTCPServerConnect 方法
