@@ -299,7 +299,7 @@ end.
 
 ![image](../media/image/2016-09-20/02.png)
 
-* “启动”按钮设置IdTCPServer 的Active 属性为True 来启动服务器，“停止”按钮设置Active 属性为False 来关闭服务器。
+* “启动”按钮设置IdTCPServer 的Active 属性为True 来启动服务器，“关闭”按钮设置Active 属性为False 来关闭服务器。
 * IdTcpServerConnect 方法作为IdTcpServer 的OnConnect 事件响应过程，向客户端发送欢迎信息。OnConnect 事件在一个客户连接请求被接受时发生，为该连接创建的线程AThread 被作为参数传递给IdTCPServerConnect 方法
 * IdTCPServerExecute 方法是IdTCPServer 的OnExecute 事件响应过程。OnExecute 事件在TIdPeerThread 对象试图执行其Run 方法时发生。OnExecute 事件与通常的事件有所不同，其响应过程是在某个线程上下文中执行的，参数AThread 就是调用它的线程。这一点很重要，它意味着可能有多个线程同时调用OnExecute 这就需要特别考虑线程安全问题。在连接被断开或中断前，OnExecute 方法会被反复执行
 * 注意OnConnect、OnDisConnect、OnExecute是会被多个子线程调用的，所以需要考虑线程安全的问题
