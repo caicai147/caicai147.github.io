@@ -13,7 +13,7 @@ tags: windows delphi socket 网络 TCP 多线程 Indy IdTcpClient IdTcpSerever U
 
 Delphi 中自带两套TCP Socket 组件：Indy Socket 组件（IdTcpClient和IdTcpSerever）和Delphi 原生的TCP Socket 组件（ClientSocket和ServerSocket）。但Borland 已宣称ClientSocket 和ServerSocket 组件即将被废弃，建议用相应的Indy 组件来代替
 
-开放源代码的Internet 组件集----Internet Direct（Indy）是一组开放源代码得到Internet 组件，涵盖了几乎所有流行的Internet 协议。Indy用Delphi编写，被包含在Delphi 6、KyLix 1 和C++ Builder 6 及以上各个版本的Borland 开发环境中。Indy 曾经叫做WinShoes（双关于WinSock----Windows 的Socket库），是由Chad Z.Hower 领导的一群开发者构建的，可以从Indy 的站点[ www.nevrona.com/indy ](www.nevrona.com/indy)上找到更多的信息并下载最新版本
+开放源代码的Internet 组件集----Internet Direct（Indy）是一组开放源代码得到Internet 组件，涵盖了几乎所有流行的Internet 协议。Indy用Delphi编写，被包含在Delphi 6、KyLix 1 和C++ Builder 6 及以上各个版本的Borland 开发环境中。Indy 曾经叫做WinShoes（双关于WinSock----Windows 的Socket库），是由Chad Z.Hower 领导的一群开发者构建的，可以从Indy 的站点[ www.nevrona.com/indy ](http://www.nevrona.com/indy)上找到更多的信息并下载最新版本
 
 基于Indy 的组件，可以开发基于各种协议的TCP 客户端和服务器应用程序，并处理相关的编码和安全问题。可以通过前缀Id 来识别Indy 组件
 
