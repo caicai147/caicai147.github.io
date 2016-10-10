@@ -184,6 +184,10 @@ end.
 
 **服务器代码**
 
+注意，下面的代码中使用GetCurrentThreadId 获取线程号，GetCurrentThreadId 的返回值是Cardinal 类型的，但是使用StrToInt 将其转成string 类型，其实是有问题的，因为Integer 和Cardinal 虽都是32位整数，但Integer 是有符号的，Cardinal 是无符号的，会先将Cardinal 隐式转换成Integer 类型，再转成string 类型，假如Cardinal 的值大于2147483647 转成Integer 就可能转成负数，可以参见[《Delphi配合VC++开发：基础数据类型对应关系》](http://www.xumenger.com/delphi-vc-dll-1-20160903/)
+
+不过因为这里只是简单的测试程序，为了展示IdTcpServer 的运行效果就不强求了，但在实际的生产编程中一定不能这样，否则可能引起大问题
+
 ```
 unit mainFrm;
 
@@ -241,7 +245,7 @@ begin
   TcpServer.Active := True;
   btnStart.Enabled := False;
   btnStop.Enabled := True;
-  mmo1.Lines.Add('服务器成功启动！');
+  mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '服务器成功启动！');
 end;
 
 procedure TForm1.btnStopClick(Sender: TObject);
@@ -254,14 +258,14 @@ end;
 
 procedure TForm1.IdTCPServerConnect(AThread: TIdPeerThread);
 begin
-  mmo1.Lines.Add('来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接请求已被接纳！');
+  mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接请求已被接纳！');
 
   AThread.Connection.WriteLn('100: 欢迎连接到简单TCP服务器！');
 end;
 
 procedure TForm1.IdTCPServerDisConnect(AThread: TIdPeerThread);
 begin
-  mmo1.Lines.Add('来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接断开！');
+  mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接断开！');
 end;
 
 procedure TForm1.IdTCPServerExecute(AThread: TIdPeerThread);
@@ -271,13 +275,13 @@ begin
   sCommand := AThread.Connection.ReadLn();
   if SameText(sCommand, 'QUIT') then
   begin 
-    mmo1.Lines.Add('断开同主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的连接！'); 
+    mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '断开同主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的连接！'); 
 
     AThread.Connection.Disconnect;
   end
   else
   begin
-    mmo1.Lines.Add('接收到主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的数据: ' + sCommand);
+    mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '接收到主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的数据: ' + sCommand);
 
     AThread.Connection.WriteLn('200: 数据接收成功！');
   end;
@@ -295,7 +299,7 @@ end;
 end.
 ```
 
-运行效果如下：
+开启服务器，同时运行两个客户端连接服务器并且发送，运行效果如下：
 
 ![image](../media/image/2016-09-20/02.png)
 
@@ -304,6 +308,8 @@ end.
 * IdTCPServerExecute 方法是IdTCPServer 的OnExecute 事件响应过程。OnExecute 事件在TIdPeerThread 对象试图执行其Run 方法时发生。OnExecute 事件与通常的事件有所不同，其响应过程是在某个线程上下文中执行的，参数AThread 就是调用它的线程。这一点很重要，它意味着可能有多个线程同时调用OnExecute 这就需要特别考虑线程安全问题。在连接被断开或中断前，OnExecute 方法会被反复执行
 * 注意OnConnect、OnDisConnect、OnExecute是会被多个子线程调用的，所以需要考虑线程安全的问题
 * 下面展示两种典型的线程安全错误！
+
+可以看到主线程号是13888，针对2个不同客户端发来的请求，分别创建线程14076 和16308
 
 ##典型错误一
 
@@ -369,7 +375,7 @@ begin
   TcpServer.Active := True;
   btnStart.Enabled := False;
   btnStop.Enabled := True;
-  mmo1.Lines.Add('服务器成功启动！');
+  mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '服务器成功启动！');
 end;
 
 procedure TForm1.btnStopClick(Sender: TObject);
@@ -377,12 +383,12 @@ begin
   TcpServer.Active := False;
   btnStart.Enabled := True;
   btnStop.Enabled := False;
-  mmo1.Lines.Add('服务器成功停止！');
+  mmo1.Lines.Add('[' + IntToStr(GetCurrentThreadId) + ']' + '服务器成功停止！');
 end;
 
 procedure TForm1.IdTCPServerConnect(AThread: TIdPeerThread);
 begin
-  MemoMsg := '来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接请求已被接纳！';
+  MemoMsg := '[' + IntToStr(GetCurrentThreadId) + ']' + '来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接请求已被接纳！';
   AThread.Synchronize(UpdateToMemo); 
 
   AThread.Connection.WriteLn('100: 欢迎连接到简单TCP服务器！');
@@ -390,7 +396,7 @@ end;
 
 procedure TForm1.IdTCPServerDisConnect(AThread: TIdPeerThread);
 begin
-  MemoMsg := '来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接断开！';
+  MemoMsg := '[' + IntToStr(GetCurrentThreadId) + ']' + '来自主机 '  + AThread.Connection.Socket.Binding.PeerIP + ' 的连接断开！';
   AThread.Synchronize(UpdateToMemo);
 end;
 
@@ -401,14 +407,14 @@ begin
   sCommand := AThread.Connection.ReadLn();
   if SameText(sCommand, 'QUIT') then
   begin
-    MemoMsg := '断开同主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的连接！';
+    MemoMsg := '[' + IntToStr(GetCurrentThreadId) + ']' + '断开同主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的连接！';
     AThread.Synchronize(UpdateToMemo);
 
     AThread.Connection.Disconnect;
   end
   else
   begin
-    MemoMsg := '接收到主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的数据: ' + sCommand;
+    MemoMsg := '[' + IntToStr(GetCurrentThreadId) + ']' + '接收到主机 ' + AThread.Connection.Socket.Binding.PeerIP + ' 的数据: ' + sCommand;
     AThread.Synchronize(UpdateToMemo);
 
     AThread.Connection.WriteLn('200: 数据接收成功！');
