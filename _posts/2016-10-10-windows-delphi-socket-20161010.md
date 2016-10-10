@@ -13,7 +13,7 @@ tags: windows delphi socket 网络 TCP
 
 ##代码实例
 
-对应的代码可以点击[【这里】](..download/20161010/SocketExample.zip)下载
+对应的代码可以点击[【这里】](../download/20161010/SocketExample.zip)下载
 
 **客户端代码**
 
