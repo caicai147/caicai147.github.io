@@ -7,14 +7,20 @@ tags: windows delphi socket 网络 TCP
 
 [《Delphi使用Indy进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
 
-本文初步研究一下阻塞和非阻塞的区别，IdTcpServer/IdTcpClient 都是阻塞模式的，而ServerSocket/ClientSocket 都是非阻塞模式的
+IdTcpServer/IdTcpClient 只能是阻塞模式的
 
-但因为他们都是使用的TCP协议，所以以下的组合都是可以通信的
+而ServerSocket/ClientSocket 既可以是非阻塞模式，也可以是阻塞模式的。ServerSocket 通过将ServerType 设置成stNonBlocking 或stThreadBlocking 来设置为非阻塞或阻塞；ClientSocket 通过将ClientType 设置成ctNonBlocking 或ctBlocking 来设置为非阻塞或阻塞。如果不设置，ServerSocket/ClientSocket 都默认是非阻塞的
 
-   通信模式   | ServerSocket  				| IdTcpServer  
------------- | ---------------------------------------	| --------------------------------------  
-ClientSocket |  可通信，客户端非阻塞、服务端非阻塞   	| 可通信，客户端非阻塞，服务端阻塞  
-IdTcpClient  |  可通信，客户端阻塞、服务端非阻塞  	| 可通信，客户端阻塞、服务端阻塞
+（上一篇文章中展示的实例都是使用ServerSocket/ClientSocket 的非阻塞模式的运行效果，需要完善一下）
+（ServerSocket/ClientSocket都是有非阻塞模式、IdTcpServer/IdTcpClient可以在localhost 正常的收发，但是使用ServerSocket/ClientSocket 阻塞和非阻塞配合时会出现服务端收不到的情况？为什么，和阻塞、非阻塞有什么关系？）
+
+但因为他们都是基于TCP协议的，所以以下的组合都是可以通信的
+
+   通信模式         | ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
+----------------    | ------------------| --------------------- |---------------------
+ClientSocket 阻塞   | 可通信  			| 可通信				| 可通信	
+ClientSocket 非阻塞 | 可通信   			| 可通信				| 可通信	
+IdTcpClient 阻塞    | 可通信  			| 可通信				| 可通信	
 
 ##阻塞和非阻塞的区别
 
@@ -22,11 +28,11 @@ IdTcpClient  |  可通信，客户端阻塞、服务端非阻塞  	| 可通信�
 
 简单点说：阻塞就是干不完不准回来；非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声
 
-我们拿最常用的send 和recv 两个函数来说吧...
+我们拿最常用的send 和recv 两个函数来说吧......
 
-比如你调用send 函数发送一定的Byte，在系统内部send 做的工作其实只是把数据传输（Copy）到TCP/IP 协议栈的输出缓冲区，它执行成功并不代表数据已经成功的发送出去了，如果TCP/IP 协议栈没有足够的可用缓冲区来保存你Copy 过来的数据的话...这时候就体现出阻塞和非阻塞的不同之处了：对于阻塞模式的socket send 函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy 过去才返回；而对于非阻塞模式的socket 来说send 会立即返回WSAEWOULDDBLOCK 告诉调用者说：“发送操作被阻塞了！你想办法处理吧...”
+比如你调用send 函数发送一定的Byte，在系统内部send 做的工作其实只是把数据传输（Copy）到TCP/IP 协议栈的输出缓冲区，它执行成功并不代表数据已经成功的发送出去了，如果TCP/IP 协议栈没有足够的可用缓冲区来保存你Copy 过来的数据的话...这时候就体现出阻塞和非阻塞的不同之处了：对于阻塞模式的socket send 函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy 过去才返回；而对于非阻塞模式的socket 来说send 会立即返回WSAEWOULDDBLOCK 告诉调用者说：“发送操作被阻塞了！你想办法处理吧......”
 
-对于recv 函数，同样道理，该函数的内部工作机制其实是在等待TCP/IP 协议栈的接收缓冲区通知它说：“嗨，你的数据来了”。对于阻塞模式的socket 来说，如果TCP/IP 协议栈的接收缓冲区没有通知一个结果它就一直不返回，消耗着系统资源；对于非阻塞模式的socket 该函数会马上返回，然后告诉你：WSAEWOULDDBLOCK---“现在没有数据,回头在来看看”
+对于recv 函数，同样道理，该函数的内部工作机制其实是在等待TCP/IP 协议栈的接收缓冲区通知它说：“嗨，你的数据来了！”。对于阻塞模式的socket 来说，如果TCP/IP 协议栈的接收缓冲区没有通知一个结果它就一直不返回，消耗着系统资源；对于非阻塞模式的socket 该函数会马上返回，然后告诉你：WSAEWOULDDBLOCK---“现在没有数据,回头在来看看”
 
 >在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式，这些方式彼此概念并不好理解。下面是我对这些术语的理解
 
@@ -58,12 +64,13 @@ IdTcpClient  |  可通信，客户端阻塞、服务端非阻塞  	| 可通信�
 
 ##运行效果展示
 
-因为ServerSocket/ClientSocket 通信的运行效果在[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)中已经展示和说明了，IdTcpServer/IdTcpClient也在[《Delphi使用Indy进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)中展示和说明了，接下来展示其他两种配合的运行情况，直接使用前两篇文章中的EXE 程序进行测试
+因为ServerSocket(非阻塞)/ClientSocket(非阻塞) 通信的运行效果在[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)中已经展示和说明了，IdTcpServer/IdTcpClient也在[《Delphi使用Indy进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)中展示和说明了，接下来展示其他两种配合的运行情况，直接使用前两篇文章中的EXE 程序进行测试
 
-   通信模式   | ServerSocket  				| IdTcpServer  
------------- | ---------------------------------------	| --------------------------------------  
-ClientSocket |  可通信，客户端非阻塞、服务端非阻塞   	| 可通信，客户端非阻塞，服务端阻塞  
-IdTcpClient  |  可通信，客户端阻塞、服务端非阻塞  	| 可通信，客户端阻塞、服务端阻塞
+   通信模式         | ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
+------------------- | ------------------| --------------------- |---------------------
+ClientSocket 阻塞   |  可通信  			| 可通信				| 可通信
+ClientSocket 非阻塞 |  可通信   		| 可通信				| 可通信
+IdTcpClient 阻塞    |  可通信  			| 可通信				| 可通信
 
 **ClientSocket配合IdTcpServer**
 
