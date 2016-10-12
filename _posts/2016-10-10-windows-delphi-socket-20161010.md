@@ -9,7 +9,11 @@ tags: windows delphi socket 网络 TCP
 
 上面的文章也简单展示了如何使用IdTcpClient、IdTcpServer 分别进行客户端和服务端开发，并且简单列举了两个可能因为服务端的多线程机制而出现的线程冲突错误
 
-本文通过一个例子简单讲一下使用ClientSocket、ServerSocket 进行网络开发
+Indy 的IdTcpServer/IdTcpClient 都是阻塞模式的
+
+而ServerSocket/ClientSocket 既可以是非阻塞模式，也可以是阻塞模式的。ServerSocket 通过将ServerType 设置成stNonBlocking 或stThreadBlocking 来设置为非阻塞或阻塞；ClientSocket 通过将ClientType 设置成ctNonBlocking 或ctBlocking 来设置为非阻塞或阻塞。如果不设置，ServerSocket/ClientSocket 都默认是非阻塞的
+
+本文通过一个例子简单讲一下使用ClientSocket、ServerSocket 进行网络开发，本文展示的实例是客户端、服务端都选择非阻塞模式开发的
 
 ##代码实例
 
