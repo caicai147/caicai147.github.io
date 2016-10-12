@@ -15,6 +15,12 @@ webbench 不仅能够具有针对静态页面的测试能力，还能对动态�
 
 tinyhttpd 是超轻量型的http server。下面将尝试部署一个服务器，并用webbench 测试其性能
 
+参考文章：
+
+[《Linux中部署服务器Tinyhttpd并用Webbench测试抗压性能 》](http://www.scholat.com/vpost.html?pid=7337)
+
+[《 tinyhttpd在Linux编译 》](http://blog.csdn.net/cqu20093154/article/details/41025885)
+
 ##环境准备
 
 操作系统使用Ubuntu 14 
@@ -178,4 +184,40 @@ install -m 644 debian/changelog /usr/local/share/doc/webbench
 
 ##用webbench测试tinyhttpd
 
-首先在
+在终端一开启tinyhttpd 服务器
+
+```
+root@perfect:/# cd /usr/local/src/tinyhttpd-0.1.0/
+root@perfect:/usr/local/src/tinyhttpd-0.1.0# ./httpd 
+httpd running on port 59965
+
+```
+
+可以看到每次使用 ./httpd 启动服务器，它监听的端口都是不同的
+
+在终端二，使用webbench 进行测试，因为安装了webbench 所以可以在任意目录下执行下面的命令
+
+```
+root@perfect:/# webbench -c 500 -t 30 http://127.0.0.1:59965/
+Webbench - Simple Web Benchmark 1.5
+Copyright (c) Radim Kolar 1997-2004, GPL Open Source Software.
+
+Benchmarking: GET http://127.0.0.1:59965/
+500 clients, running 30 sec.
+
+Speed=93933728 pages/min, 2 bytes/sec.
+Requests: 0 susceed, 46966863 failed.
+```
+
+可以看到请求没有一次成功。另外，在执行上面命令的过程中，我的笔记本的表现是：风扇狂转、无法操作界面……
+
+在用webbench 对tinyhttpd 进行测试时发现不是连不上就是卡死，参考[《Linux中部署服务器Tinyhttpd并用Webbench测试抗压性能 》](http://www.scholat.com/vpost.html?pid=7337)，问题出现在unimplemented 方法的send(client,buf,strlen(buf),0) 上
+
+![image](../media/image/2016-10-12/02.png)
+
+因为webbench 在一次访问完之后就断掉了，但是tinyhttpd 要分12次把一个网页的内容发送给webbench，所以第一次发的时候是成功的，第二次就失败了。而且，由于tinyhttpd 太简单了，所以send 的时候没有异常判断和处理，所以程序就死在那儿了。
+
+如何判断并处理异常，还需进一步研究学习服务器测试访问过程。这里为简单起见，仅通过将后面的11次内容发送注释掉了，然后就得到了正常的测试结果
+
+![image](../media/image/2016-10-12/03.png)
+
