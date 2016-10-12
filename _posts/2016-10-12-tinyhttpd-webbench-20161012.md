@@ -177,3 +177,5 @@ install -m 644 debian/changelog /usr/local/share/doc/webbench
 ```
 
 ##用webbench测试tinyhttpd
+
+首先在
