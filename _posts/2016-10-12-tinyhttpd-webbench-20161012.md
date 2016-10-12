@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 使用webbench测试tinyhttpd的抗压性能
+title: 使用webbench对tinyhttpd进行压力测试
 categories: 深入学习之网络原理 软件质量之性能
-tags: HTTP tinyhttpd webbench
+tags: HTTP tinyhttpd webbench ubuntu linux make gcc 服务器 性能测试
 ---
 
 ##背景知识
@@ -17,9 +17,8 @@ tinyhttpd 是超轻量型的http server。下面将尝试部署一个服务器�
 
 参考文章：
 
-[《Linux中部署服务器Tinyhttpd并用Webbench测试抗压性能 》](http://www.scholat.com/vpost.html?pid=7337)
-
-[《 tinyhttpd在Linux编译 》](http://blog.csdn.net/cqu20093154/article/details/41025885)
+* [《Linux中部署服务器Tinyhttpd并用Webbench测试抗压性能 》](http://www.scholat.com/vpost.html?pid=7337)
+* [《 tinyhttpd在Linux编译 》](http://blog.csdn.net/cqu20093154/article/details/41025885)
 
 ##环境准备
 
@@ -184,7 +183,7 @@ install -m 644 debian/changelog /usr/local/share/doc/webbench
 
 ##用webbench测试tinyhttpd
 
-在终端一开启tinyhttpd 服务器
+在终端一，开启tinyhttpd 服务器
 
 ```
 root@perfect:/# cd /usr/local/src/tinyhttpd-0.1.0/
@@ -193,7 +192,7 @@ httpd running on port 59965
 
 ```
 
-可以看到每次使用 ./httpd 启动服务器，它监听的端口都是不同的
+可以看到每次使用./httpd 启动服务器，它监听的端口都是不同的
 
 在终端二，使用webbench 进行测试，因为安装了webbench 所以可以在任意目录下执行下面的命令
 
