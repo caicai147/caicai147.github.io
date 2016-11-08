@@ -2,10 +2,12 @@
 layout: post
 title: C++对象内存模型：通过重载与覆盖理解虚函数表指针
 categories: c/c++之指针与内存 c/c++之面向对象
-tags: c c++ 对象 内存 面向对象 继承 函数 多态 指针 内存对齐 结构体 重载 覆盖 override overload 虚函数表 虚函数表指针
+tags: c c++ 对象 内存 面向对象 继承 函数 多态 指针 内存对齐 结构体 重载 覆盖 override overload 虚函数表 虚函数表指针 delphi
 ---
 
-通过一个简单的[例程](../download/20161106/OverloadOverride.zip)展示重载和覆盖的区别
+本文通过一个简单的[C++例程](../download/20161106/OverloadOverride.zip)展示重载和覆盖的区别
+
+下面的是C++的语法实现的一个实验程序，在Delphi的面向对象语法中也是有这两个概念的，之前也有整理过相关的文章[《override和inherited关键字在Delphi面向对象多态机制中的作用》](http://www.xumenger.com/delphi-oo-override-inherited-20160719/)
 
 ```
 #include<stdio.h>
@@ -91,4 +93,4 @@ int main()
 
 >注：对于Base::testOverload()和Derived::testOverload()都是分别存储在其内存外面的，并不占用类对象的内存空间，所有的Base对象共用一个Base::testOverload()；同理，所有的Derived对象共用一个Derived::testOverload()
 
-这里只是展示的单一继承情况下的实现多态的内存模型，多重继承下的内存模型就复杂的多了，还是去看《深度理解C++对象模型》这本书吧！
+这里只是展示的单一继承情况下的实现多态的内存模型，多重继承下的内存模型就复杂的多了，还是去看《深度理解C++探索模型》这本书吧！
