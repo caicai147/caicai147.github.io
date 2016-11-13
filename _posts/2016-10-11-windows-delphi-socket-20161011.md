@@ -11,9 +11,6 @@ IdTcpServer/IdTcpClient 只能是阻塞模式的
 
 而ServerSocket/ClientSocket 既可以是非阻塞模式，也可以是阻塞模式的。ServerSocket 通过将ServerType 设置成stNonBlocking 或stThreadBlocking 来设置为非阻塞或阻塞；ClientSocket 通过将ClientType 设置成ctNonBlocking 或ctBlocking 来设置为非阻塞或阻塞。如果不设置，ServerSocket/ClientSocket 都默认是非阻塞的
 
-（上一篇文章中展示的实例都是使用ServerSocket/ClientSocket 的非阻塞模式的运行效果，需要完善一下）
-（ServerSocket/ClientSocket都是有非阻塞模式、IdTcpServer/IdTcpClient可以在localhost 正常的收发，但是使用ServerSocket/ClientSocket 阻塞和非阻塞配合时会出现服务端收不到的情况？为什么，和阻塞、非阻塞有什么关系？）
-
 但因为他们都是基于TCP协议的，所以以下的组合都是可以通信的
 
    通信模式         | ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
