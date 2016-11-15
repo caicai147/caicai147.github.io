@@ -5,19 +5,19 @@ categories: delphi之网络编程
 tags: windows delphi socket 网络 TCP
 ---
 
-[《Delphi使用Indy进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
+[《Delphi使用IdTcpServer/IdTcpClient进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
 
-IdTcpServer/IdTcpClient 只能是阻塞模式的
+IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 而ServerSocket/ClientSocket 既可以是非阻塞模式，也可以是阻塞模式的。ServerSocket 通过将ServerType 设置成stNonBlocking 或stThreadBlocking 来设置为非阻塞或阻塞；ClientSocket 通过将ClientType 设置成ctNonBlocking 或ctBlocking 来设置为非阻塞或阻塞。如果不设置，ServerSocket/ClientSocket 都默认是非阻塞的
 
-但因为他们都是基于TCP协议的，所以以下的组合都是可以通信的
+因为他们都是基于TCP协议的，所以以下的组合都是可以通信的
 
-   通信模式         | ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
-----------------    | ------------------| --------------------- |---------------------
-ClientSocket 阻塞   | 可通信  			| 可通信				| 可通信	
-ClientSocket 非阻塞 | 可通信   			| 可通信				| 可通信	
-IdTcpClient 阻塞    | 可通信  			| 可通信				| 可通信	
+   通信模式         	| ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
+----------------    	| ------------------| --------------------- |---------------------
+**ClientSocket 阻塞**   | 可通信  			| 可通信				| 可通信	
+**ClientSocket 非阻塞** | 可通信   			| 可通信				| 可通信	
+**IdTcpClient 阻塞**    | 可通信  			| 可通信				| 可通信	
 
 ##阻塞和非阻塞的区别
 
@@ -61,7 +61,7 @@ IdTcpClient 阻塞    | 可通信  			| 可通信				| 可通信
 
 ##运行效果展示
 
-因为ServerSocket(非阻塞)/ClientSocket(非阻塞) 通信的运行效果在[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)中已经展示和说明了，IdTcpServer/IdTcpClient也在[《Delphi使用Indy进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)中展示和说明了，接下来展示其他两种配合的运行情况，直接使用前两篇文章中的EXE 程序进行测试
+因为ServerSocket(非阻塞)/ClientSocket(非阻塞) 通信的运行效果在[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)中已经展示和说明了，IdTcpServer/IdTcpClient也在[《Delphi使用IdTcpServer/IdTcpClient进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)中展示和说明了，接下来展示其他两种配合的运行情况，直接使用前两篇文章中的EXE 程序进行测试
 
    通信模式         | ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
 ------------------- | ------------------| --------------------- |---------------------
@@ -74,4 +74,3 @@ IdTcpClient 阻塞    |  可通信  			| 可通信				| 可通信
 
 
 **IdTcpClient配合ServerSocket**
-
