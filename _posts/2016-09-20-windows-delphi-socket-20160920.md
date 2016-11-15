@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi使用Indy进行网络编程
+title: Delphi使用IdTcpServer/IdTcpClient进行网络编程
 categories: delphi之网络编程 delphi之多线程
 tags: windows delphi socket 网络 TCP 多线程 Indy IdTcpClient IdTcpSerever Unix fork 阻塞 非阻塞
 ---
