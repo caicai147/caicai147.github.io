@@ -2,10 +2,10 @@
 layout: post
 title: Delphi网络编程：阻塞和非阻塞
 categories: delphi之网络编程 深入学习之网络原理
-tags: windows delphi socket Indy 网络 TCP 阻塞 非阻塞 IdTcpServer IdTcpClient ServerSocket ClientSocket
+tags: windows delphi socket Indy 网络 TCP 阻塞 非阻塞 同步 异步 IdTcpServer IdTcpClient ServerSocket ClientSocket
 ---
 
-[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi网络编程：使用ClientSocket/ServerSocket》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
+[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi网络编程：使用ServerSocket/ClientSocket》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
 
 IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
@@ -74,21 +74,62 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 本文将详细展示更多种配合情况下的通信运行效果，同时展示服务端/客户端位于同一台机器和位于不同机器的运行情况。这样更有助于对于阻塞、非阻塞这个冷冰冰的概念有深入的感性上的认知！
 
+以下各种场景的测试代码基于以上两篇文章中的测试代码并加以简单的修改
+
+下面的8中场景对应测试程序的逻辑都是这样的：
+
+* 服务端开启，并监听某个端口
+* 客户端开启，连接到服务端
+* 客户端成功连接到服务端后，服务端给客户端发送"123456789"
+* 【点击按钮】客户端调用接口发送字符串："xm"
+* 服务端先调用对应接口读取一个字符"x"，打印到界面，然后发送"ab"给客户端
+* 服务端再调用对应接口读取一个字符"x"，打印到界面，然后发送"cd"给客户端
+* 客户端获取服务端发来的信息的读取模式是这样的：使用Timer，时间间隔是1s，每次读一个字符并打印到界memo
+
+点击[这里](../download/20161011/Example.zip)下载本文对应的所有测试程序源码。使用IdTcpServer开发的服务端仍然有线程安全问题，本例展示阻塞和非阻塞，所以暂未解决这个线程安全问题；另外在实现服务端程序的时候，也只考虑一个客户端连接的场景，不考虑多客户端同时连接一个服务端的场景
+
 ##客户端(阻塞)<-->服务端(阻塞)
 
-客户端和服务端位于同一台机器的场景，已经在[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160920/)一文中提及了。接下来只是展示客户端和服务端位于不同机器上的场景
+客户端使用IdTcpClient；服务端使用IdTcpServer
+
+**客户端和服务端位于同一台机器**
+
+
+
+**客户端和服务端位于不同机器**
 
 
 
 ##客户端(非阻塞)<-->服务端(非阻塞)
 
-客户端和服务端位于同一台机器的场景，已经在[《Delphi网络编程：使用ClientSocket/ServerSocket》](http://www.xumenger.com/windows-delphi-socket-20161010/)一文中提及了。接下来只是展示客户端和服务端位于不同机器上的场景
+客户端使用ClientSocket，并将ServerType 设置成stNonBlocking；服务端使用ServerSocket，并将ClientType 设置成ctNonBlocking
+
+**客户端和服务端位于同一台机器**
+
+
+
+**客户端和服务端位于不同机器**
 
 
 
 ##客户端(非阻塞)<-->服务端(阻塞)
 
+客户端使用ClientSocket，并将ClientType 设置成ctNonBlocking；服务端使用IdTcpServer
+
+**客户端和服务端位于同一台机器**
+
+**客户端和服务端位于不同机器**
+
 
 
 ##客户端(阻塞)<-->服务端(非阻塞)
+
+客户端使用IdTcpClient；服务端使用ServerSocket，并将ServerType 设置成stNonBlocking
+
+**客户端和服务端位于同一台机器**
+
+
+
+**客户端和服务端位于不同机器**
+
 
