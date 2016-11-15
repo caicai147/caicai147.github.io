@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi使用ClientSocket/ServerSocket进行网络编程
+title: Delphi网络编程：使用ClientSocket/ServerSocket
 categories: delphi之网络编程
 tags: windows delphi socket 网络 TCP
 ---
