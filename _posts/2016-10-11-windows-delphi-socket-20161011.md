@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi网络编程中的阻塞和非阻塞模式
+title: Delphi网络编程：阻塞和非阻塞模式
 categories: delphi之网络编程
 tags: windows delphi socket 网络 TCP
 ---
@@ -18,6 +18,8 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 **ClientSocket 阻塞**   | 可通信  			| 可通信				| 可通信	
 **ClientSocket 非阻塞** | 可通信   			| 可通信				| 可通信	
 **IdTcpClient 阻塞**    | 可通信  			| 可通信				| 可通信	
+
+不过到目前为止对于
 
 ##阻塞和非阻塞的区别
 
@@ -63,11 +65,11 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 因为ServerSocket(非阻塞)/ClientSocket(非阻塞) 通信的运行效果在[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)中已经展示和说明了，IdTcpServer/IdTcpClient也在[《Delphi使用IdTcpServer/IdTcpClient进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)中展示和说明了，接下来展示其他两种配合的运行情况，直接使用前两篇文章中的EXE 程序进行测试
 
-   通信模式         | ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
-------------------- | ------------------| --------------------- |---------------------
-ClientSocket 阻塞   |  可通信  			| 可通信				| 可通信
-ClientSocket 非阻塞 |  可通信   		| 可通信				| 可通信
-IdTcpClient 阻塞    |  可通信  			| 可通信				| 可通信
+   通信模式         	| ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
+----------------    	| ------------------| --------------------- |---------------------
+**ClientSocket 阻塞**   | 可通信  			| 可通信				| 可通信	
+**ClientSocket 非阻塞** | 可通信   			| 可通信				| 可通信	
+**IdTcpClient 阻塞**    | 可通信  			| 可通信				| 可通信	
 
 **ClientSocket配合IdTcpServer**
 
