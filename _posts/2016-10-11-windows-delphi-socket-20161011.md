@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Delphi网络编程：阻塞和非阻塞模式
-categories: delphi之网络编程
-tags: windows delphi socket 网络 TCP
+title: Delphi网络编程：阻塞和非阻塞
+categories: delphi之网络编程 深入学习之网络原理
+tags: windows delphi socket Indy 网络 TCP 阻塞 非阻塞 IdTcpServer IdTcpClient ServerSocket ClientSocket
 ---
 
-[《Delphi使用IdTcpServer/IdTcpClient进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
+[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160920/)和[《Delphi网络编程：使用ClientSocket/ServerSocket》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
 
 IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
@@ -19,7 +19,7 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 **ClientSocket 非阻塞** | 可通信   			| 可通信				| 可通信	
 **IdTcpClient 阻塞**    | 可通信  			| 可通信				| 可通信	
 
-不过到目前为止对于
+到目前为止都只是停留在阻塞、非阻塞这两个概念术语上的“争论”，那么到底什么是阻塞、什么是非阻塞、阻塞和非阻塞到底在运行时有什么现象、阻塞和非阻塞到底适用的场景是什么样的……
 
 ##阻塞和非阻塞的区别
 
@@ -37,11 +37,11 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 **同步**
 
-所谓同步，就是在发送一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用的（例如sin、isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数返回的LRESULT 值返回给调用者
+所谓同步，就是在发送一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用的（例如sin、isdigit等）。但一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数返回的LRESULT 值返回给调用者
 
 **异步**
 
-异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件完成后，通过状态、通知和回调来通知调用者。以CAsyncSocket 类为例（注意，CSocket 从CAsyncSocket 派生，但是其功能已经由异步转化为同步），当一个客户端通过调用Connect 函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket 底层会发送一个消息通知该对象
+异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件完成后，通过状态、通知和回调来通知调用者。以CAsyncSocket 类为例（注意，CSocket 从CAsyncSocket 派生，但其功能已经由异步转化为同步），当一个客户端通过调用Connect 函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket 底层会发送一个消息通知该对象
 
 这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要额外的操作。至于回调函数，其实和通知没有太大区别
 
@@ -61,18 +61,34 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 对象是否处于阻塞模式和函数是不是阻塞调用有很强的相关性，但并不是一一对应的。阻塞对象上可以有非阻塞的调用方式，我们可以通过一定的API 去轮询状态，在适当的时候调用阻塞函数，就可以避免阻塞。而对于非阻塞对象，调用特殊的函数也可以进入阻塞调用。函数select 就是这样的例子
 
+更多关于阻塞和非阻塞的资料：
+
+* [《怎样理解阻塞非阻塞与同步异步的区别？》](https://www.zhihu.com/question/19732473)
+* [《什么是阻塞，非阻塞，同步，异步？》](https://www.zhihu.com/question/26393784)
+* [《Indy TIdTCPClient伪非阻塞式的解决方案》](http://blog.csdn.net/qustdong/article/details/46728961)
+* [《Socket 阻塞模式和非阻塞模式(转) 》](http://yjxandsp.blog.163.com/blog/static/163679712012411115039584/)
+
 ##运行效果展示
 
-因为ServerSocket(非阻塞)/ClientSocket(非阻塞) 通信的运行效果在[《Delphi使用ClientSocket/ServerSocket进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20161010/)中已经展示和说明了，IdTcpServer/IdTcpClient也在[《Delphi使用IdTcpServer/IdTcpClient进行网络编程》](http://www.xumenger.com/windows-delphi-socket-20160920/)中展示和说明了，接下来展示其他两种配合的运行情况，直接使用前两篇文章中的EXE 程序进行测试
+之前的两篇文章中已经展示了阻塞模式客户端对接阻塞模式服务端、非阻塞模式客户端对接非阻塞模式服务端的运行情况。不过上面两篇展示的运行效果其实还基于这样一个事实：客户端、服务端都位于同一台机器上
 
-   通信模式         	| ServerSocket 阻塞 | ServerSocket 非阻塞   | IdTcpServer 阻塞  
-----------------    	| ------------------| --------------------- |---------------------
-**ClientSocket 阻塞**   | 可通信  			| 可通信				| 可通信	
-**ClientSocket 非阻塞** | 可通信   			| 可通信				| 可通信	
-**IdTcpClient 阻塞**    | 可通信  			| 可通信				| 可通信	
+本文将详细展示更多种配合情况下的通信运行效果，同时展示服务端/客户端位于同一台机器和位于不同机器的运行情况。这样更有助于对于阻塞、非阻塞这个冷冰冰的概念有深入的感性上的认知！
 
-**ClientSocket配合IdTcpServer**
+##客户端(阻塞)<-->服务端(阻塞)
+
+客户端和服务端位于同一台机器的场景，已经在[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160920/)一文中提及了。接下来只是展示客户端和服务端位于不同机器上的场景
 
 
 
-**IdTcpClient配合ServerSocket**
+##客户端(非阻塞)<-->服务端(非阻塞)
+
+客户端和服务端位于同一台机器的场景，已经在[《Delphi网络编程：使用ClientSocket/ServerSocket》](http://www.xumenger.com/windows-delphi-socket-20161010/)一文中提及了。接下来只是展示客户端和服务端位于不同机器上的场景
+
+
+
+##客户端(非阻塞)<-->服务端(阻塞)
+
+
+
+##客户端(阻塞)<-->服务端(非阻塞)
+
