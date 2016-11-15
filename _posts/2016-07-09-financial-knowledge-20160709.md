@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 金融证券基础知识、概念整理归纳
+title:  金融证券基础知识：基础知识、概念整理
 categories: 金融证券知识
 tags: 证券 证券市场 股票 债券 基金 ETF LOF 券商 交易所 金融衍生品 期货 期权 指数 QDII
 ---
