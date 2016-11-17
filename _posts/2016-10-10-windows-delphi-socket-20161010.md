@@ -5,7 +5,7 @@ categories: delphi之网络编程
 tags: windows delphi socket 网络 TCP
 ---
 
-[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160920/)讲到了使用Indy 组件进行网络编程，具体客户端使用IdTcpClient、服务端使用IdTcpSerever
+[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160929/)讲到了使用Indy 组件进行网络编程，具体客户端使用IdTcpClient、服务端使用IdTcpSerever
 
 上面的文章也简单展示了如何使用IdTcpClient、IdTcpServer 分别进行客户端和服务端开发，并且简单列举了两个可能因为服务端的多线程机制而出现的线程冲突错误
 
