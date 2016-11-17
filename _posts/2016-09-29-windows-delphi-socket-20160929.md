@@ -65,13 +65,13 @@ Indy 服务器组件创建一个同应用程序主线程分离的监听线程来
 
 Indy 客户端组件并未使用线程。但在一些高级的客户程序中，程序员可以在自定义的线程中使用Indy 客户端组件，以使得用户界面更加友好
 
-![image](../media/image/2016-09-20/01.jpg)
+![image](../media/image/2016-09-29/01.jpg)
 
 ##一个简单的服务器客户端应用实例
 
 下面将创建一个简单的TCP 客户端程序和一个简单的TCP 服务器来演示Indy 的基本使用方法。客户程序使用TCP 协议通服务器连接，并向服务器发送用户所输入的数据
 
-我这里不是使用Delphi 6 自带的Indy，而是下载Indy 9 放在源码下公共单元引用，对应程序的源码点击[【这里】](../download/20160920/Example.zip)下载
+我这里不是使用Delphi 6 自带的Indy，而是下载Indy 9 放在源码下公共单元引用，对应程序的源码点击[【这里】](../download/20160929/Example.zip)下载
 
 **客户端代码**
 
@@ -301,7 +301,7 @@ end.
 
 开启服务器，同时运行两个客户端连接服务器并且发送，运行效果如下：
 
-![image](../media/image/2016-09-20/02.png)
+![image](../media/image/2016-09-29/02.png)
 
 * “启动”按钮设置IdTCPServer 的Active 属性为True 来启动服务器，“关闭”按钮设置Active 属性为False 来关闭服务器。
 * IdTcpServerConnect 方法作为IdTcpServer 的OnConnect 事件响应过程，向客户端发送欢迎信息。OnConnect 事件在一个客户连接请求被接受时发生，为该连接创建的线程AThread 被作为参数传递给IdTCPServerConnect 方法
