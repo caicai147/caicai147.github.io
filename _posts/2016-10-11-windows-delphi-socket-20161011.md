@@ -117,8 +117,6 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 客户端使用ClientSocket，并将ServerType 设置成stNonBlocking；服务端使用ServerSocket，并将ClientType 设置成ctNonBlocking
 
-**客户端和服务端位于同一台机器**
-
 客户端连接上服务端后，开始逐个字节收到"1234..."信息
 
 ![img](../media/image/2016-10-11/21.png)
