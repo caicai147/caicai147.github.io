@@ -2,7 +2,7 @@
 layout: post
 title: Delphi网络编程：使用ServerSocket/ClientSocket
 categories: delphi之网络编程
-tags: windows delphi socket 网络 TCP
+tags: windows delphi socket 网络 TCP Delphi网络编程
 ---
 
 [《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160929/)讲到了使用Indy 组件进行网络编程，具体客户端使用IdTcpClient、服务端使用IdTcpSerever
