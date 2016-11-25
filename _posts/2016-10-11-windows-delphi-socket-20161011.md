@@ -2,7 +2,7 @@
 layout: post
 title: Delphi网络编程：阻塞和非阻塞
 categories: delphi之网络编程 深入学习之网络原理
-tags: windows delphi socket Indy 网络 TCP 阻塞 非阻塞 同步 异步 IdTcpServer IdTcpClient ServerSocket ClientSocket
+tags: windows delphi socket Indy 网络 TCP 阻塞 非阻塞 同步 异步 IdTcpServer IdTcpClient ServerSocket ClientSocket Delphi网络编程
 ---
 
 [《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160929/)和[《Delphi网络编程：使用ServerSocket/ClientSocket》](http://www.xumenger.com/windows-delphi-socket-20161010/)分别展示了使用IdTcpServer/IdTcpClient 和ServerSocket/ClientSocket 进行网络编程时线程策略的区别
