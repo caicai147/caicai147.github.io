@@ -2,7 +2,7 @@
 layout: post
 title: C++对象内存模型：通过重载与覆盖理解虚函数表指针
 categories: c/c++之指针与内存 c/c++之面向对象
-tags: c c++ 对象 内存 面向对象 继承 函数 多态 指针 内存对齐 结构体 重载 覆盖 override overload 虚函数表 虚函数表指针 delphi
+tags: c c++ 对象 内存 面向对象 继承 函数 多态 指针 内存对齐 结构体 重载 覆盖 override overload 虚函数表 虚函数表指针 delphi C++对象内存模型
 ---
 
 本文通过一个简单的[C++例程](../download/20161106/OverloadOverride.zip)展示重载和覆盖的区别
