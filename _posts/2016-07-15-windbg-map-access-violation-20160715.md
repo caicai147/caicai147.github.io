@@ -89,7 +89,7 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
 
 ![img](../media/image/2016-07-15/02.png)
 
-可以看到是在testDLL2.DLL的 0x0223CC72报的错误，错误原因是对地址
+可以看到是在testDLL2.DLL的 0x0223CC72报的错误，错误原因是对内存地址进行了非法访问
 
 在程序报错框弹出的时候，参考以下命令，使用 procdump获取该进程的 dump文件
 
