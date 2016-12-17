@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 汇编与逆向基础：使用IDA和OllyDbg分析一个C函数调用的例子
-categories: 深入学习之操作系统  深入学习之编译原理 
+categories: 深入学习之操作系统  深入学习之编译原理 c/c++之函数
 tags: windows7 64位 32位 汇编 汇编语言 c c++ 连接 编译 编译原理 汇编基础学习 IDA PDB OllyDbg OD cdecl stdcall 函数调用 栈 寄存器
 ---
 
@@ -41,7 +41,7 @@ OllyDbg1.10可以点击[这里](../downloads/20161216/OllyDBG.rar)下载。不�
 
 ##IDA逆向反汇编分析工具
 
-IDA下载地址是：https://www.hex-rays.com/products/ida/support/download.shtml
+IDA下载地址是：[https://www.hex-rays.com/products/ida/support/download.shtml](https://www.hex-rays.com/products/ida/support/download.shtml)
 
 选择下载[免费版IDA 5.0 Freeware](https://www.hex-rays.com/products/ida/support/download_freeware.shtml)。或者直接点击[【这里】](https://out7.hex-rays.com/files/idafree50.exe)下载
 
