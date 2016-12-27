@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi网络编程：ServerSocket/ClientSocket的更多细节
-categories: delphi之网络编程 深入学习之网络原理 深入学习之内存管理 delphi之指针与内存 源码研究
+categories: delphi之网络编程 深入学习之网络原理 深入学习之内存管理 delphi之指针与内存 好资源之学习资源
 tags: delphi 二进制 网络 Delphi网络编程 源码研究
 ---
 
