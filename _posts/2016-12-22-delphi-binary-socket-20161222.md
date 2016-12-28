@@ -2,7 +2,7 @@
 layout: post
 title: Delphi网络编程：发送和接收二进制数据
 categories: delphi之网络编程 深入学习之网络原理 深入学习之内存管理 delphi之指针与内存
-tags: delphi 二进制 网络 Delphi网络编程 汉字 编码 GBK
+tags: delphi 二进制 网络 Delphi网络编程 汉字 编码 GBK 结构体
 ---
 
 说到文本文件，可能想到与之对应的是二进制文件。其实它们两并不是对立的关系，还是包含的关系：二进制文件包括文本文件，因为文本最本质也是以二进制（0、1）的形式存在的。文本文件中的内容主要是对人类可读的文本信息，主要是汉字、字母、数字，但其在底层还是通过二进制的0和1来表示的，比如英文字母“a”对应二进制：01100001，字符“A”对应的二进制：01000001，数字“2”对应二进制：00110010，汉字“我”对应二进制（GBK编码）：1100111011010010
@@ -23,9 +23,24 @@ Delphi的ClientSocket、ServerSocket其实是将底层的WinSockAPI又做了封�
 
 接下来通过一个例子展示客户端发送二进制数据，服务端接收二进制数据。对应的程序源码点击[这里](../download/20161222/Binary.rar)下载
 
-规定发送数据的格式如下：前4个字节是Integer型数据，表示接下来的字符串的长度，然后接下来就是指定长度的字符串
+规定发送数据的格式如下
 
-**客户端代码**
+* 定义一个结构体，存储后续的的字符串的相关信息
+* 结构体中定义了后续字符串的长度、等相关信息
+* 发送数据的第一部分是该结构体变量的内容，第二部分是字符串信息
+
+##结构体定义
+
+```
+type
+  PRemark = ^TRemark;
+  TRemark = packed record
+    len: Integer;                 //后续的字符串长度
+    about: array[0..9] of Char;   //附加信息
+  end;
+```
+
+##客户端代码
 
 ```
 unit MainForm;
@@ -34,7 +49,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ScktComp;
+  Dialogs, StdCtrls, ScktComp, CommonData;
 
 type
   TForm1 = class(TForm)
@@ -46,7 +61,7 @@ type
     lblMessage: TLabel;
     edtMessage: TEdit;
     btnSend: TButton;
-    mmoMessage: TMemo;
+    mmo1: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
@@ -93,55 +108,64 @@ end;
 procedure TForm1.btnSendClick(Sender: TObject);
 var
   SendMsg: string;
-  MsgLen: Integer;
+  remark: TRemark;
+  remarkSize: Integer;
   buf: array of Byte;
 begin
   SendMsg := edtMessage.Text;
-  MsgLen := Length(SendMsg);
+  remark.len := Length(SendMsg);
+  StrCopy(remark.about, '测试请求');
   
-  //设置Byte数组长度是字符串长度+整型长度
-  SetLength(buf, MsgLen + 4);
+  //设置Byte数组长度是字符串长度+结构体
+  remarkSize := Sizeof(TRemark);
+  SetLength(buf, remark.len + remarkSize);
 
-  //将整型拷贝到Byte数组中
-  Move(MsgLen, buf[0], 4);
+  //将结构体拷贝到Byte数组中
+  Move(remark, buf[0], remarkSize);
 
   //将字符串拷贝到Byte数组中
-  Move(SendMsg[1], buf[4], MsgLen);
+  Move(SendMsg[1], buf[remarkSize], remark.len);
 
   //发送二进制内容
-  Client.Socket.SendBuf(buf[0], MsgLen + 4);
+  Client.Socket.SendBuf(buf[0], remark.len + remarkSize);
 end;
 
 procedure TForm1.SocketConnect(Sender: TObject; Socket: TCustomWinSocket);
 begin
-  Form1.mmoMessage.Lines.Add('连接成功');
+  Form1.mmo1.Lines.Add('连接成功');
 end;
 
 procedure TForm1.SocketRead(Sender: TObject; Socket: TCustomWinSocket);
 var
   buf: array of Byte;
-  respTextLen: Integer;
+  remark: TRemark;
+  remarkSize: Integer;
+//  respTextLen: Integer;
   respText: string;
 begin
   try
     if Socket.ReceiveLength > 0 then
     begin
-      //前4节，长度
-      Socket.ReceiveBuf(respTextLen, 4);
+      //结构体
+      remarkSize := SizeOf(TRemark);
+      Socket.ReceiveBuf(remark, remarkSize);
       
       //剩余字节：消息内容
-      SetLength(buf, respTextLen);
-      Socket.ReceiveBuf(buf[0], respTextLen);
+      SetLength(buf, remark.len);
+      Socket.ReceiveBuf(buf[0], remark.len);
 
-      SetLength(respText, respTextLen);
-      Move(buf[0], respText[1], respTextLen);
-      
-      Form1.mmoMessage.Lines.Add('应答长度：' + IntToStr(respTextLen) + '；内容：' + respText);
+      SetLength(respText, remark.len);
+      Move(buf[0], respText[1], remark.len);
+
+      Form1.mmo1.Lines.Add('应答长度：' + IntToStr(remark.len));
+      Form1.mmo1.Lines.Add('附加信息：' + remark.about);
+      Form1.mmo1.Lines.Add('应答内容：' + respText);
+      Form1.mmo1.Lines.Add('');
     end;
   except
     on E: Exception do
     begin
-      Form1.mmoMessage.Lines.Add('接收应答出现异常！');
+      Form1.mmo1.Lines.Add('接收应答出现异常！');
     end;
   end;
 end;
@@ -149,7 +173,7 @@ end;
 end.
 ```
 
-**服务端代码**
+##服务端代码
 
 ```
 unit MainForm;
@@ -158,7 +182,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ScktComp;
+  Dialogs, StdCtrls, ScktComp, CommonData;
 
 type
   TForm1 = class(TForm)
@@ -220,34 +244,43 @@ end;
 
 procedure TForm1.OnClientRead(Sender: TObject; Socket: TCustomWinSocket);
 var
-  reqLength: Integer;
+  remarkSize: Integer;
+
+  reqRemark: TRemark;
   reqBuf: array of Byte;
   reqText: string;
 
-  respLength: Integer;
+  respRemark: TRemark;
   respBuf: array of Byte;
   respText: string;
 begin
   if Socket.ReceiveLength > 0 then
   begin
-    //先接收前4个字节
-    Socket.ReceiveBuf(reqLength, 4);
+    remarkSize := SizeOf(TRemark);
+
+    //先接收前部分的结构体变量
+    Socket.ReceiveBuf(reqRemark, remarkSize);
 
     //再接收后续的字符串 
-    SetLength(reqBuf, reqLength);
-    Socket.ReceiveBuf(reqBuf[0], reqLength);
-    SetLength(reqText, reqLength);
-    Move(reqBuf[0], reqText[1], reqLength);
-    mmo1.Lines.Add('请求长度：' + IntToStr(reqLength) + '；内容：' + reqText);
+    SetLength(reqBuf, reqRemark.len);
+    Socket.ReceiveBuf(reqBuf[0], reqRemark.len);
+    SetLength(reqText, reqRemark.len);
+    Move(reqBuf[0], reqText[1], reqRemark.len);
+    mmo1.Lines.Add('请求长度：' + IntToStr(reqRemark.len));
+    mmo1.Lines.Add('附加信息：' + reqRemark.about);
+    mmo1.Lines.Add('请求内容：' + reqText);
+    mmo1.Lines.Add('');
 
     //返回应答
     respText := 'Hello Client';
-    respLength := Length(respText);
-    SetLength(respBuf, respLength + 4);
-    Move(respLength, respBuf[0], 4);
-    Move(respText[1], respBuf[4], respLength);
+    respRemark.len := Length(respText);
+    StrCopy(respRemark.about, '测试应答');
 
-    Socket.SendBuf(respBuf[0], respLength + 4);
+    SetLength(respBuf, respRemark.len + remarkSize);
+    Move(respRemark, respBuf[0], remarkSize);
+    Move(respText[1], respBuf[remarkSize], respRemark.len);
+
+    Socket.SendBuf(respBuf[0], respRemark.len + remarkSize);
     mmo1.Lines.Add('返回应答：' + respText);
   end;
 end;
@@ -255,7 +288,7 @@ end;
 end.
 ```
 
-**运行效果展示**
+##运行效果展示
 
 首先是打开服务端程序，监听8090，开启服务
 
