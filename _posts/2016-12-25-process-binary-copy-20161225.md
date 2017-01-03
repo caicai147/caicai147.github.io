@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 拷贝进程内存中的数据、函数指令
+title: 拷贝进程内存中的数据、函数指令到磁盘文件
 categories: 深入学习之内存管理 delphi之指针与内存 delphi之函数 delphi之字符串 delphi之文件操作 delphi之流
 tags: delphi 二进制 十进制 十六进制 UE 函数 函数指针 指针 字符串 数组 文件 文件读写 流 文件流 内存 大端 小端 dump 结构体对齐 结构体 多进程
 ---
