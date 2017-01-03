@@ -6,3 +6,6 @@ tags: delphi 网络 Delphi网络编程 源码研究 ServerSocket ClientSocket so
 ---
 
 ![image](../media/image/2017-01-03/stream.png)
+
+参考[《初步了解和学习Delphi的流》](http://www.xumenger.com/delphi-stream-20160807/)对流的使用先有一个基本认识
+

@@ -6,3 +6,8 @@ tags: delphi 网络 Delphi网络编程 源码研究 ServerSocket ClientSocket so
 ---
 
 ![image](../media/image/2017-01-03/CustomSocket.png)
+
+TCustomSocket类继承自TAbstractSocket类
+
+TCustomSocket有以下子类：TCustomSocket、TClientSocket、TCustomServerSocket、TServerSocket
+
