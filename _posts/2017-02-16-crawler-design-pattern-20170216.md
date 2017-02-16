@@ -2,7 +2,7 @@
 layout: post
 title: 设计一个简单的Python2爬虫框架
 categories: 深入学习之设计模式 python之网络爬虫
-tags: 设计模式 面向对象 表单 爬虫 AJAX python python2 cookie session web url
+tags: 设计模式 面向对象 表单 爬虫 AJAX python python2 cookie session web url web.py
 ---
 
 ##项目简介
@@ -134,4 +134,30 @@ Python在互联网时代有很多天然的优势：
 **合成复用原则**。尽量使用合成/聚合的方式，而不是使用继承
 
 >上面扯了这么多虚头巴脑的东西，那到底应该怎么设计这个爬虫框架呢？
+
+##如何设计爬虫框架的类
+
+上面设想的这个爬虫框架，支持开发者实现具有解析/输出方法的处理类，然后配置URL和对应的处理类，然后框架在运行时根据对应的根据URL调用对应类的方法。想想和web.py中指定URL对应的GET/POST处理类是很一致的，关于web.py框架的使用可以参见[《Python使用web.py进行简单Web开发》](http://www.xumenger.com/python-webpy-20170115/)
+
+所以为什么不参考web.py来实现这个爬虫框架呢？可以看看一个最简单的基于web.py的web程序
+
+```
+# -*- coding: utf-8 -*-
+import web
+
+urls = (
+    '/(.*)', 'hello'
+)
+
+app = web.application(urls, globals())
+
+class hello:
+    def GET(self, name):
+        if not name:
+            name = 'World'
+        return 'Hello, ' + name + '!'
+
+if __name__ == '__main__':
+    app.run()
+```
 
