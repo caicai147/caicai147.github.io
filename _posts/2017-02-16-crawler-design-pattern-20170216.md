@@ -150,5 +150,5 @@ if __name__ == '__main__':
     app.run()
 ```
 
-框架需要获取的信息是url配置、GET/POST处理类，主要是通过`app = web.application(urls, globals())`的两个参数来实现传递给框架
+框架需要获取的信息是url配置、GET/POST处理类，主要是通过`app = web.application(urls, globals())`的两个参数来传递给框架
 
