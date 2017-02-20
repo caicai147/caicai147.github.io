@@ -174,6 +174,9 @@ class C(object):
         h = 22
         print "C::proc = ", locals()
         print ''
+
+    def test(self):
+        print 'test'
     
 def func():
     x = 1
@@ -197,9 +200,27 @@ if __name__ == '__main__':
 
     print 'main globals = ', globals()
     print ''
+
 ```
 
 运行该脚本的输出如下
 
 ![image](../media/image/2017-02-16/02.png)
 
+globals()可以这样用
+
+```
+    # globals()[类名]获取类
+    CC = globals()['C']
+    print CC.__name__
+
+    # 根据glocals()获取的类可以创建对象，和直接使用C类是一样的
+    cc = CC()
+    cc.test()
+
+    # globals()[变量名]获取变量
+    ts = globals()['s']
+    print ts
+```
+
+![image](../media/image/2017-02-16/03.png)
