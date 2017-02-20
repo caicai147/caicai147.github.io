@@ -212,11 +212,11 @@ globals()可以这样用
 ```
     # globals()[类名]获取类
     CC = globals()['C']
-    print CC.__name__
+    print CC.__name__       #获取类名
 
     # 根据glocals()获取的类可以创建对象，和直接使用C类是一样的
-    cc = CC()
-    cc.test()
+    cc = CC()               #使用类创建对象
+    cc.test()               #调用对象的方法
 
     # globals()[变量名]获取变量
     ts = globals()['s']
