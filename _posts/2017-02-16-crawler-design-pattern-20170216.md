@@ -62,10 +62,10 @@ Python在互联网时代有很多天然的优势：
 
 * 有一个配置文件，配置URL正则表达式以及与之匹配的URL对应的处理类
 * URL处理类中实现两个方法，Parse、Output
-* Parse入参是[url, html]格式的数据，存储URL，以及URL对应网页的HTML字符串
+* Parse入参是html，存储网页的HTML字符串
 * Parse方法内部实现对于HTML的解析
-* Parse返回是[url, content]格式的数据，存储URL，以及该URL网页解析的结果
-* Output入参是[url, content]格式的数据，Output内部用于将解析网页获取的内容进行输出
+* Parse返回是content，存储该URL网页解析的结果
+* Output入参是content，Output内部用于将解析网页获取的内容进行输出
 
 接口的初步设计粗略说明就是这样，接下来就是针对接口来规划框架内部应该如何实现了
 
@@ -150,4 +150,56 @@ if __name__ == '__main__':
 
 接下来重点说一下globals()方法
 
-...
+##globals()和locals()方法
+
+global()返回全局作用域的属性字典，locals()返回局部作用域的属性字典。当locals()在模块顶层的位置时返回的值与global()相同
+
+```
+# -*- coding: utf-8 -*-
+
+i = 1
+f = 1.1
+s = 'str'
+
+class C(object):
+    a = 11
+    b = 12
+
+    def __init__(self):
+        m = 44
+        n = 33
+    
+    def proc(self):
+        k = 11
+        h = 22
+        print "C::proc = ", locals()
+        print ''
+    
+def func():
+    x = 1
+    y = 2
+    def warp():
+        pass
+    print "func locals = ", locals()
+    print ''
+
+x = 1
+y = 2
+
+if __name__ == '__main__':
+    c = C()
+    c.proc()
+
+    func()
+
+    print 'main locals = ', locals()
+    print ''
+
+    print 'main globals = ', globals()
+    print ''
+```
+
+运行该脚本的输出如下
+
+![image](../media/image/2017-02-16/02.png)
+
