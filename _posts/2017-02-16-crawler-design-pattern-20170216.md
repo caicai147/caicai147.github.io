@@ -152,7 +152,7 @@ if __name__ == '__main__':
 
 ##globals()和locals()方法
 
-global()返回全局作用域的属性字典，locals()返回局部作用域的属性字典。当locals()在模块顶层的位置时返回的值与global()相同
+globals()返回全局作用域的属性字典，locals()返回局部作用域的属性字典。当locals()在模块顶层的位置时返回的值与globals()相同
 
 ```
 # -*- coding: utf-8 -*-
