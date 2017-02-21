@@ -219,8 +219,8 @@ globals()可以这样用
     cc.test()               #调用对象的方法
 
     # globals()[变量名]获取变量
-    ts = globals()['s']
-    print ts
+    ss = globals()['s']
+    print ss
 ```
 
 ![image](../media/image/2017-02-16/03.png)
