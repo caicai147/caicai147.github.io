@@ -5,69 +5,69 @@ categories: c/c++之指针与内存
 tags: c c++ 内存 指针 gdb 调试
 ---
 
+##例程1
 
-例程1
-===
+```
+#include<stdio.h>
+int main(void)
+{
+    char *s="hello";
+    printf("%s\n", s);
+    s[0]="H"
+        //因为s指针指向的字符串"hello"是字符串常量，所以不能通过指针进行更改，
+        //所以这里会产生段错误
+    printf("%s\n", s);
+    return 0;
+}
+```
 
-    #include<stdio.h>
-    int main(void)
-    {
-        char *s="hello";
-        printf("%s\n", s);
-        s[0]="H"
-            //因为s指针指向的字符串"hello"是字符串常量，所以不能通过指针进行更改，
-            //所以这里会产生段错误
-        printf("%s\n", s);
-        return 0;
-    }
+##例程2
 
-例程2
-===
+```
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main(void)
+{
+    char *s = (char *)malloc(6*sizeof(char));
+    strcpy(s,"hello");
+    printf("%s\n", s);
+    s[0] = 'H';
+    //因为为s分配了动态内存，所以更改可以通过s指针进行更改
+    printf("%s\n", s);
+    return 0;
+}
+```
 
-    #include<stdio.h>
-    #include<string.h>
-    #include<stdlib.h>
-    int main(void)
-    {
-        char *s = (char *)malloc(6*sizeof(char));
-        strcpy(s,"hello");
-        printf("%s\n", s);
-        s[0] = 'H';
-        //因为为s分配了动态内存，所以更改可以通过s指针进行更改
-        printf("%s\n", s);
-        return 0;
-    }
-
-例程3
-===
+##例程3
 
 字符串开始位置没有规定，但是规定必须以'\0'作为结尾标识符
 
-    int main(void)
-    {
-        char *s="hello";
-        printf("%s\n", s);
-        //打印出hello
-        printf("%s\n", &s[1]);
-        //打印出ello
-        printf("%s\n", &s[1]);
-        //打印出llo
-    
-        //...
-    
-        printf("%s\n", &s[4]);
-        //打印出o
-    
-        return 0;
-    }
-    
+```
+int main(void)
+{
+    char *s="hello";
+    printf("%s\n", s);
+    //打印出hello
+    printf("%s\n", &s[1]);
+    //打印出ello
+    printf("%s\n", &s[1]);
+    //打印出llo
 
-编译调试例程3看看效果
-===========
+    //...
+
+    printf("%s\n", &s[4]);
+    //打印出o
+
+    return 0;
+}
+```
+    
+##编译调试例程3看看效果
 
 假设例程3命名为string.c
 
-用命令`gcc -g -o string string`来编译程序
+用命令`gcc -g -o string string.c`来编译程序
 
 再用gdb ./string来调试程序
 >break main  
