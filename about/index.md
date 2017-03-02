@@ -6,7 +6,7 @@ comments: no
 
 ###个人说明
 
-* 本博客的模板是使用[飘过的小牛](http://github.thinkingbar.com/)的，github地址是[这里](https://github.com/niushuai/reading)
+* 本博客的模板参考自[飘过的小牛](http://github.thinkingbar.com/)
 * 本博客的核心价值是记录自己的学习历程，如果顺便对其他人有参考价值那也是极好的
 * 现在自己还处于努力学习的状态，并且希望自己的一生都会是持续学习和持续进步的状态
 
