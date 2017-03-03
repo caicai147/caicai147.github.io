@@ -72,6 +72,96 @@ uses
 
 type
   TForm1 = class(TForm)
+    btnCreate: TButton;
+    btnDestroy: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure btnCreateClick(Sender: TObject);
+    procedure btnDestroyClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  //使用数组管理子进程，暂时只支持最多创建11个子进程
+  subProcInfo: array[0..10] of TProcessInformation;
+  subIndex: Integer;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  subIndex := 0;
+end;
+
+
+procedure TForm1.btnCreateClick(Sender: TObject);
+var
+  bSuccess: Boolean;
+  StartupInfo: TStartupInfo;
+  ProcInfo: TProcessInformation;
+begin
+  FillChar(StartupInfo, SizeOf(StartupInfo), #0);
+  StartupInfo.cb := SizeOf(StartupInfo);
+  StartupInfo.dwFlags := STARTF_USESHOWWINDOW;
+  
+  bSuccess := CreateProcess(
+      'sub.exe',                                          //可执行文件的名字
+      'param1 "param21 param22" param3',                  //命令行字符串，以空格分开多个参数（比如可以用于把主进程的ID、句柄值传给子进程）
+      nil,                                                //进程对象的安全性
+      nil,                                                //线程对象的安全性
+      False,                                              //句柄可继承性
+      CREATE_DEFAULT_ERROR_MODE or CREATE_NEW_CONSOLE,    //标识符(优先级)
+      nil,                                                //指向环境字符串，Use parent's environment block.
+      nil,                                                //子进程当前目录，Use parent's starting directory
+      StartupInfo,
+      ProcInfo);
+
+  if bSuccess then
+  begin
+    if subIndex > 10 then
+    begin
+      ShowMessage('已经创建11个子进程，不允许再创建');
+      Exit;
+    end;
+    subProcInfo[subIndex] := ProcInfo;
+    Inc(subIndex);
+    Self.Caption := '主进程创建子进程' + IntToStr(ProcInfo.dwProcessId);
+  end;
+end;
+
+procedure TForm1.btnDestroyClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i:=0 to 10 do
+  begin
+    TerminateProcess(subProcInfo[i].hProcess, 0);
+  end;
+end;
+
+end.
+
+```
+
+##子进程代码
+
+```
+unit MainForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
     lblParam: TLabel;
     procedure FormCreate(Sender: TObject);
   private
@@ -111,6 +201,7 @@ initialization
   end;
 
 end.
+
 ```
 
 ##运行效果展示
