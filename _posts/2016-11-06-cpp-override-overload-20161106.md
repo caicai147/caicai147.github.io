@@ -68,7 +68,7 @@ int main()
 
 首先讲一下覆盖(override)，覆盖是实现C++多态的语法基础：父类中定义virtual方法，子类override该方法，然后就可以用一个父类的指针或引用寻址到一个子类对象实体。就像上面的例子，父类定义了virtual函数testOverride1()，然后子类覆盖了该函数，当通过new Derived()实例化一个子类对象并且用父类的指针指向该对象时，就正好满足上面对于多态的描述，所以当使用父类指针调用testOverride1()方法时，其结果就是寻址到子类的testOverride1()方法，所以得到这样的运行结果
 
-而对于testOverride1()，虽然其也是定义为virtual方法，但因为只有Base实现了该方法，Derived没有实现该方法，所以调用的还是父类的方法
+而对于testOverride2()，虽然其也是定义为virtual方法，但因为只有Base实现了该方法，Derived没有实现该方法，所以调用的还是父类的方法
 
 >在Delphi中，要想实现多态直接就需要使用override关键字了：在父类中使用关键字virtual定义方法，然后在子类中使用关键字override重新实现该方法。只不过C++中不需要在子类中再使用关键字override罢了
 
