@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 非阻塞IO网络编程错误示范
+title: 非阻塞IO网络编程存在的坑
 categories: delphi之网络编程 delphi之消息机制
 tags: delphi网络编程 delphi 网络 ScktComp 消息机制
 ---
@@ -50,27 +50,27 @@ ScktComp支持阻塞IO和非阻塞IO两种，非阻塞IO是使用select、WSAAsy
 ```
 function TCustomWinSocket.SendBuf(var Buf; Count: Integer): Integer;
 var
-  ErrorCode: Integer;
+	ErrorCode: Integer;
 begin
-  Lock;
-  try
-    Result := 0;
-    if not FConnected then Exit;
-    Result := send(FSocket, Buf, Count, 0);
-    if Result = SOCKET_ERROR then
-    begin
-      ErrorCode := WSAGetLastError;
-      if (ErrorCode <> WSAEWOULDBLOCK) then
-      begin
-        Error(Self, eeSend, ErrorCode);
-        Disconnect(FSocket);
-        if ErrorCode <> 0 then
-          raise ESocketError.CreateResFmt(@sWindowsSocketError, [SysErrorMessage(ErrorCode), ErrorCode, 'send']);
-      end;
-    end;
-  finally
-    Unlock;
-  end;
+	Lock;
+	try
+		Result := 0;
+		if not FConnected then Exit;
+		Result := send(FSocket, Buf, Count, 0);
+		if Result = SOCKET_ERROR then
+		begin
+			ErrorCode := WSAGetLastError;
+			if (ErrorCode <> WSAEWOULDBLOCK) then
+			begin
+				Error(Self, eeSend, ErrorCode);
+				Disconnect(FSocket);
+				if ErrorCode <> 0 then
+					raise ESocketError.CreateResFmt(@sWindowsSocketError, [SysErrorMessage(ErrorCode), ErrorCode, 'send']);
+			end;
+		end;
+	finally
+		Unlock;
+	end;
 end;
 ```
 
@@ -79,31 +79,31 @@ end;
 ```
 function TCustomWinSocket.ReceiveBuf(var Buf; Count: Integer): Integer;
 var
-  ErrorCode: Integer;
+	ErrorCode: Integer;
 begin
-  Lock;
-  try
-    Result := 0;
-    if (Count = -1) and FConnected then
-      ioctlsocket(FSocket, FIONREAD, Longint(Result))
-    else begin
-      if not FConnected then Exit;
-      Result := recv(FSocket, Buf, Count, 0);
-      if Result = SOCKET_ERROR then
-      begin
-        ErrorCode := WSAGetLastError;
-        if ErrorCode <> WSAEWOULDBLOCK then
-        begin
-          Error(Self, eeReceive, ErrorCode);
-          Disconnect(FSocket);
-          if ErrorCode <> 0 then
-            raise ESocketError.CreateResFmt(@sWindowsSocketError, [SysErrorMessage(ErrorCode), ErrorCode, 'recv']);
-        end;
-      end;
-    end;
-  finally
-    Unlock;
-  end;
+	Lock;
+	try
+		Result := 0;
+		if (Count = -1) and FConnected then
+			ioctlsocket(FSocket, FIONREAD, Longint(Result))
+		else begin
+			if not FConnected then Exit;
+			Result := recv(FSocket, Buf, Count, 0);
+			if Result = SOCKET_ERROR then
+			begin
+				ErrorCode := WSAGetLastError;
+				if ErrorCode <> WSAEWOULDBLOCK then
+				begin
+					Error(Self, eeReceive, ErrorCode);
+					Disconnect(FSocket);
+					if ErrorCode <> 0 then
+						raise ESocketError.CreateResFmt(@sWindowsSocketError, [SysErrorMessage(ErrorCode), ErrorCode, 'recv']);
+				end;
+			end;
+		end;
+	finally
+		Unlock;
+	end;
 end;
 ```
 
@@ -195,4 +195,3 @@ end;
 |       4000     |   8        |  7         |   19808   |
 |       8000     |   5        |  4         |   23808   |
 |       10000    |   4        |  3         |   21808   |
-
