@@ -11,7 +11,7 @@ tags: windows7 64位 32位 汇编 汇编语言 c c++ 连接 编译 编译原理 
 
 ##OllyDbg调试工具
 
-OllyDbg1.10可以点击[这里](../downloads/20161216/OllyDBG.rar)下载。不需安装，解压缩后即可使用
+OllyDbg1.10可以点击[这里](../download/20161216/OllyDBG.rar)下载。不需安装，解压缩后即可使用
 
 使用OllyDbg打开一个Exe文件后，窗口显示如下
 
