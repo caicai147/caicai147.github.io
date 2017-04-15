@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ScktComp的回调逻辑
+title: ScktComp OnRead的回调逻辑
 categories: delphi之网络编程 delphi之消息机制
 tags: delphi网络编程 delphi 网络 ScktComp 消息机制
 ---
