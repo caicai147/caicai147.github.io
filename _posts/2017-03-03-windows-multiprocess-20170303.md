@@ -15,7 +15,7 @@ tags: delphi 多进程 进程 windows 命令行 cmd
 
 >Windows下并发编程建议尽量使用多线程，而不要多进程，除非一个特殊的需求场景或者一些躲不开的限制。扩展阅读[《多进程跟多线程如何取舍，在不同系统，不同场景下？》](https://www.zhihu.com/question/48153562/answer/109506150)
 
-##Windows进程相关API
+## Windows进程相关API
 
 创建进程
 
@@ -59,7 +59,7 @@ BOOL TerminateProcess(
 
 更多API参见[《Windows多进程编程》](http://blog.csdn.net/bxhj3014/article/details/2082255)，[MSDN](https://msdn.microsoft.com/zh-cn/default.aspx)
 
-##主进程代码
+## 主进程代码
 
 ```
 unit MainForm;
@@ -149,7 +149,7 @@ end.
 
 ```
 
-##子进程代码
+## 子进程代码
 
 ```
 unit MainForm;
@@ -204,7 +204,7 @@ end.
 
 ```
 
-##运行效果展示
+## 运行效果展示
 
 >以上代码可以点击[这里](../download/20170303/Process.zip)下载
 
