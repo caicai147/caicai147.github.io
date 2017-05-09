@@ -31,7 +31,7 @@ tags: delphi网络编程 delphi 网络 ScktComp 消息机制
 
 ![image](../media/image/2017-03-29/02.png)
 
-##什么情况下会回调OnRead
+## 什么情况下会回调OnRead
 
 ```
 procedure TForm1.SocketRead(Sender: TObject; Socket: TCustomWinSocket);
@@ -53,7 +53,7 @@ end;
 
 >效果很明显，并不是在只有客户端发送数据的情况下触发服务端的OnRead，而是当服务端的缓冲区中有数据时，就必然触发OnRead
 
-##OnRead的回调顺序
+## OnRead的回调顺序
 
 ```
 procedure TForm1.SocketRead(Sender: TObject; Socket: TCustomWinSocket);
@@ -86,7 +86,7 @@ end;
 
 >通过这个现象去深刻理解ScktComp的消息机制！
 
-##ReceiveLength()函数返回值是什么
+## ReceiveLength()函数返回值是什么
 
 ```
 procedure TForm1.SocketRead(Sender: TObject; Socket: TCustomWinSocket);
@@ -110,7 +110,7 @@ end;
 
 所以ReceiveLength返回的应该是当前缓冲区中还有多少字节的数据！
 
-##尝试多读出一些数据会怎么样
+## 尝试多读出一些数据会怎么样
 
 模拟这样的情况：客户端发送'abc'给服务端，服务端尝试读取6个字节，结果会是怎么样呢？
 
@@ -147,7 +147,7 @@ end;
 
 >这也是非阻塞网络编程的一个重要特点：当尝试读取的数据量超过缓冲区内部现有的数据量时，还是会读取，并且继续运行，而不是阻塞等待剩下的数据。所以在非阻塞网络编程中针对这个特点也需要小心，因为可能你尝试读取n个字节的数据，但此时缓冲区中只有n-m个，程序还是会读出来，并且继续运行，因此可能会产生和预期不一样的运行效果。所以在非阻塞网络编程中如何控制每次读取的数量是很重要的！
 
-##回调中不读取数据会怎么样
+## 回调中不读取数据会怎么样
 
 ```
 procedure TForm1.SocketRead(Sender: TObject; Socket: TCustomWinSocket);
@@ -164,7 +164,7 @@ end;
 
 >这个现象，目前我还是无法解释，只有后续研究ScktComp的源码实现，深入学习网络编程才能清楚这个现象背后的原因了！
 
-##客户端程序
+## 客户端程序
 
 ```
 unit MainForm;
@@ -291,7 +291,7 @@ end;
 end.
 ```
 
-##服务端程序
+## 服务端程序
 
 ```
 unit MainForm;
