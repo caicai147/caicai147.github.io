@@ -5,9 +5,9 @@ categories: delphi之多线程 delphi之系统调用 深入学习之多线程 de
 tags: delphi WinAPI Windows 多线程 线程 异常处理
 ---
 
-##前请提要
+## 前请提要
 
-####Delphi TThread和WinAPI的关系
+#### Delphi TThread和WinAPI的关系
 
 其实Delphi的TThread实现就是对WinAPI的相关线程方法的封装，主要包括：
 
@@ -17,7 +17,7 @@ tags: delphi WinAPI Windows 多线程 线程 异常处理
 * 添加异常处理机制
 * 在Delphi中不光TThread的实现是这样，还有很多类的实现都是如此
 
-####GetLastError方法
+#### GetLastError方法
 
 GetLastError在Windows编程的时候也是比较常用，这里做一个说明：
 
@@ -31,9 +31,9 @@ GetLastError在Windows编程的时候也是比较常用，这里做一个说明�
   * 请直接参见TThread的Suspend的方法
 * 可以使用WinAPI方法SetLastError来设置错误码
 
-##TThread方法举例
+## TThread方法举例
 
-####TThread的Create方法实现
+#### TThread的Create方法实现
 
 * TThread.Create调用WinAPI方法BeginThread传入@ThreadProc
 * BeginThread内部调用的是CreateThread方法
@@ -68,7 +68,7 @@ begin
 end;
 ```
 
-####TThread的ThreadProc方法实现
+#### TThread的ThreadProc方法实现
 
 * ThreadProc方法会在TThread.Create调用BeginThread方法中会传入这个方法的地址
 * Execute其实就是在ThreadProc中被调用的，我们开发线程的时候就是实现Execute方法
@@ -110,7 +110,7 @@ begin
 end;
 ```
 
-####TThread的Resume实现
+#### TThread的Resume实现
 
 ```
 procedure TThread.Resume;
@@ -124,7 +124,7 @@ begin
 end;
 ```
 
-####TThread的Suspend实现
+#### TThread的Suspend实现
 
 ```
 {$IFDEF MSWINDOWS}
@@ -135,9 +135,9 @@ begin
 end;
 ```
 
-####更多的代码实现请详细研究TThread类
+#### 更多的代码实现请详细研究TThread类
 
-##重点说明线程的挂起和唤醒
+## 重点说明线程的挂起和唤醒
 
 通过下面的代码实例，以及代码中的注释深入理解：
 

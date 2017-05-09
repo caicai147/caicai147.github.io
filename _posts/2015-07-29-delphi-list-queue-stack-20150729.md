@@ -6,11 +6,11 @@ tags: delphi tlist tobjectlist tstack tqueue
 ---
 
 
-###TOrderedList、TStack、TQueue###
+### TOrderedList、TStack、TQueue
 
 Contnrs单元还定义了其他三个类：TOrderedList、TStack、TQueue
 
-####TOrderedList####
+#### TOrderedList
 
     TOrderedList = class(TObject)
     private
@@ -26,14 +26,14 @@ Contnrs单元还定义了其他三个类：TOrderedList、TStack、TQueue
         function Peek: Pointer;
     end;
 
-####TStack####
+#### TStack
 
     TStack = class(TOrderedList)
     protected
         procedure PushItem(AItem: Pointer); override;
     end;
 
-####TQueue####
+#### TQueue
 
     TQueue = class(TOrderedList)
     protected
@@ -54,11 +54,11 @@ TStack和TQueue正是实现了PushItem 抽象方法的类，我们可以实例�
 * Peek　　返回链表的末端指针，但是不将其从链表中删除。
 
 
-###TObjectStack、TObjectQueue###
+### TObjectStack、TObjectQueue
 
 Contnrs单元中最后两个类是TObjectStack和TObjectQueue类，类的定义如下
 
-####TObjectStack####
+#### TObjectStack
 
     TObjectStack = class(TStack)
     public
@@ -67,7 +67,7 @@ Contnrs单元中最后两个类是TObjectStack和TObjectQueue类，类的定义�
         function Peek: TObject;
     end;
 
-####TObjectQueue####
+#### TObjectQueue
 
     TObjectQueue = class(TQueue)
     public

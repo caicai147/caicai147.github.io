@@ -5,7 +5,7 @@ categories: delphi之指针与内存 delphi之消息机制 windows之消息机�
 tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量 多进程
 ---
 
-##情况一测试
+## 情况一测试
 
 * 在[《实例展示Delphi共享内存的使用【例程】》](http://www.xumenger.com/windows-delphi-sharemem-ipc-20160507/)
 * 就那篇文章中的例程，想到这样的情况：
@@ -21,7 +21,7 @@ tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量 多进程
   * 是最后一个获取鼠标聚焦对的进程可以收到消息，在下面的进程无法获取，也就无发展示共享内存中的值
   * 对于AppB、AppB1不管是谁最后一个获取鼠标聚焦，都能获取共享内存中的值
   
-##情况二测试
+## 情况二测试
 
 * 针对第一种情况再进行深入的测试
 * 拷贝一份AppB的源码，原来的AppB的源码不修改做修改
@@ -35,9 +35,9 @@ tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量 多进程
 * 如此修改之后，不管AppB还是AppB1哪个是最后被聚焦的，都能收到消息并展示共享内存中的信息
 * 可以点击[这里](../download/20160511/Windows-Delphi-ShareMem-2.zip)下载
 
-##情况二源码展示
+## 情况二源码展示
 
-####AppA
+#### AppA
 
 ```
 unit FormA;
@@ -184,7 +184,7 @@ end;
 end.
 ```
 
-####AppB和AppB1的程序源码
+#### AppB和AppB1的程序源码
 
 * AppB和AppB1的源码几乎相同，在以下几点有区别
 * AppB进程对应的Delphi工程名是AppB.dpr；AppB1进程对应的Delphi工程名是AppB1.dpr

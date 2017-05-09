@@ -166,7 +166,7 @@ tags: delphi tlist tobjectlist
     HashList中查找200项耗时：313
 
 　　
-###分析####
+### 分析
 
 时间都浪费在new(P_test)、List.add/StrList.Add/HashList.Add（里面实施不停的reallocmem）。
 

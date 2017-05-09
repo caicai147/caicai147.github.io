@@ -7,7 +7,7 @@ tags: python 爬虫 urlerror httperror
 
 转载自[静觅](http://cuiqingcai.com/)>>[Python爬虫入门五之URLError异常处理](http://cuiqingcai.com/961.html)
 
-##URLError
+## URLError
 
 首先解释一下URLError可能产生的原因：
 
@@ -35,7 +35,7 @@ except urllib2.URLError, e:
 
 它说明了错误代码是11004，错误原因是getaddrinfo failed
 
-##HTTPError
+## HTTPError
 
 HTTPError是URLError的子类，在你利用urlopen方法发出一个请求时，服务器上都会对应一个应答对象response，其中它包含一个数字“状态码”。举个例子，假如response是一个“重定向”，需定位到别的地址获取文档，urllib2将对此进行处理
 

@@ -5,12 +5,12 @@ categories: delphi之函数 delphi之指针与内存
 tags: delphi 函数 指针 内存
 ---
 
-##说明
+## 说明
 
 * 请结合这篇文章一起了解指针、内存、地址：[《正确理解C/C++中的传值调用/传址调用/引用调用》](http://www.xumenger.com/c-cpp-function-value/)
 * 具体的现象在下面的程序的代码中有说明，具体的原理解释和上面的文章中一样，就不再这里再做说明了
 
-##通过实例展示
+## 通过实例展示
 
 ```
 unit Unit1;

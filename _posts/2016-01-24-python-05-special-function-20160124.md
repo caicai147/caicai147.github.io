@@ -18,7 +18,7 @@ Python一切皆对象，但同时，Python还是一个多范式语言(multi-para
 ['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
 ```
 
-##运算符
+## 运算符
 
 Python的运算符是通过调用对象的特殊方法实现的。比如：
 
@@ -43,7 +43,7 @@ Python不强制用户使用面向对象的编程方法。用户可以选择自�
 True.__or__(False)
 ```
 
-##内置函数
+## 内置函数
 
 与运算符类似，许多内置函数也都是调用对象的特殊方法。比如：
 
@@ -66,7 +66,7 @@ len([1,2,3])        # 返回表中元素的总数
 (2.3).__int__()
 ```
 
-##表(list)元素引用
+## 表(list)元素引用
 
 下面是我们常见的表元素引用方式
 
@@ -89,7 +89,7 @@ li.__setitem__(3, 0)
 {'a':1, 'b':2}.__delitem__('a')
 ```
 
-##函数
+## 函数
 
 我们已经说过，在Python中，函数也是一种对象。实际上，任何一个有`__call__()`特殊方法的对象都被当作是函数。比如下面的例子:
 
@@ -107,6 +107,6 @@ add为SampleMore类的一个对象，当被调用时，add执行加5的操作。
 
 当然，我们还可以使用更“优美”的方式，想想是什么。
 
-##总结
+## 总结
 
 对于内置的对象来说(比如整数、表、字符串等)，它们所需要的特殊方法都已经在Python中准备好了。而用户自己定义的对象也可以通过增加特殊方法，来实现自定义的语法。特殊方法比较靠近Python的底层，许多Python功能的实现都要依赖于特殊方法。我们将在以后看到更多的例子。

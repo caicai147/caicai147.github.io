@@ -5,7 +5,7 @@ categories: 深入学习之操作系统 好资源之开发神器 深入学习之
 tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows dll 非法地址 堆 栈 内存
 ---
 
-##相关下载和参考资料
+## 相关下载和参考资料
 
 **本文相关资料下载**
 
@@ -35,7 +35,7 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
   * 也许第一次报错之后的其他报错也是有价值的
   * 但需要结合对第一次报错的分析后再确定其他的报错是否还有意义
 
-##提前做好基础设置和基础信息了解
+## 提前做好基础设置和基础信息了解
 
 * 首先参考[《WinDbg配置Symbol(符号)》](http://www.xumenger.com/windbg-symbol-20160521/)在安装好WinDbg后进行基础的初步的设置
 * 设置Delphi工程生成MAP文件：
@@ -51,7 +51,7 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
 * 计算崩溃行偏移涉及到的公式如下：
   * 崩溃行偏移 = 崩溃地址(Crash Address) - 报错模块的基地址(ImageBase Address) - 0x1000
 
-##分析dump文件的常用命令
+## 分析dump文件的常用命令
 
 * **!analyze** 扩展显示当前异常或bug check的信息。一般使用 **!analyze -v**
 * 线程相关的命令
@@ -70,7 +70,7 @@ tags: 操作系统 进程 dump WinDbg procdump map 编译原理 delphi windows d
   * 本文用到的命令主要是 **lmf** 命令
 * 以及更多更强大的命令
 
-##一步步展示如何使用dump和Map文件定位错误行
+## 一步步展示如何使用dump和Map文件定位错误行
 
 首先是编写一个用于测试的小工程，其逻辑是这样的：
 
@@ -141,7 +141,7 @@ testDLL2.DLL加载到进程中的地址是 0x021f0000到 0x0224c000，基地址�
 
 很明显，可以看到这里非法使用空指针nil，导致访问非法地址的报错！
 
-##补充：
+## 补充：
 
 **本文只是一个理想化的例子**
 

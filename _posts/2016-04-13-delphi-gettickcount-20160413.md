@@ -5,7 +5,7 @@ categories: delphi之控件 delphi之函数  delphi之时间日期
 tags: delphi 日期 时间 Timer
 ---
 
-##程序运行效果
+## 程序运行效果
 
 * 具体的运行效果可以下载该程序编译运行以直观感受
 * Timer运行过程中修改配置的Sleep时间，程序是可以及时响应的
@@ -18,7 +18,7 @@ tags: delphi 日期 时间 Timer
   * 所以猜测GetTickCount获取时间的间隔是15、16ms
 * 该博客对应的例程的代码地址[在这里](../download/20160413/GetTickCount.zip)
 
-##GetTickCount函数
+## GetTickCount函数
 
 * GetTickCount函数是用于获取从开机到现在的时间（单位是毫秒）
 * 了解更多可以参见以下的博客
@@ -44,7 +44,7 @@ begin
 end;
 ```
 
-##关于Timer的疑问
+## 关于Timer的疑问
 
 * 以这个程序为例，其中实时统计并展示信息是使用Timer控件来实现的
 * 使用Timer，当Timer正在运行的时候，如果去拖动窗体，明显感觉到卡顿
@@ -54,7 +54,7 @@ end;
 	* 当把鼠标从X上移开之后松开按下的左键，明显Memo中的信息又变化了，说明其又开始响应消息了
 * 怎么从消息机制的层面解释这个现象？怎么从消息机制的层面理解Timer的运行原理
 
-##直接展示这个例程的代码
+## 直接展示这个例程的代码
 
 ```
 unit MainFrm;

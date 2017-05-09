@@ -15,7 +15,7 @@ Indy 的IdTcpServer/IdTcpClient 都是阻塞模式的
 
 本文通过一个例子简单讲一下使用ClientSocket、ServerSocket 进行网络开发，本文展示的实例是客户端、服务端都选择非阻塞模式开发的
 
-##代码实例
+## 代码实例
 
 对应的代码可以点击[【这里】](../download/20161010/SocketExample.zip)下载
 

@@ -9,7 +9,7 @@ tags: delphi tstringgrid
 我是参考了[万一的博客里面的关于TStringGrid学习的教程](http://www.cnblogs.com/del/category/127352.html)，但是我也结合自己的实际操作和理解，加入了一些个人的补充，至少对我有用！
 
  
-###学用TStringGrid之——ColCount、RowCount、Cells###
+### 学用TStringGrid之——ColCount、RowCount、Cells
 
 本例中使用到了Panel控件，只是比较简单的拖拽到界面上（比如可以在Panel上面放按钮……），详细的知识并没有涉及到，还是先学习TStringGrid。
 
@@ -85,7 +85,7 @@ tags: delphi tstringgrid
 另外可以学习其中Format函数的使用。用来格式化字符串，并且Format的返回值是string类型。
 
  
-###学用TStringGrid之——DefaultColWidth、DefaultRowHeight、Col、Row###
+### 学用TStringGrid之——DefaultColWidth、DefaultRowHeight、Col、Row
 
 **本例功能：**
 
@@ -182,7 +182,7 @@ tags: delphi tstringgrid
 上面的这种方式没法通过点击TStringGrid的第0行与第0列上的单元格来使其响应，但是不是说明第0行与第0列上面是没办法添加数字的，具体例子比如本文的第一个程序。只是因为第0行与第0列的单元格没有办法对单击单元格的事件作出任何响应，比如你可以在单元格的单击事件中添加其他代码（比如弹出对话框），发现其他的单元格都可以响应，只有第0行与第0列的单元格不可以
 
  
-###其他的TStringGrid的知识###
+### 其他的TStringGrid的知识
 
 通过上面两个的简单总结，已经对TStringGrid有了初步的了解，更为深入、全面的学习可以直接参考[万一的博客中的相关内容](http://www.cnblogs.com/del/category/127352.html)。
 

@@ -5,7 +5,7 @@ categories: python之基础 python之网络爬虫
 tags: python 爬虫 cookie
 ---
 
-##Cookie
+## Cookie
 
 现在我们来看一下Cookie的使用
 
@@ -17,13 +17,13 @@ Cookie，指某些网站为了辨别用户身份、进行session跟踪而存储�
 
 在此之前，先介绍一下opener的概念
 
-##Opener
+## Opener
 
 当你获取一个URL你使用一个opener（一个urllib2.OpenerDirector的实例）。在前面，我们都是使用默认的opener，也就是urlopen。它是一个特殊的opener，可以理解成opener的一个特殊实例，传入的参数仅仅是url、data、timeout
 
 如果我们需要用到Cookie，只用这个opener是不能达到目的的，所以我们需要创建更一般的opener来实现对cookie的设置
 
-##Cookielib
+## Cookielib
 
 cookielib模块的主要作用是提供可存储的cookie的对象，以便于与urllib2模块配合使用来访问Internet资源。Cookielib模块非常强大，我们可以利用本模块的CookieJar类的对象来捕获Cookie并在后续连续发送请求时重新发送，比如可以实现模拟登录功能。该模块主要的独享有CookieJar、FileCookieJar、MozillaCookieJar、LWPCookieJar。
 

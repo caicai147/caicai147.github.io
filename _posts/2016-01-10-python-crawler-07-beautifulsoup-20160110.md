@@ -9,7 +9,7 @@ tags: python 爬虫 beautifulsoup
 
 上一节我们介绍了正则表达式，它的内容其实还是蛮多的，如果一个正则匹配稍有差池，那可能程序就处在永久的循环中了，而且有的小伙伴也对正则表达式的写法用的不熟练，没关系，我们还有一个更强大的工具，叫做Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是方便，这一节就让我们一起来感受一下Beautiful Soup的强大吧。
 
-##Beautiful Soup简介
+## Beautiful Soup简介
 
 简单来说，Beautiful Soup是Python的一个库，最主要的功能是从网页抓取数据。官方的解释如下
 
@@ -19,7 +19,7 @@ tags: python 爬虫 beautifulsoup
 
 >Beautiful Soup已成为和lxml、html6lib一样出色的python解释器，为用户灵活地提供不同的解析策略或强劲的速度。
 
-##Beautiful Soup安装
+## Beautiful Soup安装
 
 Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Beautiful Soup 4，不过它已经被移植到BS4了，也就是说导入时我们需要 `import bs4` 。所以这里我们用的版本是 Beautiful Soup 4.3.2 (简称BS4)，另外据说 BS4 对 Python3 的支持不够好，不过我用的是 Python2.7.7，如果有小伙伴用的是 Python3 版本，可以考虑下载 BS3 版本。
 
@@ -35,13 +35,13 @@ Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Bea
 
 Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方的解析器，如果我们不安装它，则 Python 会使用 Python默认的解析器，lxml 解析器更加强大，速度更快，推荐安装
 
-##开启Beautiful Soup之旅
+## 开启Beautiful Soup之旅
 
 在这里先分享官方文档链接，不过内容是有些多，也不够条理，在此本文章做一下整理方便大家参考。
 
 [官方文档](http://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html)
 
-##创建Beautiful Soup对象
+## 创建Beautiful Soup对象
 
 首先必须先导入bs4库
 
@@ -123,7 +123,7 @@ print soup.prettify()
 
 以上便是输出结果，格式化打印出了它的内容，这个函数经常用到，小伙伴们要记好咯。
 
-##四大对象种类
+## 四大对象种类
 
 Beautiful Soup将复杂的HTML文档转换成一个复杂的树形结构，每个节点都是Python对象，所有对昂可以归纳为4种
 
@@ -269,7 +269,7 @@ if type(soup.a.string) == bs4.element.Comment;
 
 上面的代码中，我们首先判断了它的类型，是否为 Comment 类型，然后再进行其他操作，如打印输出。
 
-##遍历文档数
+## 遍历文档数
 
 **1.直接子节点**
 
@@ -479,7 +479,7 @@ for element in last_a_tag.next_elements:
 # None
 ```
 
-##搜索文档树
+## 搜索文档树
 
 这里先主要介绍find_all( name , attrs , recursive , text , **kwargs )方法
 
@@ -624,7 +624,7 @@ soup.html.find_all("title", recursive=False)
 # []
 ```
 
-##搜索文档树--续
+## 搜索文档树--续
 
 **find( name , attrs , recursive , text , **kwargs )**
 
@@ -652,7 +652,7 @@ find_all() 和 find() 只搜索当前节点的所有子节点,孙子节点等. f
 
 >注：以上几个方法参数用法与 find_all()完全相同，原理均类似，在此不再赘述。
 
-##CSS选择器
+## CSS选择器
 
 我们在写CSS时，标签名不加任任何修饰，类名前加`.`，id名前加`#`，在这里我们也可以利用类似的方法来筛选元素。用到的方法是 soup.select()，返回类型是 list
 
@@ -719,6 +719,6 @@ print soup.select('p a[href="http://example.com/elsie"]')
 
 好，这就是另一种与 find_all 方法有异曲同工之妙的查找方法，是不是感觉很方便？
 
-##总结
+## 总结
 
 本篇内容比较多，把 Beautiful Soup 的方法进行了大部分整理和总结，不过这还不算完全，仍然有 Beautiful Soup 的修改删除功能，不过这些功能用得比较少，只整理了查找提取的方法，希望对大家有帮助！小伙伴们加油！

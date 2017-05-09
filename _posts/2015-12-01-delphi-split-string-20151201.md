@@ -5,7 +5,7 @@ categories: delphi之字符串 delphi之精确使用api
 tags: delphi 函数 字符串
 ---
 
-##补充
+## 补充
 
 **Add in 2016-03-10**
 
@@ -117,13 +117,13 @@ end;
 
 ---
 
-##正文开始
+## 正文开始
 
 * 说到Delphi中的分割字符串的函数，大多数人都会想到ExtractStrings，确实它的功能很强大
 * 但是有一些场景ExtractStrings却是心有余而力不足
 * 这时候就需要考虑其他的解决方案，比如想想自己实现一个简单的函数
 
-###先介绍一下ExtractStrings
+### 先介绍一下ExtractStrings
 
 下面的附录中有Delphi的ExtractStrings的官方说明和其代码实现
 
@@ -149,7 +149,7 @@ begin
 end;
 ```
 
-###但是下面这样的场景就有限制
+### 但是下面这样的场景就有限制
 
 首先看看ExtractStrings在帮助文档中有这样的说明:
 
@@ -215,7 +215,7 @@ begin
 end;
 ```
 
-###附录
+### 附录
 
 **Delphi的官方帮助文档的解释是：**
 

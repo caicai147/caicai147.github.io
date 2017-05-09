@@ -17,7 +17,7 @@ int PASCAL FAR send (SOCKET s, const char FAR * buf, int len, int flags);
 
 >总有一些先入为主的部分事实遮住人的认知，误以为这就是全部事实！
 
-##Delphi发送和接收二进制数据
+## Delphi发送和接收二进制数据
 
 Delphi的ClientSocket、ServerSocket其实是将底层的WinSockAPI又做了封装然后供开发者调用的，所以其实Delphi在进行网络编程时也可以发送和接收二进制数据
 
@@ -29,7 +29,7 @@ Delphi的ClientSocket、ServerSocket其实是将底层的WinSockAPI又做了封�
 * 结构体中定义了后续字符串的长度、等相关信息
 * 发送数据的第一部分是该结构体变量的内容，第二部分是字符串信息
 
-##结构体定义
+## 结构体定义
 
 ```
 type
@@ -40,7 +40,7 @@ type
   end;
 ```
 
-##客户端代码
+## 客户端代码
 
 ```
 unit MainForm;
@@ -173,7 +173,7 @@ end;
 end.
 ```
 
-##服务端代码
+## 服务端代码
 
 ```
 unit MainForm;
@@ -288,7 +288,7 @@ end;
 end.
 ```
 
-##运行效果展示
+## 运行效果展示
 
 首先是打开服务端程序，监听8090，开启服务
 

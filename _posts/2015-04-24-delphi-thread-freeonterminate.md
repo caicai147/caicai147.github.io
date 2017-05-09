@@ -54,7 +54,7 @@ TThread 类有一个抽象方法(Execute), 因而是个抽象类, 抽象类只�
 因为 MyThread 变量在这里毫无用处(并且编译器还有提示), 所以不如直接写做 TMyThread.Create(False); 
 
  
-###关于 FreeOnTerminate###
+### 关于 FreeOnTerminate
 
 在 TThread 类的例子中, 应该有这句: `FreeOnTerminate := True; `
 

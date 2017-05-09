@@ -7,7 +7,7 @@ tags: python 爬虫 urllib urllib2
 
 转载自：[静觅](http://cuiqingcai.com/)>>[Python爬虫入门三之Urllib库的基本使用](http://cuiqingcai.com/947.html)
 
-##Urllib库的基本使用
+## Urllib库的基本使用
 
 怎么扒网页内？其实就是根据URL来获取它的网页信息，虽然我们在浏览器中看到的是一幅幅优美的画面，但是其实是由浏览器解释才呈现出来的，其实质就是一段HTML代码，加JS、CSS，如果把网页比作一个人，那么HTML便是他的骨架，JS便是他的肌肉，CSS便是他的衣服。所以最重要的部分是存在于HTML中的，下面我们就写一个例子来扒一个网页下来
 
@@ -52,7 +52,7 @@ response对象有一个read方法，可以返回取到的网页内容
  <addinfourl at 139728495260376 whose fp = <socket._fileobject object at 0x7f1513fb3ad0>>
 ```
 
-##构造Resquest
+## 构造Resquest
 
 其实上面的urlopen参数可以传入一个request请求，它其实就是一个Request类的实例，构造是需传入URL、Data等等的内容，比如上面的两行代码，我们可以这个改写
 
@@ -66,7 +66,7 @@ print response.read()
 
 运行的结果是完全一样的，只不过中间多了一个request对象，建议大家这么写，因为在构件请求时还需要假如好多内容，通过构建一个request，服务器响应请求得到应答，这样显得逻辑上清晰明确
 
-##POST和GET数据传送
+## POST和GET数据传送
 
 上面的程序演示了最基本的网页抓取，不过，现在大多数网站都是动态网页，需要你动态地传递参数给它，它做出对应的响应。所以，在访问时，我们需要传递数据局给它。最常见的情况是什么？对了，就是登陆注册的时候
 
@@ -138,11 +138,11 @@ http://passport.csdn.net/account/login?username=xumenger@126.com&password=XXXX
 
 和我们平常GET访问方式一模一样，这样就实现了数据的GET方式传送。
 
-##Urllib库的高级用法
+## Urllib库的高级用法
 
 上面介绍的是urllib的基础用法，下面将会介绍urllib的高级用法
 
-##设置Headers
+## 设置Headers
 
 有些网站不会同意程序直接用上面的方式进行访问，如果识别有问题，那么网站根本不会响应，所以为了完全模拟浏览器的工作，我们需要设置一些Headers的属性
 
@@ -192,7 +192,7 @@ headers = {'User-Agent':'Mozilla/4.0 (compatible; MSTE 5.5; Windows NT)',
 
 其他的有必要的可以审查浏览器的headers内容，在构建时写入同样的数据即可
 
-##Proxy（代理）的设置
+## Proxy（代理）的设置
 
 urllib2默认会使用环境变量http_proxy来设置HTTP Proxy。**假如一个网站它会检测某一段时间某个IP的访问次数，如果访问次数过多，它会禁止你的访问。所以你可以设置一些代理服务器来帮助你做工作，每隔一段时间换一个代理，网站君都不知道是谁在捣鬼了**
 
@@ -210,7 +210,7 @@ else:
 urllib2.install_opener(opener)
 ```
 
-##Timeout的设置
+## Timeout的设置
 
 上一节已经说过urlopen方法了，第三个参数就是timeout的设置，可以设置等待多久超时，为了解决一些网站实在响应过慢而造成的影响
 
@@ -226,7 +226,7 @@ import urllib2
 response = urllib2.urlopen('http://www.baidu.com',data, 10)
 ```
 
-##使用HTTP的PUT和DELETE方法
+## 使用HTTP的PUT和DELETE方法
 
 http协议有六种请求方式，get、head、put、delete、post、options，我们有时候需要用到PUT或者DELETE方式请求
 
@@ -242,7 +242,7 @@ request.get_method=lambda:'PUT' # or 'DELETE'
 response = urllib2.urlopen(request)
 ```
 
-##使用DebugLog
+## 使用DebugLog
 
 可以通过下面的方法把DebugLog打开，这样收发包的内容就会在屏幕上打印出来，方便调试，这个也不太常用，仅提一下
 

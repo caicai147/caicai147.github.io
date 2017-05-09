@@ -9,11 +9,11 @@ tags: linux shell 命令行 awk
 1.1.深入讨论awk
 ---
 
-###记录和域，模式和动作，正则表达式和元字符###
+### 记录和域，模式和动作，正则表达式和元字符
 
 基础教程中已经介绍
 
-###条件和逻辑操作符###
+### 条件和逻辑操作符
 
 * <    小于
 * \>=    大于等于
@@ -34,7 +34,7 @@ tags: linux shell 命令行 awk
     echo "2004年07月07日的访问量是：`awk '{if ($4~/^\[07\/Jul\/2004/) print $0}' www.log | wc -l`"
     echo "2004年07月07日/htm/free_call.php的访问量是：`awk '{if ($4~/^\[07\/Jul\/2004/) print $0}' www.log | awk '{if ($7=="/htm/free_call.php") print $0}' | wc -l`"
 
-###awk内置变量###
+### awk内置变量
 
 内置变量
 
@@ -67,7 +67,7 @@ tags: linux shell 命令行 awk
     92#senior
     23#junior
 
-###内置的字符串函数###
+### 内置的字符串函数
 
 内置字符串函数
 
@@ -88,7 +88,7 @@ tags: linux shell 命令行 awk
     awk -F '#' '{if (gsub("s","S",$1)) print $0}' grade.txt
     awk -F '#' '{print (index($2,"e"))}' grade.txt
 
-###awk转义字符###
+### awk转义字符
 
 转义字符
 
@@ -105,7 +105,7 @@ tags: linux shell 命令行 awk
     awk -F '#' '{print (index($2,"s")),"\t",$2}' grade.txt
     awk -F '#' '{print (index($2,"s")),"\n",$2}' grade.txt
 
-###printf修饰符###
+### printf修饰符
 
 类似于C语言的printf函数
 
@@ -127,7 +127,7 @@ printf修饰符
     awk -F '#' '{printf "%c\t%d\n",$1,$1}' grade.txt
     awk -F '#' '{printf "%c\t%f\t%d\n",$1,$1,$1}' grade.txt
         
-###awk数组###
+### awk数组
 
 简介:awk数组下标是从 1 而不是 0 开始
 
@@ -137,7 +137,7 @@ printf修饰符
     awk 'BEGIN {print split("as#qw#1234",array2,"#"); print array2[1]}'
     awk 'BEGIN {print split("as#qw#1234",array2,"#"); print array2[1],"\t",array2[2],"\t",array2[3]}'
 
-###awk的脚本例子(awk_array.sh 文件)###
+### awk的脚本例子(awk_array.sh 文件)
 
 执行命令:`./awk_array.sh grade.txt`
 

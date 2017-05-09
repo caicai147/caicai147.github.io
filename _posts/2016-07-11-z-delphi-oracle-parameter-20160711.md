@@ -5,7 +5,7 @@ categories: 数据库之oracle delphi之数据库
 tags: sql oracle 数据库 delphi 绑定变量
 ---
 
-##说明
+## 说明
 
 简单通过几个小例子展示使用普通SQL操作数据库、绑定变量法操作数据库的语法区别
 
@@ -22,7 +22,7 @@ tags: sql oracle 数据库 delphi 绑定变量
 * [《Delphi使用ADO进行数据库编程》](http://www.xumenger.com/delphi-ado-20150825/)
 * [《Delphi编程时候诡异地出现ORA-00937错误，记录解决它的思路和方法》](http://www.xumenger.com/delphi-oracle-ado-20150829/)
 
-##基础数据准备
+## 基础数据准备
 
 在Oracle中创建用于测试的数据表，并插入2条测试数据
 
@@ -34,7 +34,7 @@ insert into practice values('no1', 'name1');
 insert into practice values('no2', 'name2');
 ```
 
-##Delphi执行普通SQL查询
+## Delphi执行普通SQL查询
 
 ```
 var
@@ -66,7 +66,7 @@ begin
 end;
 ```
 
-##Delphi绑定变量查询
+## Delphi绑定变量查询
 
 ```
 var
@@ -99,7 +99,7 @@ begin
 end;
 ```
 
-##Delphi普通SQL更新
+## Delphi普通SQL更新
 
 ```
 var
@@ -128,7 +128,7 @@ begin
 end;
 ```
 
-##Delphi绑定变量更新
+## Delphi绑定变量更新
 
 ```
 var
@@ -203,7 +203,7 @@ begin
 end;
 ```
 
-##Delphi执行普通SQL插入
+## Delphi执行普通SQL插入
 
 ```
 var
@@ -233,7 +233,7 @@ begin
 end;
 ```
 
-##Delphi绑定变量插入
+## Delphi绑定变量插入
 
 ```
 var

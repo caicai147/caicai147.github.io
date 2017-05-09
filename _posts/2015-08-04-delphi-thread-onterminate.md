@@ -122,11 +122,11 @@ Write an OnTerminate event handler to execute code after the thread finishes exe
 
  
 
-###先解释OnTerminate###
+### 先解释OnTerminate
 
 在这里设置OnTerminate属性为Form1的ThreadDone方法，表示在线程执行完Execute之后，还没有被释放之前，要紧接着执行Form1的ThreadDone方法。
 
-###再对线程的同步进行说明###
+### 再对线程的同步进行说明
 
 这里使用临界区进行线程的同步，该例程会在点击按钮之后开启两个线程。
 

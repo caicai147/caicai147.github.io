@@ -19,7 +19,7 @@ tags: delphi 多线程 事件 互斥 信号 计时器
 
 在接下来多线程的课题中要使用一些内核对象，不如先盘点一下，到时候碰到这个属性时给个 nil 即可, 不必再费神.
 
-###建立事件###
+### 建立事件
 
     function CreateEvent(
       lpEventAttributes: PSecurityAttributes; {!}
@@ -28,7 +28,7 @@ tags: delphi 多线程 事件 互斥 信号 计时器
       lpName: PWideChar
     ): THandle; stdcall;
 
-###建立互斥###
+### 建立互斥
 
     function CreateMutex(
       lpMutexAttributes: PSecurityAttributes; {!}
@@ -36,7 +36,7 @@ tags: delphi 多线程 事件 互斥 信号 计时器
       lpName: PWideChar
     ): THandle; stdcall;
 
-###建立信号###
+### 建立信号
 
     function CreateSemaphore(
       lpSemaphoreAttributes: PSecurityAttributes; {!}
@@ -45,7 +45,7 @@ tags: delphi 多线程 事件 互斥 信号 计时器
       lpName: PWideChar
     ): THandle; stdcall;
 
-###建立等待计时器###
+### 建立等待计时器
 
     function CreateWaitableTimer(
       lpTimerAttributes: PSecurityAttributes; {!}

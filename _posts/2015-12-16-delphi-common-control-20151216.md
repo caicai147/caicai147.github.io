@@ -7,7 +7,7 @@ tags: delphi 控件
 
 转载自：[delphi常用属性列表（不断更新中……）](http://www.cnblogs.com/xcre/archive/2012/04/07/2435753.html)
 
-##1.公用属性：
+## 1.公用属性：
 
 * Action:指定ActionList中的事件
 * Alignment:控件内容在控件中的位置，或控件在窗体的位置
@@ -36,7 +36,7 @@ tags: delphi 控件
 * Color：控件界面的颜色
 * ScrollBars：显示滚动条的类型
 
-##2.Form属性
+## 2.Form属性
 
 * BorderIcons：窗体边框的按钮
 * BorderStyle：窗体边框的类型
@@ -60,7 +60,7 @@ tags: delphi 控件
 * Scaled
 * HorzScrollBar、VertScrollBar：滚动条
 
-##3.面板PANEL
+## 3.面板PANEL
 
 * 此面板的功能作相似与GROUPBOX。它有多种三维效果.
 * BEVELINNER:图形面板内层边框斜面的类型.
@@ -68,7 +68,7 @@ tags: delphi 控件
 * Bevelwidth:斜面的宽度.
 * BORDERWIDTH:内层与外层边框之间的宽度
  
-##4.按钮类组件
+## 4.按钮类组件
 
 * (1)button 组件：
     * CAPTION 属性 ：用于在按钮上显示文本内容
@@ -94,7 +94,7 @@ tags: delphi 控件
     * Allowgrayed 用来设置当前组件被选种时，是否为变灰状态！
     * State 设置当前复选框的状态。
 
-##9.文本类组件
+## 9.文本类组件
 
 * (1)label 组件
     * Alignment 用来设置标签中的文本在水平方向的排列方式！
@@ -124,7 +124,7 @@ tags: delphi 控件
     * Labelposition 用于设置标签放置的位置
     * Labelspaceing 用于调整标签和编辑区之间的间距，单位是象素
 
-##10.组合框组件
+## 10.组合框组件
 
 * (1)combobox 组件
     * CharCase:显示大小写

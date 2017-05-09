@@ -5,7 +5,7 @@ categories: delphi之指针与内存 delphi之消息机制 windows之消息机�
 tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量
 ---
 
-##简介
+## 简介
 
 * 大概的实现是这样的
   * AppA创建共享内存，往共享内存中写入字符串，然后发消息通知AppB
@@ -22,7 +22,7 @@ tags: delphi 共享内存 指针 内存 消息 消息机制 互斥量
 * 本篇文章对应的程序代码可以点击[这里](../download/20160507/Windows-Delphi-ShareMem.zip)下载
 * 本文对应例程使用的Delphi的版本是6
 
-##AppA的源码
+## AppA的源码
 
 ```
 unit FormA;
@@ -167,7 +167,7 @@ end;
 end.
 ```
 
-##AppB的源码
+## AppB的源码
 
 设置AppB的主窗体的Caption为“测试读共享内存”，使AppA的FindWindow可以通过其找到其Handle。
 

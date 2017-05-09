@@ -6,7 +6,7 @@ tags: delphi trim api
 ---
 
 
-##三个Trim函数简介##
+## 三个Trim函数简介
 
 函数原型 `function Trim(const S: string): string;` 将字符串前后的空白及控制字元清掉.
 
@@ -17,7 +17,7 @@ tags: delphi trim api
 函数原型 `function TrimRight(const S: string): string;` 将字符串右边的空白及控制字元清掉.
 
 
-##Trim实际应用场景举例##
+## Trim实际应用场景举例
 
 以下有一个使用Delphi的Trim函数的实际的场景，看完也许能让你更为深刻的认知Trim在实际开发中的应用
 
@@ -36,9 +36,9 @@ tags: delphi trim api
 
 才知道原来是加//**** 注释那行的代码存在问题，数据库如果某个字段是Char类型的数据，才存放数据后会自动在字符串后面补上空格，以满足位数的需要，因此表面上看，取得的密码和我输入的密码一样，实际上是不一样的。
 
-###解决方法：###
+### 解决方法：
 
-####办法1：####
+#### 办法1：
 
     if ibt_user_pass.FieldByName('passwd').AsString = edit2.Text then
 
@@ -48,6 +48,6 @@ tags: delphi trim api
 
 Trim 函数作用是去掉字符串中多加上去的空格
 
-####办法2：####
+#### 办法2：
 
 数据库的char 类型改成 varchar类型

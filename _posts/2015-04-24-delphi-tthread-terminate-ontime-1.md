@@ -20,7 +20,7 @@ tags: delphi 多线程
 当然如果你一定要能“立即”退出线程，那么TThread 类不是一个好的选择，因为如果用API强制终止线程的话，最终会导致TThread 线程对象不能被正确释放，在对象析构时出现 Access Violation。这种情况你只能使用API或者RTL函数来创建线程
 
  
-##比如这样一个例子：如何终结一个定时执行的线程##
+## 比如这样一个例子：如何终结一个定时执行的线程
 
 有一个线程（ Execute 方法）是定时执行的，就像上面的红字中提到的原则：必须在Execute 方法中在较短的时间内不断检查Terminated标志，以便能及时地退出
 
@@ -81,13 +81,13 @@ CanFree 是为了标记TDoSomeThingThread线程什么时候可以被释放，在
     end;
 
 
-##在这里上面的代码（线程的 Execute和 函数DestoryAThread）##
+## 在这里上面的代码（线程的 Execute和 函数DestoryAThread）
 
-###1) testThread正在执行###
+### 1) testThread正在执行
 
 就是正在执行Execute 里面的代码，这时候在Execute 里面检查 Terminated的值，因为是Fasle，所以就可以先进入 第一个 while循环，在进入 for循环，检查Terminated还是为 False，所以继续执行
 
-###2)调用DestroyAThread(testThread);###
+### 2)调用DestroyAThread(testThread);
 
 首先检查testThread是不是 Assigned，如果是，就用 testThread.Terminate; 将它的Terminated 属性设置为True，然后开始进入循环等待 testThread的Execute里面是不是检查到了 Terminated被设置为True了
 
@@ -151,11 +151,11 @@ CanFree 是为了标记TDoSomeThingThread线程什么时候可以被释放，在
 
 ？？这个问题要怎么解决呢
 
-###3)再到testThread的 Execute方法里面###
+### 3)再到testThread的 Execute方法里面
 
 检查到 Terminated属性设置为True（就是通知它要去结束执行了），就跳出定时执行的循环，结束它的工作，如果线程申请了很多资源，这时候也要去释放申请的资源，并将 CanFree设置为True，等待别人检查到它可以退出，并将它Free掉
 
-###4)再看DestroyAThread(testThread); 里###
+### 4)再看DestroyAThread(testThread); 里
 
 这里循环检查到 CanFree被 testThread 的Execute方法设置为 True（就是告诉函数，testThread已经在自己的Execute方法里面结束执行的工作了，可以被释放了），然后就 testThread.Free;来释放线程
 

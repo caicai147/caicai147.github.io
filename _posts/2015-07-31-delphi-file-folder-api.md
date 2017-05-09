@@ -9,7 +9,7 @@ tags: delphi 文件 目录
 先介绍ExtractFilePath和ParamStr
 ---
 
-###ParamStr###
+### ParamStr
 
 该函数的原型是：`function paramstr(i: Integer): String;`
 
@@ -28,7 +28,7 @@ delphi帮助中说Returns a specified parameter from the command-line.从命令�
 所以用paramstr可以在应用程序间进行数据传输。
  
 
-###ExtractFilePath###
+### ExtractFilePath
 
 功能：返回完整文件名中的路径。 具体使用的方法参见例子：
 
@@ -72,9 +72,9 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
 * FileGetAttr、FileSetAttr：读取与设置文件属性
 * FileAge、FileDateToDateTime：获取文件的创建时间
 
-###以上函数的代码示例###
+### 以上函数的代码示例
 
-####FileExists：判断文件是否存在####
+#### FileExists：判断文件是否存在
 
     var
         f: String;
@@ -86,7 +86,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         end;
     end;
 
-####DirectoryExists：判断文件夹（路径）是否存在####
+#### DirectoryExists：判断文件夹（路径）是否存在
 
     var
         dir: String;
@@ -98,7 +98,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         end;
     end;
 
-####DeleteFile、Windows.DeleteFile：删除文件####
+#### DeleteFile、Windows.DeleteFile：删除文件
 
     var
         f: String;
@@ -112,7 +112,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         //所以使用Char数组类型的字符串正好可以同时满足两种语言的结构
     end;
 
-####RemoveDir、RemoveDirectory：删除文件夹####
+#### RemoveDir、RemoveDirectory：删除文件夹
 
     var
         dir: String;
@@ -124,7 +124,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         //RemoveDirectory(PChar(dir));    //返回Boolean
     end;
 
-####GetCurrentDir：获取当前文件夹####
+#### GetCurrentDir：获取当前文件夹
 
     var
         dir: String;
@@ -133,7 +133,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         ShowMessage(dir);
     end;
 
-####SetCurrentDir、ChDir、SetCurrentDirectory：设置当前文件夹####
+#### SetCurrentDir、ChDir、SetCurrentDirectory：设置当前文件夹
 
     var
         dir: String;
@@ -146,7 +146,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         //也可以使用系统API：SetCurrentDirectory(PChar(dir));    返回Boolean
     end;
 
-####GetDir：获取指定驱动器的当前路径名####
+#### GetDir：获取指定驱动器的当前路径名
 
     var
         dir: String;
@@ -159,7 +159,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         //0是缺省驱动器
     end;
 
-####RenameFile：文件改名####
+#### RenameFile：文件改名
 
     //文件改名 RenameFile   
     var  
@@ -181,7 +181,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         ShowMessage('改名成功!');   
     end; 
 
-####CreateDir; CreateDirectory; ForceDirectories： 建立文件夹####
+#### CreateDir; CreateDirectory; ForceDirectories： 建立文件夹
 
     var
         dir: String;
@@ -197,7 +197,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         ForceDirectories(dir);    //返回Boolean
     end;
 
-####RemoveDir、RemoveDirectory：删除空文件夹####
+#### RemoveDir、RemoveDirectory：删除空文件夹
 
     var
         dir: String;
@@ -209,7 +209,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         //RemoveDirectory(PChar(dir));    //返回Boolean
     end;
 
-####FileCreate：建立新文件####
+#### FileCreate：建立新文件
 
     var  
       FileName: string;   
@@ -225,7 +225,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         ShowMessage('创建失败!');   
     end;   
 
-####GetFileVersion：获取当前文件的版本号####
+#### GetFileVersion：获取当前文件的版本号
 
     var
         s:String;
@@ -237,7 +237,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         ShowMessage(IntToStr(i));    //327681 这是当前记事本的版本号(还应该再转换一下)   
     end;
 
-####DiskSize、DiskFree：获取磁盘空间####
+#### DiskSize、DiskFree：获取磁盘空间
 
     var
         r: Real;
@@ -256,7 +256,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
         ShowMessage(s);    //xx.xx GB
     end;
 
-####FileSearch:查找一个文件####
+#### FileSearch:查找一个文件
 
     var
         FileNAme, Dir, s: String;
@@ -271,7 +271,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
             ShowMessage('没找到');
     end;
 
-####FindFirst、FindNext、FindClose：搜索文件####
+#### FindFirst、FindNext、FindClose：搜索文件
 
     var  
       sr: TSearchRec;    //定义 TSearchRec 结构变量   
@@ -310,7 +310,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
     //实际使用中还应该在 repeat 中提些条件, 譬如判断如果是文件夹就递归搜索等等   
     end;   
 
-####FileGetAttr、FileSetAttr：读取与设置文件属性####
+#### FileGetAttr、FileSetAttr：读取与设置文件属性
 
     var  
       FileName: string;   
@@ -342,7 +342,7 @@ config.ini 和你的可执行文件是在同一级目录下的,,这样就找到c
     //FILE_ATTRIBUTE_ENCRYPTED = 16384   
     end;   
 
-####FileAge、FileDateToDateTime：获取文件的创建时间####
+#### FileAge、FileDateToDateTime：获取文件的创建时间
 
     var  
       FileName: string;   

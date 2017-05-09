@@ -164,7 +164,7 @@ find的命令选项
         find ./ -name "*.log" -mtime +5 -ok rm{} \;    
             常用于删除一定天数之前的日志文件
     
-###xargs命令###
+### xargs命令
 
 在使用find命令的-exec选项处理匹配到的文件时，find命令将所有匹配到的文件一起传递给exec。不幸的是，有些系统对能够传递给-exec的命令长度有限制，这样在find命令运行几分钟之后，就会出现一处错误。错误信息通常是“参数列太长”或者“参数列溢出”。这就是xargs命令的用处所在，特别是与find命令一起使用。-exec会发起多个进程，而xargs不会多个，只用一个，就会减少系统资源的消耗
 
@@ -369,8 +369,8 @@ sed在文件中查询文本的方式
 5.6.合并与分割（sort、uniq、join、cut、paste、split）
 --
 
-###sort [options] files###
-            
+### sort [options] files
+         
 许多不同的域按照不同的列顺序排序
 
 * -c    测试文件是否已经分类
@@ -392,7 +392,7 @@ sed在文件中查询文本的方式
         以/作为分隔符，并以第2个域按数字排序，+2n中的 n 就是指按数字排序，如果没有n，那么173排在19的后面，
         因为是逐个比较每个字符，如果有n，就是比较数字173和19的大小来排序
 
-###uniq [options] files###
+### uniq [options] files
 
 * 从一个文本文件中去除或禁止重复行，关于重复的行，统计只对邻近的行有效
 * -u    只显示不重复行
@@ -407,7 +407,7 @@ sed在文件中查询文本的方式
     uniq -f 2 myfile.txt
     uniq -d myfile.txt
 
-###join [options] file1 file2###
+### join [options] file1 file2
 
 用来讲来自两个分类文本文件的行连接在一起
 
@@ -422,7 +422,7 @@ sed在文件中查询文本的方式
     join -o 2.2,1.1    address.txt town
     join -j1 1 -j2 1 address.txt town
         
-###split###
+### split
 
 用于将大文件分割成小文件
 
@@ -437,11 +437,11 @@ sed在文件中查询文本的方式
 
     split -10 ls_out.txt split
 
-###cut###
+### cut
 
 用于从标准输入或文本文件中剪切列或域
 
 
-###paste###
+### paste
 
 将按行将不同文件行信息放在一行

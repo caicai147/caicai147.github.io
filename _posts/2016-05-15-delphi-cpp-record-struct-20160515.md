@@ -5,7 +5,7 @@ categories: c/c++之函数 c/c++之指针与内存 delphi之字符串 delphi之�
 tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数组越界
 ---
 
-##前情提要
+## 前情提要
 
 * 有必要先阅读以下文章
   * [《Delphi和VC++使用DLL配合开发【例程】》](http://www.xumenger.com/delphi-cpp-dll-20160412/)
@@ -23,7 +23,7 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数�
   * [《Delphi中的内存对齐 与 Packed关键字 》](http://blog.csdn.net/procedure1984/article/details/3057730)
   * [《 C++中的内存对齐 》](http://blog.csdn.net/procedure1984/article/details/3057703)
   
-##注意
+## 注意
 
 * 如下所示Delphi端的record定义和C/C++端的struct定义必须保证一致
   * 字段顺序一致
@@ -36,11 +36,11 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 结构体 数�
 * 还有各种不规范的使用场景，这里就暂不一一介绍
 * 就按照下面示例中的规范来进行开发就不会存在问题
 
-##C/C++端代码
+## C/C++端代码
 
 C++端导出的dll名称为：test.dll
 
-####函数指针类型 和 结构体定义
+#### 函数指针类型 和 结构体定义
 
 ```
 //定义函数指针类型
@@ -58,13 +58,13 @@ typedef struct InitReq
 }TInitReq;
 ```
 
-####导出函数声明
+#### 导出函数声明
 
 ```
 __declspec(dllexport) int  __stdcall CallInit(TInitReq *pInitReq);
 ```
 
-####导出函数实现
+#### 导出函数实现
 
 ```
 int  __stdcall CallInit(TInitReq *pInitReq)
@@ -74,9 +74,9 @@ int  __stdcall CallInit(TInitReq *pInitReq)
 }
 ```
 
-##Delphi端
+## Delphi端
 
-####函数指针类型 和 结构体定义
+#### 函数指针类型 和 结构体定义
 
 ```
 type
@@ -98,7 +98,7 @@ type
   end;
 ```
 
-####回调函数实现
+#### 回调函数实现
 
 ```
 procedure OnReceive(const msg: PChar);
@@ -107,7 +107,7 @@ begin
 end;
 ```
 
-####导出函数调用
+#### 导出函数调用
 
 ```
 var

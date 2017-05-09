@@ -8,7 +8,7 @@ tags: delphi xml stringreplace
 
 这个程序可以用于解析任何合法的XML字符串。
 
-##首先是看一下程序的运行效果：##
+## 首先是看一下程序的运行效果：
 
 以解析这样一个XML的字符串为例：
 
@@ -35,7 +35,7 @@ tags: delphi xml stringreplace
 ![image](../media/image/2015-08-07/xml-4.png)
 
 
-##然后看一下代码##
+## 然后看一下代码
 
     unit Unit1;
     
@@ -111,25 +111,25 @@ tags: delphi xml stringreplace
     end.
 
 
-##讲解一下代码##
+## 讲解一下代码
 
-###0.建议这样使用XML解包###
+### 0.建议这样使用XML解包
 
 本例中的程序，在解包之后是将标签以及对应的值显示在弹出框上，这样只是为了演示解析XML的效果。
 
 建议在开发中将解析好的XML节点，以节点的标签作为Key，以节点的内容作为value，插入到一个可以搜索的链表或者其他什么可以根据Key进行搜索的容器类中，然后在之后使用的时候就可以很方便的搜索到解析后的值。
 
-###1.注意解析XML使用到相关的类、方法所属的单元###
+### 1.注意解析XML使用到相关的类、方法所属的单元
 
 要使用IXMLDocument、IXMLNodeList和iXMLNode，需要引入 XMLIntf 单元。
 
 要使用 LoadXMLData方法，需要引入XMLDoc 单元。 
 
-###2.递归解包XML###
+### 2.递归解包XML
 
 因为XML本身就是一个递归的结构，所以解包XML，也就是其中的ReadXML 方法使用的就是递归的方法，递归结束标志是：正在解析的XML标签是一个元素，没有子节点。
 
-###3.字符编码的问题 ###
+### 3.字符编码的问题 
 
 在 TForm1.btn1Click(Sender: TObject) 方法中，我们可以看到首先将XML字符串中的 'UTF-8' 替换为 'gbk'，因为如果编码方式是UTF-8：<?xml version="1.0" encoding="UTF-8"?>，那么如果XML中存在中文，那么解析的时候会报错（如果全部为英文，那么就不会报错），如下图
 
@@ -149,7 +149,7 @@ tags: delphi xml stringreplace
 
 所以上面的代码中使用：sXML:= StringReplace(sXML, 'UTF-8', 'gbk', []); 　　其中StringReplace的第四个参数是[] 表示只替换第一个即可。
 
-###4.stringReplace函数的使用###
+### 4.stringReplace函数的使用
 
     function StringReplace (const S, OldPattern, NewPattern: string; Flags: TReplaceFlags): string; 
 
@@ -169,7 +169,7 @@ tags: delphi xml stringreplace
         ShowMessage(StringReplace (aStr, 'a', 'two', [rfReplaceAll, rfIgnoreCase]));//This is two book, not two pen!不管大小写替换了所有符合的字符串
     end;
 
-###5.换行###
+### 5.换行
 
 注意代码中有这样一行代码：
 

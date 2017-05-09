@@ -5,7 +5,7 @@ categories: c/c++之函数 c/c++之指针与内存 delphi之字符串 delphi之�
 tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 字符编码 数组越界
 ---
 
-##说明
+## 说明
 
 * Delphi版本是6；Visual C++版本是6
 * [《Delphi和VC++使用DLL配合开发【例程】》](http://www.xumenger.com/delphi-cpp-dll-20160412/)有讲到VC++导出DLL，Delphi加载并调用
@@ -19,22 +19,22 @@ tags: c c++ 函数 指针 内存 字符串 跨语言 内存管理 汉字 字符 
 * 对于Delphi本身也是这样的情况
 * 下文展示的是在入参中传递字符串(字符数组)，其实还可以用结构体(包含一个char数组)的方式传递字符串
 
-##每个汉字占用多少字节？
+## 每个汉字占用多少字节？
 
-####我的环境使用Delphi测试
+#### 我的环境使用Delphi测试
 
 ```
   len := Length('测试');
   ShowMessage(IntToStr(len));    //值是4不是2
 ```
 
-####我的环境使用VC++测试
+#### 我的环境使用VC++测试
 
 ```
 int len  = strlen("汉字");       //长度是4
 ```
 
-####本质原因
+#### 本质原因
 
 这个问题的答案与系统所采用的字符编码方式有关：
 
@@ -44,12 +44,12 @@ int len  = strlen("汉字");       //长度是4
    * windows中文版采用的该种编码方式。
 * 我的系统是gb2312编码的
 
-##常用的字符串拷贝函数
+## 常用的字符串拷贝函数
 
 * Delphi常用的字符串拷贝函数：[《Delphi的字符串拷贝函数》](http://www.xumenger.com/delphi-string-copy-20151119/)
 * C/C++常用的字符串拷贝函数：[《C/C++的字符串拷贝函数》](http://www.xumenger.com/c-cpp-string-copy-20160511/)
 
-##本文测试程序的基础代码说明
+## 本文测试程序的基础代码说明
   
 C++端导出的dll名称为：test.dll
 
@@ -74,11 +74,11 @@ begin
 end;
 ```
 
-##情况一
+## 情况一
 
 >Delphi和C++之间通过类似这样的传递方式是不行的
 
-####Delphi
+#### Delphi
 
 ```
   var
@@ -88,7 +88,7 @@ end;
   end;
 ```
 
-####C++
+#### C++
 
 ```
 void CallCpp(char *resp)
@@ -99,9 +99,9 @@ void CallCpp(char *resp)
 }
 ```
   
-##应该这样做
+## 应该这样做
     
-####Delphi
+#### Delphi
 
 ```
 var
@@ -111,7 +111,7 @@ begin
 end;
 ```
     
-####C++
+#### C++
 
 ```      
 void CallCpp(char *resp)
@@ -122,13 +122,13 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况二
+## 情况二
 
 >在C++端获取Delphi字符数组的长度
 
 * 其中讲到Delphi端的SizeOf和Length的使用
     
-####Delphi
+#### Delphi
 
 ```
 var
@@ -144,7 +144,7 @@ begin
 end;
 ```
 
-####C++
+#### C++
 
 ```
 void CallCpp(char *resp)
@@ -156,11 +156,11 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况三
+## 情况三
 
 >小心别因为Delphi端定义的字符数组长度小于C++给其拷贝的长度导致越界
 
-####Delphi
+#### Delphi
 
 ```
 var
@@ -178,7 +178,8 @@ begin
     //这里弹出框中，弹出的数字是'测试测试测'
 end;
 ```
-####C++
+
+#### C++
 
 ```
 void CallCpp(char *resp)
@@ -190,17 +191,17 @@ void CallCpp(char *resp)
 }
 ```
 
-##情况四
+## 情况四
 
 >若Delphi端传string给C++，在C++端不能对其进行写操作，否则会报非法地址访问异常
   
-####参考：
+#### 参考：
 
 * [《Delphi字符串与字符数组之间的转换（初始化的重要性）》](http://www.xumenger.com/delphi-string-pchar-chararray-20150422-02/)
 * [《Delphi的字符串、PChar和字符数组之间的转换》](http://www.xumenger.com/delphi-string-pchar-chararray-20150422-01/)
 * [《Delphi中的各种字符串、String、PChar、Char数组》](http://www.xumenger.com/delphi-string-pchar-chararray-20150415/)
 
-####Delphi
+#### Delphi
 
 ```
 var
@@ -215,7 +216,7 @@ begin
 end;
 ```
 
-####C++
+#### C++
 
 ```
 void CallCpp(char *resp)
@@ -227,11 +228,11 @@ void CallCpp(char *resp)
 }
 ```
  
-##情况五
+## 情况五
 
 >若Delphi端传string给C++，在C++端可以进行读操作，没有问题，可以正常传值
     
-####Delphi
+#### Delphi
 
 ```
 var
@@ -251,7 +252,7 @@ begin
 end;
 ```
     
-####C++
+#### C++
 
 ```
 void CallCpp(char *resp)
@@ -264,7 +265,7 @@ void CallCpp(char *resp)
 }
 ```
 	  
-####简单总结
+#### 简单总结
 
 * 对于方法CallCpp(resp: PChar)，如果CallCpp中没有写操作，只有读操作，可以向像面的几种传值方式
 

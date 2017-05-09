@@ -6,50 +6,50 @@ tags: 数据库 sql
 ---
 
 
-##AND / OR
+## AND / OR
 
     SELECT column_name(s)
     FROM table_name
     WHERE condition
     AND|OR condition
 
-##ALTER TABLE (add column)
+## ALTER TABLE (add column)
 
     ALTER TABLE table_name
     ADD column_name datatype
 
-##ALTER TABLE (drop column)
+## ALTER TABLE (drop column)
 
     ALTER TABLE table_name
     DROP COLUMN column_name
 
-##AS (alias for column)
+## AS (alias for column)
 
     SELECT column_name AS column_alias
     FROM table_name
 
-##AS (alias for table)
+## AS (alias for table)
 
     SELECT column_name
     FROM table_name  AS table_alias
 
-##BETWEEN
+## BETWEEN
 
     SELECT column_name(s)
     FROM table_name
     WHERE column_name
     BETWEEN value1 AND value2
 
-##CREATE DATABASE
+## CREATE DATABASE
 
     CREATE DATABASE database_name
 
-##CREATE INDEX
+## CREATE INDEX
 
     CREATE INDEX index_name
     ON table_name (column_name)
 
-##CREATE TABLE
+## CREATE TABLE
 
     CREATE TABLE table_name
     (
@@ -58,19 +58,19 @@ tags: 数据库 sql
     .......
     )
 
-##CREATE UNIQUE INDEX
+## CREATE UNIQUE INDEX
 
     CREATE UNIQUE INDEX index_name
     ON table_name (column_name)
 
-##CREATE VIEW
+## CREATE VIEW
 
     CREATE VIEW view_name AS
     SELECT column_name(s)
     FROM table_name
     WHERE condition
 
-##DELETE FROM
+## DELETE FROM
 
     DELETE FROM table_name
     (Note: Deletes the entire table!!)
@@ -80,39 +80,39 @@ tags: 数据库 sql
     DELETE FROM table_name
     WHERE condition
 
-##DROP DATABASE
+## DROP DATABASE
 
     DROP DATABASE database_name
 
-##DROP INDEX
+## DROP INDEX
 
     DROP INDEX table_name.index_name
 
-##DROP TABLE
+## DROP TABLE
 
     DROP TABLE table_name
 
-##GROUP BY
+## GROUP BY
 
     SELECT column_name1,SUM(column_name2)
     FROM table_name
     GROUP BY column_name1
 
-##HAVING
+## HAVING
 
     SELECT column_name1,SUM(column_name2)
     FROM table_name
     GROUP BY column_name1
     HAVING SUM(column_name2) condition value
 
-##IN
+## IN
 
     SELECT column_name(s)
     FROM table_name
     WHERE column_name
     IN (value1,value2,..)
 
-##INSERT INTO
+## INSERT INTO
 
     INSERT INTO table_name
     VALUES (value1, value2,....)
@@ -123,35 +123,35 @@ tags: 数据库 sql
     (column_name1, column_name2,...)
     VALUES (value1, value2,....)
 
-##LIKE
+## LIKE
 
     SELECT column_name(s)
     FROM table_name
     WHERE column_name
     LIKE pattern
 
-##ORDER BY
+## ORDER BY
 
     SELECT column_name(s)
     FROM table_name
     ORDER BY column_name [ASC|DESC]
 
-##SELECT
+## SELECT
 
     SELECT column_name(s)
     FROM table_name
 
-##SELECT *
+## SELECT *
 
     SELECT *
     FROM table_name
 
-##SELECT DISTINCT
+## SELECT DISTINCT
 
     SELECT DISTINCT column_name(s)
     FROM table_name
 
-##SELECT INTO
+## SELECT INTO
 
 (used to create backup copies of tables)
 
@@ -165,20 +165,20 @@ tags: 数据库 sql
     INTO new_table_name
     FROM original_table_name
 
-##TRUNCATE TABLE
+## TRUNCATE TABLE
 
 (deletes only the data inside the table)
 
     TRUNCATE TABLE table_name
 
-##UPDATE
+## UPDATE
 
     UPDATE table_name
     SET column_name=new_value
     [, column_name=new_value]
     WHERE column_name=some_value
 
-##WHERE
+## WHERE
 
     SELECT column_name(s)
     FROM table_name

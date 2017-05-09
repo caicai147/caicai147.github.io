@@ -11,7 +11,7 @@ tags: linux shell 命令行 函数
 
 简介：shell允许将一组命令集或语句形成一个可用块，这些块成为shell函数
 
-###定义函数的格式###
+### 定义函数的格式
 
 方法一
 
@@ -106,7 +106,7 @@ tags: linux shell 命令行 函数
 
 检查载入函数和删除函数
 
-###查看载入函数：set命令查看这个函数如何载入###
+### 查看载入函数：set命令查看这个函数如何载入
 
 例子：
 
@@ -117,7 +117,7 @@ tags: linux shell 命令行 函数
     hello
     echo "back from the function hello"
 
-###删除函数：unset命令###
+### 删除函数：unset命令
 
 例子
 

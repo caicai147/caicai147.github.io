@@ -5,7 +5,7 @@ categories: 深入学习之网络原理 软件质量之性能
 tags: HTTP tinyhttpd webbench ubuntu linux make gcc 服务器 性能测试
 ---
 
-##背景知识
+## 背景知识
 
 webbench 是由Lionbridge 公司开发的知名的网站压力测试工具。它能测试处于相同硬件上，不同服务的性能以及不同硬件上同一个服务的运行状况
 
@@ -20,7 +20,7 @@ tinyhttpd 是超轻量型的http server。下面将尝试部署一个服务器�
 * [《Linux中部署服务器Tinyhttpd并用Webbench测试抗压性能 》](http://www.scholat.com/vpost.html?pid=7337)
 * [《 tinyhttpd在Linux编译 》](http://blog.csdn.net/cqu20093154/article/details/41025885)
 
-##环境准备
+## 环境准备
 
 操作系统使用Ubuntu 14 
 
@@ -35,7 +35,7 @@ $ tar -xzvf webbench-1.5.tar.gz
 $ tar -xzvf tinyhttpd-0.1.0.tar.gz
 ```
 
-##编译安装tinyhttpd
+## 编译安装tinyhttpd
 
 将tinyhttpd 源码拷贝到/usr/local/src，在命令行操作的过程中可能会出现权限问题，所以cp 操作需要先切换到超级管理员
 
@@ -156,7 +156,7 @@ httpd 是可执行文件，不需要在进行安装，直接执行`./httpd` 命�
 
 ![image](../media/image/2016-10-12/01.png)
 
-##编译安装webbench
+## 编译安装webbench
 
 将tinyhttpd 源码拷贝到/usr/local/src，在命令行操作的过程中可能会出现权限问题，所以cp 操作需要先切换到超级管理员
 
@@ -181,7 +181,7 @@ install -m 644 debian/copyright /usr/local/share/doc/webbench
 install -m 644 debian/changelog /usr/local/share/doc/webbench
 ```
 
-##用webbench测试tinyhttpd
+## 用webbench测试tinyhttpd
 
 在终端一，开启tinyhttpd 服务器
 

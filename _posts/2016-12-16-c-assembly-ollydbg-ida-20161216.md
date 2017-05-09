@@ -9,7 +9,7 @@ tags: windows7 64位 32位 汇编 汇编语言 c c++ 连接 编译 编译原理 
 
 在逆向分析过程中，不会把单个的反汇编执行作为最基础的逆向分析单位，因为一条指令只能表示出CPU执行的是何种操作，而无法明确反映出一段程序的功能所在。就像在用C语言进行编程时，很难不通过代码的上下文关系去了解一条语句的含义
 
-##OllyDbg调试工具
+## OllyDbg调试工具
 
 OllyDbg1.10可以点击[这里](../download/20161216/OllyDBG.rar)下载。不需安装，解压缩后即可使用
 
@@ -39,7 +39,7 @@ OllyDbg1.10可以点击[这里](../download/20161216/OllyDBG.rar)下载。不需
 
 >其实OllyDbg的调试功能的使用逻辑和VC、Delphi这些开发工具的调试逻辑是一致的
 
-##IDA逆向反汇编分析工具
+## IDA逆向反汇编分析工具
 
 IDA下载地址是：[https://www.hex-rays.com/products/ida/support/download.shtml](https://www.hex-rays.com/products/ida/support/download.shtml)
 
@@ -51,7 +51,7 @@ IDA的界面大致如下
 
 ![image](../media/image/2016-12-16/03.png)
 
-##用VC6实现一个C函数调用程序
+## 用VC6实现一个C函数调用程序
 
 点击[这里](../download/20161216/callFunction.rar)下载测试程序
 
@@ -91,7 +91,7 @@ int main()
 
 在程序代码中，自定义函数test()由主函数main()所调用，test()函数的返回值为int类型。在test函数中调用了printf()和MessageBox()函数
 
-##开始进行逆向分析
+## 开始进行逆向分析
 
 >确定函数的开始位置和结束位置非常重要，而IDA一般可以自动识别函数的起始位置和结束位置，只有在代码被刻意改变之后才需要程序员自己进行识别
 
@@ -117,7 +117,7 @@ int main()
 
 并不是每个程序都能被IDA识别出跳转到main()函数的跳表项，而且程序的入口点也并非main()函数
 
-##分析程序入口函数mainCRTStartup
+## 分析程序入口函数mainCRTStartup
 
 在IDA上单击窗口选项卡，选择“Exports”窗口（Exports窗口就是导出窗口，用于查看导出函数的地址，但对于EXE程序来说通常是没有导出函数的，这里会显示EXE程序的入口地址）。在“Exports”窗口可以看到`mainCRTStartup`
 
@@ -252,7 +252,7 @@ int main()
 
 ![image](../media/image/2016-12-16/15.png)
 
-##分析main函数
+## 分析main函数
 
 顺利找到\_main函数后，直接双击反汇编的\_main，到达函数跳转表处
 
@@ -361,7 +361,7 @@ int nNum = test("hello", 6);
 
 而最后的`xor eax, eax`这句代码是将eax进行清0，因为在C语言代码中，main函数的返回值是0，即`return 0;`，所以这里对eax进行了清零操作
 
-##分析test函数
+## 分析test函数
 
 双击004010BF地址处的`call j_test`，就会移到j\_test的函数跳表处
 
@@ -466,7 +466,7 @@ int nNum = test("hello", 6);
 
 >stdcall是Windows下的标准函数调用约定。Windows提供的应用层以及内核层函数均使用stdcall的调用约定方式。cdecl是C语言的调用函数约定方式
 
-##简单总结
+## 简单总结
 
 在逆向分析函数时
 

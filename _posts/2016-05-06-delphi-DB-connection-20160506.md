@@ -5,7 +5,7 @@ categories: delphi之数据库 数据库之oracle 数据库之sqlserver delphi�
 tags: delphi oracle TComboBox SQLServer
 ---
 
-##简介
+## 简介
 
 * 该程序实现了测试连接Oracle、SQLServer的功能，在程序的窗体中输入用户名、密码、数据源即可测试数据库连接
 * 其中简单涉及到TADOConnection的使用
@@ -13,7 +13,7 @@ tags: delphi oracle TComboBox SQLServer
 * 注意其中数据库连接串的格式
 * 具体的程序实例代码点击[这里](../download/20160506/TestADOConn.zip)进行下载
 
-##程序实例
+## 程序实例
 
 ```
 unit Unit1;

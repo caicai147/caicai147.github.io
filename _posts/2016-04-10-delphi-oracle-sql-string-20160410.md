@@ -7,7 +7,7 @@ tags: delphi 字符串 ascii 字符编码 oracle sql
 
 >重点注意Delphi和Oracle-SQL中比较字符串时空字符串''的根本性的不同
 
-##Delphi中的字符串比较
+## Delphi中的字符串比较
 
 * Delphi中字符串比较大小的规则：对应位置的字符按照字符编码值逐个对比，直到遇到可以确定大小关系的就结束比较
 * 参考[《Delphi的Ord函数和ASCII码对照表》](http://www.xumenger.com/delphi-ord-20160222/)
@@ -44,7 +44,7 @@ begin
 end;
 ```
 
-##Oracle SQL中的字符串比较
+## Oracle SQL中的字符串比较
 
 * 亲自在Oracle中验证过！
 * 一般在SQL中的where条件中会用到字符串的比较，比如select * from user where name > 'john'

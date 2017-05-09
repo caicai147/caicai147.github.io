@@ -45,7 +45,7 @@ TThread在Classes单元里的声明如下
             property OnTerminate: TNotifyEvent read FOnTerminate write FOnTerminate;
         end;
 
-###先说一下TThread的Create的参数###
+### 先说一下TThread的Create的参数
 
 当TThread的Create()被调用的时候，需要传递一个布尔型的参数CreateSuspended。如果把这个参数设为False，那么当调用Create()之后，Execute()会被自动调用，也就是自动地执行线程代码。如果该参数设为True，这样创建了线程，但是线程创建完成之后是挂起的，需要调用TThread的Resume()来唤醒线程执行。
 
@@ -55,5 +55,5 @@ TThread在Classes单元里的声明如下
 
 在讲的深一点，在构造函数Create()中隐含调用一个RTL例程BeginThread()，而它又调用了一个API函数CreateThread()来创建一个线程对象的实例。CreateSuspended参数表明是否传递CREATE_SUSPENDED标志给CreateThread()。
 
-###再说一下Suspend和Resume###
+### 再说一下Suspend和Resume
 

@@ -5,7 +5,7 @@ categories: delphi之函数 c/c++之指针与内存
 tags: delphi 函数 指针 内存
 ---
 
-##说明
+## 说明
 
 * 本文的主要目的是补充[《Delphi和C/C++配合编程时的字符串传值规范》](http://www.xumenger.com/delphi-vcpp-string-chararray-20160511/)
 * 不光在跨语言编程的时候需要注意字符数组、字符串、字符指针的规范使用
@@ -14,7 +14,7 @@ tags: delphi 函数 指针 内存
 * 可以自己进行尝试
 * Delphi的版本是6
 
-##源码展示
+## 源码展示
 
 ```
 unit Unit1;

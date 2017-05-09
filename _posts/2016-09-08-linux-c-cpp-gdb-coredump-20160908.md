@@ -19,7 +19,7 @@ tags: 操作系统 进程 dump WinDbg core GDB map 编译原理 linux windows c 
 * [《gdb core 调试》](http://blog.csdn.net/hanchaoman/article/details/5583457)
 * [《linux下用core和gdb查询出现"段错误"的地方》](http://blog.chinaunix.net/uid-26833883-id-3193279.html)
 
-##Core文件和段错误
+## Core文件和段错误
 
 当一个程序奔溃时，在进程当前工作目录的Core 文件中复制了该进程的存储图像。Core　文件仅仅是一个内存映像(同时加上调试信息)，主要用来调试的
 
@@ -36,7 +36,7 @@ tags: 操作系统 进程 dump WinDbg core GDB map 编译原理 linux windows c 
 
 程序在运行过程中如果出现段错误，那么就会收到SIGSEGV 信号，SIGSEGV 默认handler 的动作是打印“段错误”的出错信息，并产生Core 文件
 
-##GDB 断点调试以定位错误代码行
+## GDB 断点调试以定位错误代码行
 
 **testCrash.cpp**
 
@@ -78,7 +78,7 @@ int main()
 
 还发现进程是由于收到了SIGSEGV 信号而结束的。通过进一步的查阅文档(man 7 signal)，SIGSEGV 默认handler 的动作是打印”段错误"的出错信息，并产生Core　文件
 
-##分析Core 文件
+## 分析Core 文件
 
 **设置Core文件大小，运行程序生成Core文件**
 
@@ -96,7 +96,7 @@ int main()
 
 Linux下可以做到吗？可以让它在SIGSEGV 的handler中调用gdb
 
-##段错误时启动调试
+## 段错误时启动调试
 
 **testCrash.cpp**
 
@@ -167,7 +167,7 @@ int main()
 
 ![image](../media/image/2016-09-08/06.png)
 
-##路漫漫其修远兮
+## 路漫漫其修远兮
 
 以上展示的这些东西很简单，在你对Linux 进程的虚拟内存、进程的堆栈结构等没有任何了解的情况下，完全照葫芦画瓢也能简单的使用GDB
 

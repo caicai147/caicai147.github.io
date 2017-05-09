@@ -11,7 +11,7 @@ tags: 证券 IT 金融
 
 但是不要忘了我们在中学时候学习政治的时候，反复听到的那句话：“让我们批判的接受！”，补充说明：以下文章都是写于2006年的
 
-##目录
+## 目录
 
 * [证券公司信息化1：证券公司、一级市场、二级市场、货币市场、资本市场](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/01-finance.md)
 * [证券公司信息化2：投行业务、网下询价、网上申购、](https://github.com/xumenger/xumenger.github.io/blob/master/download/20160129/02-finance.md)

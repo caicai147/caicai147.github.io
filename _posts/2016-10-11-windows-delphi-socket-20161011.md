@@ -21,7 +21,7 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 到目前为止都只是停留在阻塞、非阻塞这两个概念术语上的“争论”，那么到底什么是阻塞、什么是非阻塞、阻塞和非阻塞到底在运行时有什么现象、阻塞和非阻塞到底适用的场景是什么样的……
 
-##阻塞和非阻塞的区别
+## 阻塞和非阻塞的区别
 
 以下的内容是直接从[《阻塞和非阻塞的区别》](http://www.cnblogs.com/orez88/articles/2513460.html)Copy 过来的
 
@@ -68,7 +68,7 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 * [《Indy TIdTCPClient伪非阻塞式的解决方案》](http://blog.csdn.net/qustdong/article/details/46728961)
 * [《Socket 阻塞模式和非阻塞模式(转) 》](http://yjxandsp.blog.163.com/blog/static/163679712012411115039584/)
 
-##运行效果展示
+## 运行效果展示
 
 之前的两篇文章中已经展示了阻塞模式客户端对接阻塞模式服务端、非阻塞模式客户端对接非阻塞模式服务端的运行情况。不过上面两篇展示的运行效果其实还基于这样一个事实：客户端、服务端都位于同一台机器上
 
@@ -89,7 +89,7 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 点击[这里](../download/20161011/Example.rar)下载本文对应的所有测试程序源码。使用IdTcpServer开发的服务端仍然有线程安全问题，本例展示阻塞和非阻塞，所以暂未解决这个线程安全问题；另外在实现服务端程序的时候，也只考虑一个客户端连接的场景，不考虑多客户端同时连接一个服务端的场景
 
-##客户端(阻塞)<-->服务端(阻塞)
+## 客户端(阻塞)<-->服务端(阻塞)
 
 客户端使用IdTcpClient；服务端使用IdTcpServer
 
@@ -113,7 +113,7 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 ![img](../media/image/2016-10-11/05.png)
 
-##客户端(非阻塞)<-->服务端(非阻塞)
+## 客户端(非阻塞)<-->服务端(非阻塞)
 
 客户端使用ClientSocket，并将ServerType 设置成stNonBlocking；服务端使用ServerSocket，并将ClientType 设置成ctNonBlocking
 
@@ -133,19 +133,19 @@ IdTcpServer/IdTcpClient 只能是支持阻塞模式编程
 
 ![img](../media/image/2016-10-11/24.png)
 
-##客户端(非阻塞)<-->服务端(阻塞)
+## 客户端(非阻塞)<-->服务端(阻塞)
 
 客户端使用ClientSocket，并将ClientType 设置成ctNonBlocking；服务端使用IdTcpServer
 
 直观看起来的运行现象和**客户端(非阻塞)<--\>服务端(非阻塞)**一样的，简单的解释起来，就是客户端是单线程的，又是非阻塞，所以正常运行没有卡死，可以理解。而服务端因为是多线程的，就算线程卡死也不是主线程卡死，而是子线程卡死，所以从界面的层面还是看不出效果！
 
-##客户端(阻塞)<-->服务端(非阻塞)
+## 客户端(阻塞)<-->服务端(非阻塞)
 
 客户端使用IdTcpClient；服务端使用ServerSocket，并将ServerType 设置成stNonBlocking
 
 直观看起来的运行现象和**客户端(阻塞)<--\>服务端(阻塞)**一样的，服务端正常运行，客户端在收完所有的消息后又阻塞导致界面卡死，简单的解释起来，就是客户端是单线程的，又是阻塞，所以收完消息后再去尝试收消息，发现没有消息了就阻塞进行等待，可以理解！
 
-##IdTcpClient的不同Read方法
+## IdTcpClient的不同Read方法
 
 上面的IndyClient的程序从TCP/IP协议栈中收取数据使用的方法是ReadString，下面在针对IdTcpClient的各种Read..方法进行讲解，对应的测试程序源码点击[这里](../download/20161011/IndyTest.rar)下载
 
@@ -281,7 +281,7 @@ end;
 
 就像前面说的，如果想使用IdTcpClient实现阻塞模式的网络编程，其实根本不需要先调用ReadFromStack来获取当前TCP/IP协议栈中的字节数，直接调用ReadBuffer或ReadString去读取就行了，反正ReadBuff和ReadString在读不到数据时自己就会阻塞等待数据，本身也是安全的！
 
-##简单总结
+## 简单总结
 
 之前在[《Delphi网络编程：使用IdTcpServer/IdTcpClient》](http://www.xumenger.com/windows-delphi-socket-20160929/)中说阻塞并没有那么可怕，但是经过上面的一系列实验，发现阻塞相对于非阻塞其实还是不好，因为阻塞会导致线程卡死，在客户端还好，毕竟只有一个连接。但在服务端，会有好多的客户端并发连接，因为会有阻塞，所以需要为每个客户端分配一个专门的线程，而且绝大多数时间线程都是阻塞等待客户端的数据，所以这样明显会导致资源的浪费！
 

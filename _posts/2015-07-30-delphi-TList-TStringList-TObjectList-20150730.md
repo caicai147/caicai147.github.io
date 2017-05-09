@@ -14,11 +14,11 @@ tags: delphi tlist tobjectlist
 在我们使用Delphi的过程中，有很多数据的存储是要靠 数组解决的。虽然Delphi现在已经支持了可变数组，不过总有那么点缺陷：我们不能在删除一个项之后，使后边的项目自动前靠。因此，说说Delphi现成的List还是很有价值的。
 
  
-###TStringList###
+### TStringList
 
 TStringList源码在 classes.pas里面。
 
-####Text属性和Strings属性####
+#### Text属性和Strings属性
 
 在TStringList里面，那些String被一行一行地存储存。TStringList.Text返回全部的String。如果第一、二、三行分别是/'aa/'、/'bb/'、/'cc/'的话，那么Text返回的是“/'aa/'+#13#10+/'bb/'+#13#10+/'cc/'+#13#10” （不包括双引号 ）。所有的String都被TStringList用回车符和换行符（#13#10）连接起来。如果一次向Text赋值的话，Text就会被自动地分割成储存在TStringList里。这里充分地体现出TStringList的一个很实用的价值：它能让我们逐行处理String。假如我们要操作第4行，只需要操作TStringList[3]。相信大家会问，TStringList明明是一个类，为什么能当数组那样子用呢？其实，我们在写TStringList[3]的时候，就是在写TStringList.Strings[3]。Strings是TStringList的一个缺省属性。数组性的缺省属性就是这样子使用的。如果大家在编写类的时候要使用到这么一个功能的话，刻意参考如方法
 
@@ -32,7 +32,7 @@ Strings是一个可读写的属性。这也就是说，大家并不仅可以获�
 TStringList里的每一个字符都有自己的位置标号（从0开始）。
 
  
-####Add和Append方法####
+#### Add和Append方法
 
     function Add(const S: String): Integer;
     procedure Append(const S: String);
@@ -42,14 +42,14 @@ Add方法向TStringList的尾行添加一行String（在这里和下面我们都
 Append方法和Add唯一不同的地方就是没有返回值。
 
 
-####Insert方法####
+#### Insert方法
 
     procedure Insert(Index: Integer; const S: String);
 
 Insert方法向TStringList插入一行字符串。在Insert里，我们可以自由地选择字符串插入的位置。参数S代表要插入的字符串的内容，Index代表要插入的位置。
 
 
-####Delete方法####
+#### Delete方法
 
     procedure Delete(Index: Integer);
 
@@ -58,14 +58,14 @@ Delete方法删除某行字符串，我们同样可以自由地选择删除任�
 0是第一个数据。
 
 
-####IndexOf方法####
+#### IndexOf方法
 
     function IndexOf(const S: String): Integer;
 
 IndexOf查找某一字符串在TStringList里的位置。参数S代表要查找的字符串。如果TStringList里面不存在S的话，则返回-1。
 
 
-####Move和Exchange方法####
+#### Move和Exchange方法
 
     procedure Move(CurIndex, NewInddex: Integer);
     procedure Exchange(Index1, Index2: Integer);
@@ -77,7 +77,7 @@ Move方法能把一行字符串抽出来并插入到另一个指定的为位置�
 Exchange方法则能将随便两个字符串交换。参数Index1和Index2代表两行需要交换的字符串的位置。
 
 
-####LoadFromFile和SaveToFile方法####
+#### LoadFromFile和SaveToFile方法
 
     procedure LoadFromFile(const FileName: String);
     procedure SaveToFile(const FileName: String);
@@ -91,7 +91,7 @@ TStringList的LoadFromFile和SaveToFile两个方法，使得我们对文本文�
 非常方便。
 
  
-####Names和Values属性####
+#### Names和Values属性
 
 TStringList还有一项特殊功能：可以把TStringList当成ini 控制器使用。不过它没有Section。现在我就来介绍TStringList的两个属性：Names和Values。
 
@@ -155,9 +155,9 @@ TStringList还有一个可以存放Object的功能。但是我个人认为使用
     end;
 
 　　
-###TList###
+### TList
 
-####TList简介####
+#### TList简介
 
 TList所在位置：Classes.pas
 
@@ -197,7 +197,7 @@ TList所在位置：Classes.pas
 既然Capacity会自动增加，那么还要Capacity干什么呢？还不如使用链表。不过我后来意识到，在使用链表额时候，取得某个位置的指针比数组困难，要用比较费时间的循环。TList刚好解决了这个问题。我们既可以把TList当成数组，也可以把它当成链表。
 
 
-####TList的Items属性和List属性####
+#### TList的Items属性和List属性
 
 TList除了保存的对象是指针之外，其他地方都与TStringList很像，所以下面只介绍两者的不同之处。我们同样可以使用TList或者TList.Items获得某一位置的指针。如果嫌TList.Items是属性没有效率的话，这里还有一个List属性，指向内部的FList，可以这样使用：
 
@@ -227,12 +227,12 @@ TList除了保存的对象是指针之外，其他地方都与TStringList很像�
     end;
 
 
-####TList的First和Last属性####
+#### TList的First和Last属性
 
 TList提供了First和Last两个属性，分别返回第一个和最后一个指针。
 
 
-####TList的Delete和Remove方法####
+#### TList的Delete和Remove方法
 
 TList也提供了一个Remove方法。与Delete不同的是，Delete删除的是已知位置的指针，Remove删除的是已知指针。只要TList包含有你想删除的指针，你就可以使用
 
@@ -243,12 +243,12 @@ Remove的返回值是指针在还没有被删除之前的位置，使用方法�
     procedure Delete(Index: Integer);
     function Remove(Item: Pointer): Integer;
 
-####Tlist的Pack方法####
+#### Tlist的Pack方法
 
 TList还有一个Pack方法。它能够把所有不是nil的指针聚在一起，同时把Count的值改变，这样，所有没有用的指针就会被删除，但是并不会减少Capacity。如果你想把没有用的空间都释放的话，可以把Capacity设置成Count。
 
 
-####TList的Notify####
+#### TList的Notify
 
 最后，我想说的是Protected里的Notify。大家在Add的代码里面就能看到，在Insert、Delete之类的代码里我们也能看到Notify的踪迹。既然FList的内容已经被改变了，Notify还要做什么工作呢？看一下Notify的代码：
 
@@ -266,16 +266,16 @@ TList还有一个Pack方法。它能够把所有不是nil的指针聚在一起�
 原来Notify是一个虚函数，当我们因为有特殊要求而继承TList累的话，只要TList的内容一改变，我们就能得到通知。不过前提是我们要覆盖Notify这个procedure。
 
  
-###TObject###
+### TObject
 
-####TObjectList简介####
+#### TObjectList简介
 
 TObjectList所在位置：Contnrs.pas
 
 TObjectList中有一个不可缺少的属性：OwnsObjects。如果OwnsObjects是True（缺省值）的话，那么TObjectList会在适当的时候把它从列表中的Object释放掉。
 
  
-###TStringList和TList的一个示例讲解###
+### TStringList和TList的一个示例讲解
 
 现在，让我们用一个例子来结束我对Delphi的List的介绍。这个例子是一个管理人员信息的程序。不过因为这只是一个示例，所以这个程序只是简单的ConsoleApplication。使用ConsoleApplication来做示例程序可以免掉一些界面设计的工作。这个程序需通过Index来管理人员信息。人员信息包括Name、Telephone和Address。
 

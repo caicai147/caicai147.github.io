@@ -12,11 +12,11 @@ tags: delphi dll sharemem
 
 下面通过一个项目示例来讲解怎么使用ShareMem。
 
-##先新建一个DLL项目##
+## 先新建一个DLL项目
 
 先新建一个DLL项目，然后再新建一个Unit1单元。
 
-###工程文件是这样的###
+### 工程文件是这样的
 
     library Project2;
     
@@ -45,7 +45,7 @@ tags: delphi dll sharemem
     
     end.
 
-###单元文件里面实现了test函数####
+### 单元文件里面实现了test函数
 
     unit Unit1;
     
@@ -59,20 +59,20 @@ tags: delphi dll sharemem
       end;
     end.
 
-###引入ShareMem的注意事项###
+### 引入ShareMem的注意事项
 
 1. 因为DLL中使用到string类型，所以一定要引入ShareMem单元。如果没有用到string就不需要ShareMem，但是为了保险起见，还是建议引入ShareMem单元
 2. 以这个项目为例，注意要在DLL的项目文件中引入ShareMem单元，而不是在函数的声明和实现单元Unit1里面引入ShareMem单元
 3. 在项目文件中可能会引入很多单元，但是ShareMem单元一定要第一个引入，为了第一个加载
 
 
-##新建加载这个DLL的项目（生成可执行文件）##
+## 新建加载这个DLL的项目（生成可执行文件）
 
 先新建一个项目，然后再新建一个Unit1单元。
 
 上面的那个DLL的项目编译生成了Project2.dll动态链接库，将该动态链接库文件放到这个可执行项目的项目目录下方便加载
 
-###项目文件的源码是这样的###
+### 项目文件的源码是这样的
 
     program Project1;
     
@@ -89,7 +89,7 @@ tags: delphi dll sharemem
       Application.Run;
     end.
 
-###单元文件的代码是这样的###
+### 单元文件的代码是这样的
 
 单元文件的代码是这样的（这个单元文件中主要是窗体相关代码）
 
@@ -143,13 +143,13 @@ tags: delphi dll sharemem
 
 这个可执行项目加载了上面的DLL，而上面的那个DLL里面使用到了string，所以这个项目文件中也需要引入ShareMem单元。
 
-###但是也是有注意事项的：###
+### 但是也是有注意事项的：
 
 1. 加载了使用string的DLL的项目也需要引入ShareMem。如果没有用到string就不需要ShareMem，但是为了保险起见，还是建议引入ShareMem单元
 2. 以这个项目为例，注意要在该可执行项目文件中引入ShareMem单元，而不是在函数的声明和实现单元Unit1里面引入ShareMem单元
 3. 在项目文件中可能会引入很多单元，但是ShareMem单元一定要第一个引入，为了第一个加载
 
-###我在实验时候出现的问题###
+### 我在实验时候出现的问题
 
 因为我在可执行项目中引入ShareMem单元时候没有注意到应该在项目文件而不是在单元文件中引入，所以在编译执行之后，可以正确运行，但是当关闭程序的时候却报错，如下图
 

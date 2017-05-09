@@ -31,7 +31,8 @@ OleInitialize   calls   CoInitializeEx   internally   to   initialize   the   CO
 
 Once   the   concurrency   model   for   an   apartment   is   set,   it   cannot   be   changed.   A   call   to   OleInitialize   on   an   apartment   that   was   previously   initialized   as   multithreaded   will   fail   and   return   RPC_E_CHANGED_MODE.
 
-###应用场景：###
+### 应用场景：
+
 1. CoInitialize 仅仅初始化Com，支持多线程。也就是说如果多线程调用Com接口，必须在每个线程中都调用CoInitialize。
 2. OleInitialize 初始化Com（其实也是调用CoInitializeEx），支持多线程。比CoInitialize多了以下内容：**A) Clipboard**；**B) Drag and drop**；**C) Object linking and embedding (OLE)**；**D) In-place activation**。如果不需要这些，用CoInitialize就可以。
 3. AfxOleInit是MFC对OleInitialize的封装。貌似不支持多线程，也就是说只能在主进程调用该函数，如果线程需要使用Com必须调用上面的两个来实现初始化。而且MSDN明确标明AfxOleInit不能在MFC的DLL中调用，否则也会造成初始化失败。
@@ -69,7 +70,7 @@ MFC程序建议使用AfxOleInit()。
     }
 
 
-###我和同事的讨论###
+### 我和同事的讨论
 
 前面的同事过来看到了，说：你不该在这里调用 CoInitialize 和 CoUninitialize。如果有的地方也在用 COM，你这里 CoUninitialize 一下，别的地方就会出错了，上次的某个 Bug 就是。
 
@@ -85,7 +86,7 @@ MFC程序建议使用AfxOleInit()。
 
 其实我被动摇了。
 
-###各位大大，你们怎么处理呢？###
+### 各位大大，你们怎么处理呢？
 
 ------------------------------华丽的分割线（13:27 p.m. 增加）----------------------------------
 

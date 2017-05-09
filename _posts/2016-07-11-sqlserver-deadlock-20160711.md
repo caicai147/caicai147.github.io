@@ -5,7 +5,7 @@ categories: 数据库之sqlserver 深入学习之数据库原理 好资源之开
 tags: SQLServer 锁 sql 死锁 数据库 数据库连接 Profiler
 ---
 
-##参考文章
+## 参考文章
 
 * [《数据库锁机制》](http://www.xumenger.com/z-database-lock-20160710/)
 * [《模拟系统登录时卡死以简单了解数据库原理》](http://www.xumenger.com/oracle-lock-plsql-login-20160503/)
@@ -16,7 +16,7 @@ tags: SQLServer 锁 sql 死锁 数据库 数据库连接 Profiler
 * [《SqlServer 并发事务：死锁跟踪（二）确定死锁锁定的资源》](http://blog.csdn.net/kk185800961/article/details/41687209)
 * [《SqlServer 并发事务：死锁跟踪（三）6种跟踪死锁的方法总结》](http://blog.csdn.net/kk185800961/article/details/42504857)
 
-##说明
+## 说明
 
 在多线程/多进程的程序中并发操作数据库，如果对数据库的运行原理理解的不深入，编写的代码没有考虑数据库运行原理的话，就很有可能导致死锁的发生，那么就需要赶紧解决问题，而我最近也遇到了一个SQL Server死锁的问题，所以趁此机会研究一下死锁的排查方法
 
@@ -26,7 +26,7 @@ SQL Server死锁时候报错的信息一般是：事务(进程 ID 54)与另一�
 
 上面的相关博客中有多种方法，这里先整理出一个简单、有效的方法：利用服务器端跟踪。**其消耗小，在最繁忙的系统中也可使用**。其他的方法会在日后慢慢研究和整理补充
 
-##模拟SQL Server死锁
+## 模拟SQL Server死锁
 
 参考[《数据库锁机制》](http://www.xumenger.com/z-database-lock-20160710/)，创建数据库、创建表、模拟200万条记录
 
@@ -47,7 +47,7 @@ update testLock..test set name = 'xumeng';
 commit;
 ```
 
-##先整理一个简单有效的方法
+## 先整理一个简单有效的方法
 
 **1.编写如下脚本，并执行**
 

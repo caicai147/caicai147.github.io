@@ -9,12 +9,12 @@ tags: delphi 多线程
 
 然后出去撒了个尿，突然脑子里出现了一个想法（看来工作和思考久了，出去走走，哪怕是去撒个尿，都可能尿出火花，所以工作和学习的时常根本就不等同于效率灵感不是在那里拼命工作、想就能出来的），需要结合这篇博客：[关于FreeOnTerminate的知识](http://xumenger.github.io/delphi-thread-freeonterminate/)
 
-##上面所给出的第一种解决方案：##
+## 上面所给出的第一种解决方案：
 
 线程（Execute）在执行定时循环；然后先让 DestroyAThread设置 Terminated属性，通知线程去结束执行、释放资源；然后在线程结束执行、释放资源之后再去通知DestroyAThread，再由DestroyAThread来显式调用线程的 Free方法来释放线程
 
  
-##所以结合 FreeOnTerminate的作用，复习一下：##
+## 所以结合 FreeOnTerminate的作用，复习一下：
 
 类 Create 了就要 Free; 
 
@@ -23,7 +23,7 @@ tags: delphi 多线程
 如果线程执行完毕自己知道释放就好了, 所以 TThread 给了一个布尔属性 FreeOnTerminate, 如果为 True, 线程执行完毕后就会自释放.
 
  
-##进行改造：##
+## 进行改造：
 
 首先在线程的Execute方法里面将 FreeOnTerminate设置为True，然后进行自己的定时循环执行；然后DestroyAThread设置Terminated属性，通知线程去结束执行、释放资源；然后在线程结束执行、释放资源之后，因为FreeOnTerminate设置为True了，所以就不要再通知 DestroyAThread，自己在释放完资源、结束执行之后，就会自释放。
 
@@ -32,9 +32,9 @@ tags: delphi 多线程
 同样也就不需要线程再有 CanFree这种通知别人来释放它的属性了，所以也能简化线程类的设计（在面向对象的程序设计中一个原则就是：类尽可能小，所以那些能不需要的属性、方法就不要去定义和使用，把冗余的属性和方法一定要去掉……）
 
  
-##所以新的代码可以是这样的##
+## 所以新的代码可以是这样的
 
-###Execute方法：###
+### Execute方法：
 
     procedure TDoSomeThingThread.Execute;
     var
@@ -64,7 +64,7 @@ tags: delphi 多线程
       end;
     end;
 
-###DestroyAThread方法：###
+### DestroyAThread方法：
 
     procedure DestroyAThread(testThread: TDoSomeThingThread); stdcall;
     var
