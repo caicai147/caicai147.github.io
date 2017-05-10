@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi使用绑定变量法操作Oracle
-categories: 数据库之oracle delphi之数据库
+categories: 数据库之oracle delphi之数据库编程
 tags: sql oracle 数据库 delphi 绑定变量
 ---
 
