@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Delphi实现程序用以测试数据库连接
-categories: delphi之数据库 数据库之oracle 数据库之sqlserver delphi之控件
+categories: delphi之数据库编程 数据库之oracle 数据库之sqlserver delphi之控件
 tags: delphi oracle TComboBox SQLServer
 ---
 
