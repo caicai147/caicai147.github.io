@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 浅析引用计数
+title: Delphi对象内存模型：接口的引用计数特性
 categories: delphi之面向对象 python之面向对象 c/c++之面向对象
 tags: delphi interface 接口 引用计数 TInterfacedObject COM 对象内存模型 引用模型 Python C++
 ---
