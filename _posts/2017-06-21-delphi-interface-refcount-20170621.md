@@ -157,9 +157,9 @@ begin
   CInfo1 := TInfoDefault.Create('实现类的指针', 10);
   mmoMessage.Lines.Add(CInfo1.GetName + '的引用计数值 = ' + IntToStr(CInfo1.GetRefCount));
   CInfo2 := CInfo1;
-  mmoMessage.Lines.Add(Info1.GetName + '的引用计数值 = ' + IntToStr(CInfo1.GetRefCount));
+  mmoMessage.Lines.Add(CInfo1.GetName + '的引用计数值 = ' + IntToStr(CInfo1.GetRefCount));
   CInfo2 := nil;
-  mmoMessage.Lines.Add(Info1.GetName + '的引用计数值 = ' + IntToStr(CInfo1.GetRefCount));
+  mmoMessage.Lines.Add(CInfo1.GetName + '的引用计数值 = ' + IntToStr(CInfo1.GetRefCount));
   mmoMessage.Lines.Add('');
 end;
 ```
