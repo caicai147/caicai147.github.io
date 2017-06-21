@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi对象内存模型：Delphi和VC++通过接口进行对接
+title: Delphi引用模型：Delphi和VC++通过接口进行对接
 categories: delphi之面向对象 c/c++之面向对象
 tags: delphi interface 接口 引用计数 TInterfacedObject COM c++ C++对象内存模型 Delphi对象内存模型 纯虚方法
 ---
