@@ -5,7 +5,7 @@ categories: delphi之面向对象 python之面向对象 c/c++之面向对象
 tags: delphi interface 接口 引用计数 TInterfacedObject COM 对象内存模型 引用模型 Python C++
 ---
 
-在[《Delphi通过接口和C++进行对接》](http://www.xumenger.com/cpp-delphi-interface-20170620/)提到了Delphi、C++的接口和引用计数等知识点，因为之前的系列文章[C++对象内存模型 ](http://www.xumenger.com/tags/#C++对象内存模型)已经对C++、Delphi类的内存模型进行探究了，对本文续接上一篇文章重点针对引用计数进行深入的研究和讲解！
+在[《Delphi引用模型：Delphi和VC++通过接口进行对接》](http://www.xumenger.com/cpp-delphi-interface-20170620/)提到了Delphi、C++的接口和引用计数等知识点，因为之前的系列文章[C++对象内存模型 ](http://www.xumenger.com/tags/#C++对象内存模型)已经对C++、Delphi类的内存模型进行探究了，对本文续接上一篇文章重点针对引用计数进行深入的研究和讲解！
 
 Delphi的string、C++的是std::string都是引用计数应用的典型，本文会讲解引用计数
 
