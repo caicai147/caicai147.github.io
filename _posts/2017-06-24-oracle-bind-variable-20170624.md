@@ -351,6 +351,8 @@ end;
 
 >暂时不得其解！！
 
+补充：测试过程中还发现，如果数据库中是Number(10)之类的整型，而绑定变量法给其赋类似12.09的浮点型，最终写到数据库中的值会自动做四舍五入处理！
+
 ## 参考文章
 
 * [《Delphi使用绑定变量法操作Oracle》](http://www.xumenger.com/z-delphi-oracle-parameter-20160711/)
