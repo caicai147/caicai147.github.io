@@ -2,7 +2,7 @@
 layout: post
 title: STL使用上的的更多细节
 categories: C/C++之STL C/C++之多线程 
-tags: c++ 多态 继承 异常 shared_ptr STL delphi 算法 数据结构 函数 函数对象 面向对象 封装 模板 智能指针 Boost 字符串 引用计数 标准
+tags: c++ 多态 继承 异常 shared_ptr 操作符重载 STL delphi 算法 数据结构 函数 函数对象 面向对象 封装 模板 智能指针 Boost 字符串 引用计数 标准
 ---
 
 一直以来我使用C++的语法集就是`C - 宏 + 面向对象`，对于更多的C++的高级语法，比如模板、智能指针、STL等都完全没有用到，或者说我在刻意规避这些语法，因为具有较高的复杂性，不易理解和使用，而且很依赖于不同的C++编译器实现、不同的STL库实现，所以如果既在Windows下用VC++开发，又在Linux下用GUN g++开发，可能会有一些令人困惑的差异
@@ -226,6 +226,78 @@ vector<int> v;
 >详细的解释已经在上述代码中体现出来了。就算在代码块之间出现异常，C++也能保证只要跳出代码块就结束该对象的生命！
 
 ## 函数对象
+
+函数和类似于函数的对象（函数子）在STL中到处都可以看到。关联容器利用它们为元素进行排序、find\_if使用它们来控制算法的行为。如果不知道如何编写行为良好的函数子，那么想有效的使用STL也是不大可能的
+
+在Python、Lisp这些支持函数式编程的语言中，可以直接把函数作为参数传给另一个函数，而在C、C++中是不允许将一个函数作为参数传递给另一个函数的，只允许你传递函数指针
+
+STL中的函数对象是函数指针的一种抽象和建模形式，所以，按照惯例，在STL中，函数对象在函数之间来回传递的时候也是按值传递（被复制）的。标准库中的for\_each算法需要一个函数对象作为参数，同时其返回值也是一个函数对象，而且都是按值传递的，声明如下
+
+```
+template<class InputIterator, class Function>
+Function                         //返回值按值返回
+for_each(InputIterator first, 
+         Inputiterator last, 
+         Function f)             //参数按值传递
+```
+
+>因为在STL中函数对象是按值传递的，所以在设计函数对象的时候必须时刻考虑到这一点
+
+由于函数对象是按值传递和返回，所以，你必须确保你编写的函数对象在经过了传递之后还能正常工作。所以：
+
+* 你的函数对象最好是尽可能小，否则复制的开销会很昂贵
+* 函数对象必须是单态的（不是多态的），也就是说，它们不能使用虚函数。如果参数的类型是父类，而传入的实参是派生类，那么在传递的过程中会剥离掉派生类部分，仅保留基类部分，这个在本文的第一部分讲容器的拷贝机制的时候有讲到
+
+STL中函数对象是必须要进行按值返回与按值传递的、如果又想使用多态，那么如何解决这个矛盾？
+
+>解决方法其实也很简单：将需要的数据和虚函数从函数之类中分离出来，放到一个新的类中，然后在函数子类中包含一个指针，指向这个新类的对象
+
+例如，如果你希望创建一个包含大量数据并且使用了多态性的函数子类：
+
+```
+template<typename T>
+class BPFC: public unary_function<T, void>{
+private:
+    Base b;    //该类包含大量数据，所以传值效率很低
+    int x;
+    ...
+public:
+    virtual void operator()(const T& val) const;   //这是一个虚函数，所以存在剥离问题
+    ...
+};
+```
+
+可以修改为这样的方式：创建一个小巧的、单态的类，其中包含一个指针，指向另一个实现类，并且将所有的数据和虚函数都放在实现类中：
+
+```
+template<typename T>
+class BPFCImpl: public unary_function<T, void>{
+private:
+    //原来BPFC中的数据都放在这里
+    Base b;
+    int x;
+    ...
+    virtual ~BPFCImpl();      //多态类需要虚函数
+    virtual void operator()(const T& val) const;
+
+friend class BPFC<T>;         //允许BPFC访问内部数据
+};
+
+//新的BPFC类：短小、单态
+template<typename T>
+class BPFC: public unary_function<T void>{
+private:
+    BPFCImpl<T> *pImpl;       //BPFC唯一的数据成员
+public:
+    //现在这是唯一的非虚函数，将调用转到BPFCImpl中
+    void operator()(const T& val) const
+    {
+        pImpl->operator()(val);
+    }
+};
+```
+
+>使用短小的、单态的函数对象对庞大的、多态的函数对象做一个转换！
 
 ## 相等 VS 等价
 
