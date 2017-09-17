@@ -345,7 +345,43 @@ find算法和set的insert成员函数只是两个有代表性的函数，在STL�
 
 ## 算法调用优先于手写的循环
 
+首先列举一下使用算法比程序员自己写循环的诸多好处：
 
+* **效率**：算法通常比程序员自己写的循环效率更高
+* **正确性**：自己写循环比使用算法更容易出错
+* **可维护性**：使用算法的代码通常比手写循环的代码更加简洁明了
+
+因为STL算法内部实现都是循环，而STL算法涉及面很广，所以这就意味着你本该编写循环完成的任务完全可以用STL算法实现
+
+比如一个这样的类：
+
+```
+class Base{
+public:
+    ...
+    void doSomeThing() const;
+    ...
+};
+```
+
+如果要循环调用list中所有Base对象的doSomeThing的时候，可以自己写循环完成
+
+```
+list<Base> lb;
+...
+for(list<Base>::iterator it = lb.begin(); it != lb.end(); it++){
+    it->doSomeThing();
+}
+```
+
+另外完全可以使用for\_each算法实现
+
+```
+for_each(lb.begin(), lb.end(), 
+         mem_fun_ref(&Base::doSomeThing));
+```
+
+简单的分析。自己写的循环中，每次迭代都要检查it是否为end()，而使用for\_each()则只需要调用一次，这也是使用STL算法性能更好的原因之一；而且很明显，后一种代码风格简洁清晰多了！
 
 ## 怎么选择算法
 
