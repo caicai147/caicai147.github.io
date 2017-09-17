@@ -1,7 +1,7 @@
 ---
 layout: post
 title: STL使用上的更多细节
-categories: C/C++之STL C/C++之多线程 
+categories: c/c++之STL c/c++之多线程 
 tags: c++ 多态 继承 异常 shared_ptr 操作符重载 STL delphi 算法 数据结构 函数 函数对象 面向对象 封装 模板 智能指针 Boost 字符串 引用计数 标准
 ---
 
