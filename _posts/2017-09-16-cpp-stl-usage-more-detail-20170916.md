@@ -334,7 +334,7 @@ find算法和set的insert成员函数只是两个有代表性的函数，在STL�
 一般情况下，一个关联容器的比较函数并不是operator<，甚至也不是less，而是用户自定义的判别式。每个标准关联容器都通过key\_comp成员函数使排列判别式可以被外部使用，所以，如果下面的表达式为true，则按照关联容器c的排序准则，两个对象x和y有等价的值
 
 ```
-!c.key_comp()(x, y) && !(c.key_comp()(y, x))
+!c.key_comp()(x, y) && !c.key_comp()(y, x)
 ```
 
 其中key\_comp是一个函数类，调用key\_comp()会返回一个函数对象，并以x和y作为传入参数！
