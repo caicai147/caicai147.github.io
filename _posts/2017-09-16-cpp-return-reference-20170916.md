@@ -7,7 +7,7 @@ tags: c c++ 函数 函数对象 内存 传值调用 传址调用 引用调用 �
 
 在[《正确理解C/C++中的传值调用/传址调用/引用调用》](http://www.xumenger.com/c-cpp-function-value/)中对调用函数传入参数的方法进行了简述，C中只有传值调用（传址调用本质上就是传值调用），而C++中又增加了引用调用的语法支持。其实在函数中参数是这样的，返回值也是这样的！
 
-下面的示例用C++编写，用`g++ ***.cpp -o ***`编译
+下面的示例用C++编写，用`g++ ***.cc -o ***`编译
 
 ## 引用返回
 
@@ -43,20 +43,17 @@ int main()
 
 编译后输出如下
 
-```
-[return by reference]
-&in(main)      = 0x7fffb3bfe78c
-&in(reference) = 0x7fffb3bfe78c
-&out(main)     = 0x7fffb3bfe788
-&in(reference) = 0x7fffb3bfe78c
-return address = 0x7fffb3bfe78c
-&in(reference) = 0x7fffb3bfe78c
-in = 100
-```
+![image](../media/image/2017-09-16/ref-01.png)
 
 其中特别注意`int out = reference(in)`还是进行了将返回值拷贝的过程，因为明显可以看到out和in的地址是不同的。所以引用返回的特殊性主要体现在`reference(in) = 100`调用方式而不是`int out = reference(in)`方式。这里就涉及到**左值**的概念了
 
 >引用返回左值。返回引用的函数返回一个左值，因此这样的函数可用于任何要求使用左值的地方
+
+当然如果想“用一个临时变量保存引用返回值”，并且不让程序出现拷贝，那么就不应该`int out = reference(in)`的方式定义out，而应该是`int &out = reference(in)`的方式定义一个引用
+
+修改之后，编译运行程序，看到地址是一致的
+
+![image](../media/image/2017-09-16/ref-02.png)
 
 ## 传值返回形式
 
@@ -89,13 +86,9 @@ int main()
 
 在进行编译的时候直接报错
 
-```
-return-value.cpp: In function 'int main()':
-return-value.cpp:18: error: lvalue required as unary '&' operand
-return-value.cpp:20: error: lvalue required as left operand of assignment
-```
+![image](../media/image/2017-09-16/ref-03.png)
 
-其中lvalue是left value的缩写，表示左值 
+其中rvalue是right value的缩写，表示右值；同理lvalue表示左值。中缀表达式一般是这样的`a = b;`a在左边，表示可以被赋值的值，b在右边，表示用于赋值的值 
 
 ## 防止对返回值的修改
 
@@ -133,10 +126,7 @@ int main()
 
 那么直接在编译的时候报错
 
-```
-return-reference.cpp: In function 'int main()':
-return-reference.cpp:21: error: assignment of read-only location 'reference(((int&)(& in)))'
-```
+![image](../media/image/2017-09-16/ref-04.png)
 
 ## 千万不要返回局部变量的引用
 
@@ -168,21 +158,11 @@ int main()
 
 编译的时候有警告信息，但是还是可以编译通过
 
-```
-return-reference.cpp: In function 'int& reference()':
-return-reference.cpp:6: warning: reference to local variable 'test' returned
-```
+![image](../media/image/2017-09-16/ref-05.png)
 
 运行输出如下
 
-```
-[return by reference]
-&test(reference) = 0x7fff0de0b24c
-&out(main)       = 0x7fff0de0b26c
-&test(reference) = 0x7fff0de0b24c
-return address   = 0x7fff0de0b24c
-&test(reference) = 0x7fff0de0b24c
-```
+![image](../media/image/2017-09-16/ref-06.png)
 
 虽然编译通过了，但是当reference返回之后，其局部变量test其实已经从栈上弹出了，原来test所在地址上的内容已经变成其他了，所以后续调用`reference() = 100`就破坏了堆栈。详细可以参考[《堆栈小记》](http://www.xumenger.com/linux-c-local-stack-20170704/)
 
@@ -216,19 +196,20 @@ int main()
 
 编译还是同样报警告
 
-```
-return-reference.cpp: In function 'std::string& reference()':
-return-reference.cpp:6: warning: reference to local variable 'test' returned
-```
+![image](../media/image/2017-09-16/ref-07.png)
 
 然后运行时直接出现Segmentation Fault
 
 ```
-[user@user ~]# ./return-reference
+[user@user ~]# ./local-string
 [return by reference]
 &test(reference) = 0x7fffe8a5adb0
 Segmentation fault (core dumped)
 ```
+
+上面是在一台redhat机器上测试出现的segmentation fault，下面截图是在mac上运行的，没有出问题，所以这正是其可怕之处！
+
+![image](../media/image/2017-09-16/ref-08.png)
 
 在`string out = reference();`调用的时候，可以看到是在返回的地方崩溃。因为当函数执行完毕时，将释放分配给局部变量的存储空间，此时对局部对象的引用就会指向不确定的内存
 
