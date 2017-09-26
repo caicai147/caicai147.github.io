@@ -1,8 +1,8 @@
 ---
 layout: post
 title: ADO绑定变量法的一些坑
-categories: 数据库之oracle delphi之数据库
-tags: delphi ado oracle 绑定变量 sql 数据类型
+categories: 数据库之oracle delphi之数据库编程
+tags: delphi ado oracle 绑定变量 sql 数据类型 数据库 数据库编程
 ---
 
 [《Delphi使用绑定变量法操作Oracle》](http://www.xumenger.com/z-delphi-oracle-parameter-20160711/)中有简单总结ADO绑定变量法的语法，但时至今日才发现后面有一些隐藏的坑。这里主要整理一下因为数据类型误用导致的坑！
