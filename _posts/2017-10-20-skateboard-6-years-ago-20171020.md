@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 走，去滑板！
+title: 走，滑板去！
 categories: 
 tags: 滑板
 ---
 
->6年前的照片
+>偶然翻到6年前视频，截图之
 
 ![image](../media/image/2017-10-20/01.png)
