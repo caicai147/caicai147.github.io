@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 使用WinDbg分析Delphi6的string内存模型
+title: Delphi6的string内存模型详解
 categories: 深入学习之操作系统
 tags: delphi windows 结构体 内存 堆 windbg string
 ---
@@ -87,8 +87,6 @@ end.
 ![image](../media/image/2017-09-18/01.png)
 
 ## 断点调试分析引用计数
-
->关于WinDbg断点和更多WinDbg命令，参见[windbg-detail](https://github.com/HackerLaboratory/_Crack/tree/master/20170511-windbg-detail)
 
 使用WinDbg附到测试进程(17292)上！`bp 0044FCC0`在函数入口处下断点，因为没有符号文件，所以会有下面的警告信息
 
