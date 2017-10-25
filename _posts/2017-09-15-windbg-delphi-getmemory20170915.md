@@ -2,7 +2,7 @@
 layout: post
 title: 分析Delphi的GetMemory方法
 categories: 深入学习之操作系统
-tags: dec jne lea cmp call ret esp ebp fs 寄存器 内存 TEB 线程 汇编 反汇编 堆栈 delphi 函数 函数调用 循环 for while 判断 if 赋值 string windows windbg
+tags: windbg delphi 内存 getmemory 内存模型 windows
 ---
 
 ## GetMemory简介
