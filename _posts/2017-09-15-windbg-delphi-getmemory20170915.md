@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 分析Delphi的GetMemory方法
+title: 分析Delphi的GetMemory对内存的影响
 categories: 深入学习之操作系统
 tags: windbg delphi 内存 getmemory 内存模型 windows
 ---
