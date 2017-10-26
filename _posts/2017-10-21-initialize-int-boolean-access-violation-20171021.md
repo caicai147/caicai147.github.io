@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Delphi下Boolean类型的大坑
+title: Delphi6的布尔类型有个小坑
 categories: delphi之函数
-tags: delphi windbg boolean 函数 函数返回值
+tags: delphi windbg boolean 函数 函数返回值 布尔
 ---
 
 ## 问题背景
