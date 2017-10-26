@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 从WinDbg看Windows下的临界区
+title: 在内存中细看Windows临界区
 categories: Delphi之多线程
 tags: delphi windows 内存 windbg 多线程 临界区
 ---
