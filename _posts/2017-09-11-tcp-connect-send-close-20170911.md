@@ -1,8 +1,8 @@
 ---
 layout: post
-title: WireShark分析socket API的TCP细节
+title: Socket API的本质？
 categories: 深入学习之网络原理 
-tags: wireshark socket tcp gdb
+tags: wireshark socket tcp gdb 网络
 ---
 
 ## 实验方案是这样的
