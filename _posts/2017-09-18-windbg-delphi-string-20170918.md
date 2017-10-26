@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Delphi6的string内存模型详解
+title: 通过WinDbg观察Delphi6字符串内存模型
 categories: 深入学习之操作系统
 tags: delphi windows 结构体 内存 堆 windbg string
 ---
