@@ -2,7 +2,7 @@
 layout: post
 title: 在内存中细看Windows临界区
 categories: Delphi之多线程
-tags: delphi windows 内存 windbg 多线程 临界区
+tags: delphi windows 内存 windbg 多线程 多进程 事件对象 互斥对象 临界区
 ---
 
 ## 多线程同步问题
@@ -10,7 +10,7 @@ tags: delphi windows 内存 windbg 多线程 临界区
 在Windows下，实现多线程同步主要有以下方案：
 
 * 临界区。非内核态对象、轻量级，所以非常适用于同一个进程内的多线程同步
-* 事件对象。内核对象，适用于多个进程间的线程同步，在进程化框架中有大量应用
+* 事件对象。内核对象，适用于多进程间的线程同步
 * 互斥对象。内核对象，适用于多进程间的线程同步
 
 本文先针对比较常用的临界区来分析其在Windows进程内存中的状态，关于事件对象、互斥对象后续再做研究！
