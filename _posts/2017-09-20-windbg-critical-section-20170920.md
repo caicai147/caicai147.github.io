@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在内存中细看Windows临界区
-categories: Delphi之多线程
+categories: delphi之多线程
 tags: delphi windows 内存 windbg 多线程 多进程 事件对象 互斥对象 临界区
 ---
 
