@@ -11,7 +11,8 @@ tags: c c++ const 函数 参数 读写 指针 引用 类 面向对象
 * const修饰指针
 * const修饰函数参数
 * const修饰函数返回值
-* const在类中的使用
+* const修饰类成员变量
+* const修饰类成员函数
 
 比如下面这段代码将const的各种应用场景都揉到一起了：
 
