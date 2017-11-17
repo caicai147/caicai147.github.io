@@ -1,6 +1,6 @@
 ---
 layout: post
-title: const无处不在！
+title: 无处不在的const！
 categories: c/c++之函数 c/c++之面向对象
 tags: c c++ const 函数 参数 读写 指针 引用 类 面向对象
 ---
